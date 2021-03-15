@@ -1,5 +1,7 @@
 package cn.seehoo.firstparty.financial.voucher.model;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
@@ -10,6 +12,7 @@ import java.io.Serializable;
  * @date 2021/3/15
  * @since 1.0
  */
+@Data
 public class VoucherStandardMessage implements Serializable {
     private static final long serialVersionUID = 4131214301751366368L;
 }
