@@ -4,6 +4,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.beans.beancontext.BeanContext;
+import java.io.Serializable;
+import java.math.BigDecimal;
+
 /**
  * Notice: 保证金收取场景所需财务信息
  *
@@ -15,11 +19,29 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class MarginCollectionMessage extends CommonMessage{
+public class MarginCollectionMessage implements Serializable {
     private static final long serialVersionUID = -9206139129964822188L;
 
     /**
-     * 交易类型 直租：0010101 回租：0010201
+     * 保证金表编号
      */
-    private String  transType;
+    private String  marginId;
+
+    /**
+     * 保证金调整金额
+     */
+    private BigDecimal adjustAmount;
+
+    /**
+     * 付款方开户行名称
+     */
+    private String payerBankName;
+    /**
+     * 付款方账号
+     */
+    private String payerAcctNo;
+    /**
+     * 合作方名称
+     */
+    private String merchantName;
 }

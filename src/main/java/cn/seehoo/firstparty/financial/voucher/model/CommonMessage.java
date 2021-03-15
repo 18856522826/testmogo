@@ -37,53 +37,6 @@ public class CommonMessage implements Serializable {
      * 租赁属性
      */
     private String leaseType;
-    /**
-     * 放款金额
-     */
-    private BigDecimal loanAmount;
-    /**
-     * 当前剩余未还本金
-     */
-    private BigDecimal surplusPrincipal;
-    /**
-     * 当前剩余未还利息
-     */
-    private BigDecimal surplusInterest;
-    /**
-     * 合同总利息
-     */
-    private BigDecimal sumInterest;
-    /**
-     * 支付ID
-     */
-    private BigDecimal paymentId;
-    /**
-     * 付款方开户行名称
-     */
-    private String payerBankName;
-    /**
-     * 付款方账号
-     */
-    private String payerAcctNo;
-    /**
-     * 店面名称
-     */
-    private String storeName;
-    /**
-     * 渠道名称
-     */
-    private String merchantName;
-    /**
-     * 客户姓名
-     */
-    private String custName;
-    /**
-     * 税率
-     */
-    private BigDecimal taxRate;
-    /*
-     * 贷款期数(月)
-     */
-    private String loanTerm;
+
 
 }
