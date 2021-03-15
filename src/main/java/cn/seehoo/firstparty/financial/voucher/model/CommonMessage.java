@@ -42,15 +42,15 @@ public class CommonMessage implements Serializable {
      */
     private BigDecimal loanAmount;
     /**
-     * 剩余金额
+     * 当前剩余未还本金
      */
     private BigDecimal surplusPrincipal;
     /**
-     * 剩余金额
+     * 当前剩余未还利息
      */
     private BigDecimal surplusInterest;
     /**
-     * 剩余金额
+     * 合同总利息
      */
     private BigDecimal sumInterest;
     /**
