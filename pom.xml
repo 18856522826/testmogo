@@ -79,5 +79,10 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.alipay.sofa</groupId>
+			<artifactId>sofamq-client-all</artifactId>
+			<version>3.0.3</version>
+		</dependency>
 	</dependencies>
 </project>

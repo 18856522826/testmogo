@@ -18,4 +18,8 @@ import lombok.ToString;
 public class MarginCollectionMessage extends CommonMessage{
     private static final long serialVersionUID = -9206139129964822188L;
 
+    /**
+     * 交易类型 直租：0010101 回租：0010201
+     */
+    private String  transType;
 }
