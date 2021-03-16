@@ -47,7 +47,7 @@ public interface ClientConstants {
      */
     String BUSINESS_TYPE_001 = "001";
     /**
-     * 业务类型-购入融资租赁资产-首付款
+     * 业务类型-首付款
      */
     String BUSINESS_TYPE_051 = "051";
     /**
@@ -71,9 +71,13 @@ public interface ClientConstants {
      */
     String TRANS_NAME_MAKE_PAYMENT = "支付价款";
     /**
-     * 制证交易名称-首付款
+     * 制证交易名称-首付款 场景
      */
     String TRANS_NAME_DOWN_PAYMENT = "首付款";
+    /**
+     * 制证交易名称-起租 场景
+     */
+    String TRANS_NAME_START_RENT = "起租";
     /**
      * 业务板块 01小微租赁
      */
@@ -103,6 +107,14 @@ public interface ClientConstants {
      */
     String SUB_TRANS_NAME_DOWN_PAYMENT = "购入租赁资产 ";
     /**
+     * 子交易名称-起租 场景
+     */
+    String SUB_TRANS_NAME_RENT_DIRECT_RENT = "直租起租";
+    /**
+     * 子交易名称-起租 场景
+     */
+    String SUB_TRANS_NAME_RENT_LEASE_BACK = "回租起租";
+    /**
      * 交易类型-收取保证金场景
      */
     String TRANS_TYPE_MARGIN = "0050301";
@@ -126,6 +138,14 @@ public interface ClientConstants {
      * 交易类型-首付款 场景
      */
     String TRANS_TYPE_DOWN_PAYMENT = "0510201";
+    /**
+     * 交易类型-起租 场景
+     */
+    String TRANS_TYPE_RENT_DIRECT_RENT = "0020101";
+    /**
+     * 交易类型-起租 场景
+     */
+    String TRANS_TYPE_RENT_LEASE_BACK = "0020201";
     /**
      * 支付Id--收取保证金场景
      */
