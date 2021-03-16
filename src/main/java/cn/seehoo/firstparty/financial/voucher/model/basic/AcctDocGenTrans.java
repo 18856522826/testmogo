@@ -1,5 +1,6 @@
 package cn.seehoo.firstparty.financial.voucher.model.basic;
 
+import cn.seehoo.firstparty.financial.voucher.common.ClientConstants;
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
 
@@ -49,12 +50,12 @@ public class AcctDocGenTrans {
      * 生成日期
      */
     @JSONField(name = "GenerateDate")
-    private Date generateDate;
+    private Date generateDate = new Date();;
     /**
      * 生成时间
      */
     @JSONField(name = "GenerateTime")
-    private Date generateTime;
+    private Date generateTime = new Date();
     /**
      * 租户编号
      */
@@ -85,5 +86,5 @@ public class AcctDocGenTrans {
      * 01小微租赁
      */
     @JSONField(name = "BusinessRestriction")
-    private String businessRestriction;
+    private String businessRestriction = ClientConstants.BUSINESS_RESTRICTION;
 }
