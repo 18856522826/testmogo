@@ -19,14 +19,20 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class MarginCollectionMessage implements Serializable {
+public class MarginCollectionMessage extends CommonMessage implements Serializable {
     private static final long serialVersionUID = -9206139129964822188L;
-
     /**
-     * 保证金表编号
+     * 合同号码
      */
-    private String  marginId;
-
+    private String contractNo;
+    /**
+     * 产品名称
+     */
+    private String productName;
+    /**
+     * 租赁属性
+     */
+    private String leaseType;
     /**
      * 保证金调整金额
      */

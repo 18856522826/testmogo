@@ -24,19 +24,6 @@ public class CommonMessage implements Serializable {
     /**
      * 申请编号
      */
-    private String orderNo;
-    /**
-     * 合同号码
-     */
-    private String contractNo;
-    /**
-     * 产品名称
-     */
-    private String productName;
-    /**
-     * 租赁属性
-     */
-    private String leaseType;
-
+    private String businessNo;
 
 }
