@@ -83,6 +83,10 @@ public interface ClientConstants {
      */
     String TRANS_NAME_INTEREST_INCOME= "计提利息收入";
     /**
+     * 制证交易名称-计提销项税额
+     */
+    String TRANS_NAME_OUTPUT_TAX ="计提销项税额";
+    /**
      * 业务板块 01小微租赁
      */
     String BUSINESS_RESTRICTION = "01";
@@ -127,6 +131,14 @@ public interface ClientConstants {
      */
     String SUB_TRANS_NAME_INTEREST_LEASE_BACK = "回租业务计提收";
     /**
+     * 子交易名称-计算销项税场景
+     */
+    String SUB_TRANS_NAME_OUTPUT_TAX_DIRECT_RENT="直租逐期开票计提销项税额";
+    /**
+     * 子交易名称-计算销项税场景
+     */
+    String SUB_TRANS_NAME_OUTPUT_TAX_BACK_RENT="回租逐期开票计提销项税额";
+    /**
      * 交易类型-收取保证金场景
      */
     String TRANS_TYPE_MARGIN = "0050301";
@@ -166,6 +178,14 @@ public interface ClientConstants {
      * 交易类型-计提利息收入 场景
      */
     String TRANS_TYPE_INTEREST_LEASE_BACK = "0120201";
+    /**
+     * 交易类型-计算销项税（直租）
+     */
+    String TRANS_TYPE_OUTPUT_TAX_DIRECT_RENT="0130101";
+    /**
+     * 交易类型-计算销项税（回租）
+     */
+    String TRANS_TYPE_OUTPUT_TAX_BACK_RENT="0130201";
     /**
      * 支付Id--收取保证金场景
      */

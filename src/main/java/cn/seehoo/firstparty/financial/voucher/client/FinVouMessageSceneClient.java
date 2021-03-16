@@ -372,5 +372,63 @@ public class FinVouMessageSceneClient {
         //发送
         sender.send(standardMessage);
     }
+    /**
+     * 计算销项税-   场景所需财务信息
+     * @param message 当前场景业务信息
+     * @throws Exception 异常信息
+     */
+    public void computeOutputTaxCollection(ComputeOutputTaxCollectionMessage message) throws Exception {
+        //标准财务凭证消息
+        VoucherStandardMessage standardMessage = new VoucherStandardMessage();
+        standardMessage.setMsgId(UUID.randomUUID().toString().replaceAll("-", ""));
+        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
+        //制证交易流水
+        AcctDocGenTrans trans = new AcctDocGenTrans();
+        trans.setLeaseType(message.getLeaseType());
+        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_012);
+        trans.setInputId(message.getBusinessNo());
+        trans.setTransName(ClientConstants.TRANS_NAME_OUTPUT_TAX);
+        trans.setContractId(message.getContractNo());
+        trans.setIputFlowId(message.getBusinessNo());
+        //制证子交易流水
+        List<AcctDocGenTransDoc> docList = new ArrayList<>();
+        AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
+        if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())){
+            transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_OUTPUT_TAX_DIRECT_RENT);
+        }else{
+            transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_OUTPUT_TAX_BACK_RENT);
+        }
+        if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())){
+            transDoc.setTransType(ClientConstants.TRANS_TYPE_OUTPUT_TAX_DIRECT_RENT);
+        }else{
+            transDoc.setTransType(ClientConstants.TRANS_TYPE_OUTPUT_TAX_BACK_RENT);
+        }
+        transDoc.setTransType(ClientConstants.TRANS_TYPE_DOWN_PAYMENT);
+        transDoc.setCcy(ClientConstants.CCY_CNY);
+        transDoc.setAmount(message.getInterestTax());
+        transDoc.setInterest(message.getInterest());
+        transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
+        transDoc.setProductNm(message.getProductName());
+        transDoc.setSuppierNm(message.getMerchantName());
+        transDoc.setCustNm(message.getCustName());
+        transDoc.setPlatformPartner(message.getMerchantName());
+        transDoc.setCashFlow(String.valueOf(message.getInterestTax()));
+        transDoc.setFinancialProduct(message.getProductName());
+        if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())){
+            transDoc.setTaxRate(ClientConstants.TAX_RATE_DIRECT_RENT);
+        }else{
+            transDoc.setTaxRate(ClientConstants.TAX_RATE_LEASE_BACK);
+        }
+        transDoc.setCurrentAccounting(ClientConstants.CURRENT_ACCOUNTING);
+        transDoc.setTerm(message.getLoanTerm());
+        transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setSumTerm(message.getSumTerm());
+        docList.add(transDoc);
+        standardMessage.setAcctDocGenTrans(trans);
+        standardMessage.setAcctDocGenSubTransList(docList);
+        //发送
+        sender.send(standardMessage);
+    }
+
 
 }
