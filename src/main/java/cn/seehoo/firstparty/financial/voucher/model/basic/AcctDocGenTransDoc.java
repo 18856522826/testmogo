@@ -137,7 +137,7 @@ public class AcctDocGenTransDoc {
      * 税率
      */
     @JSONField(name = "TaxRate")
-    private String taxRate;
+    private BigDecimal taxRate;
     /**
      * 进项税分类
      */
@@ -168,7 +168,7 @@ public class AcctDocGenTransDoc {
      * 总期数
      */
     @JSONField(name = "SumTerm")
-    private String sumTerm;
+    private int sumTerm;
     /**
      * 租户编号
      */

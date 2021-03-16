@@ -1,5 +1,7 @@
 package cn.seehoo.firstparty.financial.voucher.common;
 
+import java.math.BigDecimal;
+
 /**
  * Notice: 财务凭证字典
  *
@@ -60,7 +62,10 @@ public interface ClientConstants {
      * 制证交易名称 收取保证金场景
      */
     String TRANS_NAME_MARGIN = "收取保证金";
-
+    /**
+     * 制证交易名称-取得资产场景
+     */
+    String TRANS_NAME_ASSET = "购入融资资产";
     /**
      * 业务板块 01小微租赁
      */
@@ -70,19 +75,43 @@ public interface ClientConstants {
      */
     String SUB_TRANS_NAME_MARGIN = "平台合作方缴纳业务保证金";
     /**
+     * 子交易名称-取得资产
+     */
+    String SUB_TRANS_NAME_ASSET_DIRECT_RENT = "直租取得资产";
+    /**
+     * 子交易名称-取得资产
+     */
+    String SUB_TRANS_NAME_ASSET_LEASE_BACK = "回租取得资产";
+    /**
      * 交易类型-收取保证金场景
      */
     String TRANS_TYPE_MARGIN = "0050301";
     /**
+     * 交易类型-取得资产
+     */
+    String TRANS_TYPE_ASSET_DIRECT_RENT = "0010101";
+    /**
+     * 交易类型-取得资产
+     */
+    String TRANS_TYPE_ASSET_LEASE_BACK = "0010201";
+    /**
      * 支付Id--收取保证金场景
      */
-    String PAYMENT_ID_MARGIN = "0";
+    String PAYMENT_ID_ZERO = "0";
     /**
      * 往来核算 --收取保证金场景
      */
-    String CURRENT_ACCOUNTING_MARGIN="平台合作方";
+    String CURRENT_ACCOUNTING="平台合作方";
     /**
      * 保证金类型
      */
     String DEPOSIT_TYPE = "01";
+    /**
+     * 税率 直租
+     */
+    BigDecimal TAX_RATE_DIRECT_RENT = new BigDecimal("13");
+    /**
+     * 税率 回租
+     */
+    BigDecimal TAX_RATE_LEASE_BACK = new BigDecimal("6");
 }

@@ -22,18 +22,6 @@ import java.math.BigDecimal;
 public class MarginCollectionMessage extends CommonMessage implements Serializable {
     private static final long serialVersionUID = -9206139129964822188L;
     /**
-     * 合同号码
-     */
-    private String contractNo;
-    /**
-     * 产品名称
-     */
-    private String productName;
-    /**
-     * 租赁属性
-     */
-    private String leaseType;
-    /**
      * 保证金调整金额
      */
     private BigDecimal adjustAmount;
@@ -46,8 +34,4 @@ public class MarginCollectionMessage extends CommonMessage implements Serializab
      * 付款方账号
      */
     private String payerAcctNo;
-    /**
-     * 合作方名称
-     */
-    private String merchantName;
 }

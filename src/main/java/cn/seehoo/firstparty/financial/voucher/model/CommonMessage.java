@@ -22,8 +22,12 @@ public class CommonMessage implements Serializable {
     private static final long serialVersionUID = -3648736660576333255L;
 
     /**
-     * 申请编号
+     * 业务编号
      */
     private String businessNo;
+    /**
+     * 合作方名称
+     */
+    private String merchantName;
 
 }

@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.math.BigDecimal;
+
 /**
  * Notice: 取得资产场景所需财务信息
  *
@@ -16,6 +18,31 @@ import lombok.ToString;
 @Setter
 @ToString
 public class AssetCollectionMessage extends CommonMessage{
+    private static final long serialVersionUID = 5978224537254233009L;
+    /**
+     * 合同号码
+     */
+    private String contractNo;
+    /**
+     * 产品名称
+     */
+    private String productName;
+    /**
+     * 租赁属性
+     */
+    private String leaseType;
+    /**
+     * 放款金额
+     */
+    private BigDecimal loanAmount;
+    /**
+     * 当前剩余未还本金
+     */
+    private BigDecimal principal;
+    /**
+     * 当前剩余未还利息
+     */
+    private BigDecimal interest;
     /**
      * 付款方开户行名称
      */
@@ -24,5 +51,13 @@ public class AssetCollectionMessage extends CommonMessage{
      * 付款方账号
      */
     private String payerAcctNo;
+    /**
+     * 客户姓名
+     */
+    private String custName;
+    /**
+     * 贷款期数(月)
+     */
+    private Integer loanTerm;
 
 }
