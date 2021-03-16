@@ -1,10 +1,7 @@
 package cn.seehoo.firstparty.financial.voucher.client;
 
 import cn.seehoo.firstparty.financial.voucher.common.ClientConstants;
-import cn.seehoo.firstparty.financial.voucher.model.AssetCollectionMessage;
-import cn.seehoo.firstparty.financial.voucher.model.MakePaymentCollectionMessage;
-import cn.seehoo.firstparty.financial.voucher.model.MarginCollectionMessage;
-import cn.seehoo.firstparty.financial.voucher.model.VoucherStandardMessage;
+import cn.seehoo.firstparty.financial.voucher.model.*;
 import cn.seehoo.firstparty.financial.voucher.model.basic.AcctDocGenTrans;
 import cn.seehoo.firstparty.financial.voucher.model.basic.AcctDocGenTransDoc;
 import lombok.AllArgsConstructor;
@@ -172,6 +169,73 @@ public class FinVouMessageSceneClient {
         transDoc.setCashFlow(String.valueOf(message.getLoanAmount()));
         transDoc.setCurrentAccounting(ClientConstants.CURRENT_ACCOUNTING);
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        docList.add(transDoc);
+
+        standardMessage.setAcctDocGenTrans(trans);
+        standardMessage.setAcctDocGenSubTransList(docList);
+        //发送
+        sender.send(standardMessage);
+    }
+
+    /**
+     * 购入融资租赁资产-首付款场景所需财务信息
+     * @param message 当前场景业务信息
+     * @throws Exception 异常信息
+     */
+    public void downPaymentCollection(DownPaymentCollectionMessage message) throws Exception {
+        //标准财务凭证消息
+        VoucherStandardMessage standardMessage = new VoucherStandardMessage();
+        standardMessage.setMsgId(UUID.randomUUID().toString().replaceAll("-", ""));
+        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
+        //制证交易流水
+        AcctDocGenTrans trans = new AcctDocGenTrans();
+        trans.setLeaseType(message.getLeaseType());
+        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_051);
+        trans.setInputId(message.getBusinessNo());
+        trans.setTransName(ClientConstants.TRANS_NAME_DOWN_PAYMENT);
+        trans.setContractId(message.getContractNo());
+        trans.setIputFlowId(message.getBusinessNo());
+        trans.setContractName(ClientConstants.CONTRACT_NAME);
+        //制证子交易流水
+        List<AcctDocGenTransDoc> docList = new ArrayList<>();
+        AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
+        transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_DOWN_PAYMENT);
+        transDoc.setTransType(ClientConstants.TRANS_TYPE_DOWN_PAYMENT);
+        transDoc.setCcy(ClientConstants.CCY_CNY);
+        transDoc.setAmount(message.getDownPayment());
+        transDoc.setRemanentCapital(message.getSurplusPrincipal());
+        transDoc.setInterest(BigDecimal.ZERO);
+        transDoc.setSumInterest(message.getSumInterest());
+        transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
+        transDoc.setProductNm(message.getProductName());
+        transDoc.setSuppierNm(message.getMerchantName());
+        transDoc.setCustNm(message.getCustName());
+        transDoc.setPlatformPartner(message.getMerchantName());
+        transDoc.setCashFlow(String.valueOf(message.getDownPayment()));
+        transDoc.setFinancialProduct(message.getProductName());
+        if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())){
+            transDoc.setTaxRate(ClientConstants.TAX_RATE_DIRECT_RENT);
+        }else{
+            transDoc.setTaxRate(ClientConstants.TAX_RATE_LEASE_BACK);
+        }
+        transDoc.setCurrentAccounting(ClientConstants.CURRENT_ACCOUNTING);
+        transDoc.setTerm(message.getLoanTerm());
+        transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setSumTerm(message.getLoanTerm());
+        transDoc.setBuyoutPrice(message.getRetentionPrice());
+        transDoc.setResidueUncollectedCapital(message.getSurplusPrincipal());
+        transDoc.setResidueUncollectedInterest(message.getSurplusInterest());
+        transDoc.setProvisionInterest(message.getSurplusInterest());
+        transDoc.setProvisionTaxes(message.getInterestTax());
+        transDoc.setNoTaxAmount(message.getDownPayment());
+        transDoc.setIncludeTaxRent(message.getDownPayment());
+        transDoc.setNoTaxRent(message.getDownPayment());
+        transDoc.setTotalCapital(message.getDownPayment());
+        transDoc.setNoTaxTotalCapital(message.getDownPayment());
+        transDoc.setNoTaxCapital(message.getDownPayment());
+        transDoc.setNoTaxOddCorpus(message.getPrincipalExcludTax());
+        transDoc.setTaxOddCorpus(message.getRentTax());
+        transDoc.setGrossInterest(message.getSumInterest());
         docList.add(transDoc);
 
         standardMessage.setAcctDocGenTrans(trans);

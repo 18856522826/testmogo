@@ -17,12 +17,13 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @ToString
-public class DownPaymentCollectionMessage {
-
+public class DownPaymentCollectionMessage extends CommonMessage{
+    private static final long serialVersionUID = 358480098723850413L;
     /**
-     * 申请编号
+     * 租赁属性
      */
-    private String orderNo;
+    private String leaseType;
+
     /**
      * 合同号码
      */
@@ -36,7 +37,7 @@ public class DownPaymentCollectionMessage {
      */
     private BigDecimal surplusPrincipal;
     /**
-     * 当前剩余未还利息
+     * 销售当前剩余利息
      */
     private BigDecimal surplusInterest;
     /**
@@ -44,27 +45,23 @@ public class DownPaymentCollectionMessage {
      */
     private BigDecimal sumInterest;
     /**
-     * 合作方名称
+     * 产品名称
      */
-    private String merchantName;
+    private String productName;
     /**
      * 客户姓名
      */
     private String custName;
-    /**
-     * 税率
-     */
-    private BigDecimal taxRate;
     /*
      * 贷款期数(月)
      */
-    private String loanTerm;
+    private Integer loanTerm;
     /**
      * 留购价款
      */
     private BigDecimal retentionPrice;
     /**
-     * 利息税额
+     * 销售当前剩余利息税额
      */
     private BigDecimal interestTax;
     /**
@@ -72,9 +69,10 @@ public class DownPaymentCollectionMessage {
      */
     private BigDecimal principalExcludTax;
     /**
-     * 剩余未还税额
+     * 销售还款剩余未还税额
      */
     private BigDecimal rentTax;
+
 
 }
 
