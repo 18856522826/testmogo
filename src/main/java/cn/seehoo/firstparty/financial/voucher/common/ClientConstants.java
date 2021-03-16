@@ -79,6 +79,10 @@ public interface ClientConstants {
      */
     String TRANS_NAME_START_RENT = "起租";
     /**
+     * 制证交易名称-计提利息收入 场景
+     */
+    String TRANS_NAME_INTEREST_INCOME= "计提利息收入";
+    /**
      * 业务板块 01小微租赁
      */
     String BUSINESS_RESTRICTION = "01";
@@ -115,6 +119,14 @@ public interface ClientConstants {
      */
     String SUB_TRANS_NAME_RENT_LEASE_BACK = "回租起租";
     /**
+     * 子交易名称-计提利息收入 场景
+     */
+    String SUB_TRANS_NAME_INTEREST_DIRECT_RENT = "直租业务计提收入";
+    /**
+     * 子交易名称-计提利息收入 场景
+     */
+    String SUB_TRANS_NAME_INTEREST_LEASE_BACK = "回租业务计提收";
+    /**
      * 交易类型-收取保证金场景
      */
     String TRANS_TYPE_MARGIN = "0050301";
@@ -146,6 +158,14 @@ public interface ClientConstants {
      * 交易类型-起租 场景
      */
     String TRANS_TYPE_RENT_LEASE_BACK = "0020201";
+    /**
+     * 交易类型-计提利息收入 场景
+     */
+    String TRANS_TYPE_INTEREST_DIRECT_RENT = "0120101";
+    /**
+     * 交易类型-计提利息收入 场景
+     */
+    String TRANS_TYPE_INTEREST_LEASE_BACK = "0120201";
     /**
      * 支付Id--收取保证金场景
      */
