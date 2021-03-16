@@ -1,6 +1,9 @@
 package cn.seehoo.firstparty.financial.voucher.model;
 
-import com.alipay.sofa.sofamq.com.shade.alibaba.fastjson.annotation.JSONField;
+
+import cn.seehoo.firstparty.financial.voucher.model.basic.AcctDocGenTrans;
+import cn.seehoo.firstparty.financial.voucher.model.basic.AcctDocGenTransDoc;
+import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -22,30 +25,30 @@ public class VoucherStandardMessage implements Serializable {
      * 记录类型：01混合，02主记录，03子记录
      */
     @JSONField(name = "MsgType")
-    private String MsgType;
+    private String msgType = "01";
     /**
      * 报文发送时间
      */
     @JSONField(name = "SendMsgTime")
-    private Date SendMsgTime;
+    private Date sendMsgTime = new Date();
     /**
      * 报文编号
      */
     @JSONField(name = "MsgId")
-    private String MsgId;
+    private String msgId;
     /**
      * 是否冲销，0正常 1 红冲 2蓝冲
      */
     @JSONField(name = "IsChargeAgainst")
-    private String IsChargeAgainst;
+    private String isChargeAgainst;
     /**
      * 制证交易流水
      */
     @JSONField(name = "AcctDocGenTrans")
-    private AcctDocGenTrans AcctDocGenTrans;
+    private AcctDocGenTrans acctDocGenTrans;
     /**
      * 制证子交易流水集合
      */
     @JSONField(name = "AcctDocGenSubTransList")
-    private List<AcctDocGenTransDoc> AcctDocGenSubTransList;
+    private List<AcctDocGenTransDoc> acctDocGenSubTransList;
 }

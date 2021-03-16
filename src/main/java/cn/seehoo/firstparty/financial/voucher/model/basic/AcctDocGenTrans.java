@@ -1,6 +1,6 @@
-package cn.seehoo.firstparty.financial.voucher.model;
+package cn.seehoo.firstparty.financial.voucher.model.basic;
 
-import com.alipay.sofa.sofamq.com.shade.alibaba.fastjson.annotation.JSONField;
+import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
 
 import java.util.Date;
@@ -19,71 +19,71 @@ public class AcctDocGenTrans {
      * 租赁类型：01直租，02回租，03所有
      */
     @JSONField(name = "LeaseType")
-    private String LeaseType;
+    private String leaseType;
     /**
      * 业务类型
      */
     @JSONField(name = "BussinessType")
-    private String BussinessType;
+    private String bussinessType;
     /**
      * 进件ID
      */
     @JSONField(name = "InputId")
-    private String InputId;
+    private String inputId;
     /**
      * 制证交易名称
      */
     @JSONField(name = "TransName")
-    private String TransName;
+    private String transName;
     /**
      * 合同ID
      */
     @JSONField(name = "ContractId")
-    private String ContractId;
+    private String contractId;
     /**
      * 进件流水ID
      */
     @JSONField(name = "IputFlowId")
-    private String IputFlowId;
+    private String iputFlowId;
     /**
      * 生成日期
      */
     @JSONField(name = "GenerateDate")
-    private Date GenerateDate;
+    private Date generateDate;
     /**
      * 生成时间
      */
     @JSONField(name = "GenerateTime")
-    private Date GenerateTime;
+    private Date generateTime;
     /**
      * 租户编号
      */
     @JSONField(name = "TntInstId")
-    private String TntInstId;
+    private String tntInstId;
     /**
      * 租户名称
      */
     @JSONField(name = "TenantName")
-    private String TenantName;
+    private String tenantName;
     /**
      * 合同名称
      */
     @JSONField(name = "ContractName")
-    private String ContractName;
+    private String contractName;
     /**
      * 创建人
      */
     @JSONField(name = "CreateUser")
-    private String CreateUser;
+    private String createUser;
     /**
      * 修改人
      */
     @JSONField(name = "UpdateUser")
-    private String UpdateUser;
+    private String updateUser;
     /**
      * 业务板块
      * 01小微租赁
      */
     @JSONField(name = "BusinessRestriction")
-    private String BusinessRestriction;
+    private String businessRestriction;
 }
