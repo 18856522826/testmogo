@@ -38,11 +38,15 @@ public class AssetCollectionMessage extends CommonMessage{
     /**
      * 当前剩余未还本金
      */
-    private BigDecimal principal;
+    private BigDecimal surplusPrincipal;
     /**
      * 当前剩余未还利息
      */
-    private BigDecimal interest;
+    private BigDecimal surplusInterest;
+    /**
+     * 合同总利息
+     */
+    private BigDecimal sumInterest;
     /**
      * 付款方开户行名称
      */

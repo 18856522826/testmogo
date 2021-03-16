@@ -105,9 +105,9 @@ public class FinVouMessageSceneClient {
             transDoc.setTaxRate(ClientConstants.TAX_RATE_LEASE_BACK);
         }
         transDoc.setAmount(message.getLoanAmount());
-        transDoc.setRemanentCapital(message.getPrincipal());
-        transDoc.setInterest(message.getInterest());
-        transDoc.setSumInterest(message.getInterest());
+        transDoc.setRemanentCapital(message.getSurplusPrincipal());
+        transDoc.setInterest(message.getSurplusInterest());
+        transDoc.setSumInterest(message.getSumInterest());
         transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
         transDoc.setPayerBankName(message.getPayerBankName());
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
