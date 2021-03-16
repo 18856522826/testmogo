@@ -67,6 +67,10 @@ public interface ClientConstants {
      */
     String TRANS_NAME_ASSET = "购入融资资产";
     /**
+     * 制证交易名称-支付价款场景
+     */
+    String TRANS_NAME_MAKE_PAYMENT = "支付价款";
+    /**
      * 业务板块 01小微租赁
      */
     String BUSINESS_RESTRICTION = "01";
@@ -83,6 +87,14 @@ public interface ClientConstants {
      */
     String SUB_TRANS_NAME_ASSET_LEASE_BACK = "回租取得资产";
     /**
+     * 子交易名称-支付价款
+     */
+    String SUB_TRANS_NAME_PAYMENT_DIRECT_RENT = "直租支付价款";
+    /**
+     * 子交易名称-支付价款
+     */
+    String SUB_TRANS_NAME_PAYMENT_LEASE_BACK = "回租支付价款";
+    /**
      * 交易类型-收取保证金场景
      */
     String TRANS_TYPE_MARGIN = "0050301";
@@ -94,6 +106,14 @@ public interface ClientConstants {
      * 交易类型-取得资产
      */
     String TRANS_TYPE_ASSET_LEASE_BACK = "0010201";
+    /**
+     * 交易类型-取得资产
+     */
+    String TRANS_TYPE_PAYMENT_DIRECT_RENT = "0010102";
+    /**
+     * 交易类型-取得资产
+     */
+    String TRANS_TYPE_PAYMENT_LEASE_BACK = "0010202";
     /**
      * 支付Id--收取保证金场景
      */

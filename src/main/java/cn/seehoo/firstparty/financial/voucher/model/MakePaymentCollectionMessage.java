@@ -17,13 +17,12 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @ToString
-public class MakePaymentCollectionMessage {
-
+public class MakePaymentCollectionMessage extends CommonMessage{
+    private static final long serialVersionUID = -2073796043447418208L;
     /**
-     * 批次号
+     * 租赁属性
      */
-    private String batchNo;
-
+    private String leaseType;
     /**
      * 放款金额
      */
@@ -48,5 +47,5 @@ public class MakePaymentCollectionMessage {
     /**
      * 收款方账号
      */
-    private String payeAcctNo;
+    private String payerAcctNo;
 }
