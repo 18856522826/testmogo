@@ -22,7 +22,6 @@ import java.util.UUID;
  */
 @AllArgsConstructor
 public class FinVouMessageSceneClient {
-    //Todo: 场景公共默认字段赋值
     /**
      * 财务凭证消息发送者
      */
@@ -64,6 +63,11 @@ public class FinVouMessageSceneClient {
         transDoc.setCurrentAccounting(ClientConstants.CURRENT_ACCOUNTING);
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setDepositType(ClientConstants.DEPOSIT_TYPE);
+        //国银收款账号信息
+        transDoc.setPayeeAcctNo(config.getBankAccountNo());
+        transDoc.setPayeeBankName(config.getBankAccountName());
+        //租户赋值
+        setTenantValue(trans,transDoc);
         docList.add(transDoc);
 
         standardMessage.setAcctDocGenTrans(trans);
@@ -117,6 +121,11 @@ public class FinVouMessageSceneClient {
         transDoc.setTerm(message.getLoanTerm());
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
+        //国银收款账号信息
+        transDoc.setPayeeAcctNo(config.getBankAccountNo());
+        transDoc.setPayeeBankName(config.getBankAccountName());
+        //租户赋值
+        setTenantValue(trans,transDoc);
         docList.add(transDoc);
 
         standardMessage.setAcctDocGenTrans(trans);
@@ -159,13 +168,18 @@ public class FinVouMessageSceneClient {
         transDoc.setInterest(message.getSurplusInterest());
         transDoc.setSumInterest(message.getSumInterest());
         transDoc.setPaymentId(message.getBusinessNo());
-        transDoc.setPayerBankName(message.getPayerBankName());
-        transDoc.setPayerAcctNo(message.getPayerAcctNo());
+        transDoc.setPayeeBankName(message.getPayerBankName());
+        transDoc.setPayeeAcctNo(message.getPayerAcctNo());
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setPlatformPartner(message.getMerchantName());
         transDoc.setCashFlow(String.valueOf(message.getLoanAmount()));
         transDoc.setCurrentAccounting(ClientConstants.CURRENT_ACCOUNTING);
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        //国银付款账号信息
+        transDoc.setPayerAcctNo(config.getBankAccountNo());
+        transDoc.setPayerBankName(config.getBankAccountName());
+        //租户赋值
+        setTenantValue(trans,transDoc);
         docList.add(transDoc);
 
         standardMessage.setAcctDocGenTrans(trans);
@@ -227,6 +241,8 @@ public class FinVouMessageSceneClient {
         transDoc.setNoTaxOddCorpus(message.getPrincipalExcludTax());
         transDoc.setTaxOddCorpus(message.getRentTax());
         transDoc.setGrossInterest(message.getSumInterest());
+        //租户赋值
+        setTenantValue(trans,transDoc);
         docList.add(transDoc);
 
         standardMessage.setAcctDocGenTrans(trans);
@@ -298,6 +314,8 @@ public class FinVouMessageSceneClient {
         transDoc.setNoTaxBuyoutPrice(message.getRetentionPrice());
         transDoc.setTaxBuyoutPrice(message.getRentExcludTax());
         transDoc.setNoTaxResidueCapital(message.getPrincipalExcludTax());
+        //租户赋值
+        setTenantValue(trans,transDoc);
         docList.add(transDoc);
 
         standardMessage.setAcctDocGenTrans(trans);
@@ -350,6 +368,8 @@ public class FinVouMessageSceneClient {
         transDoc.setTaxRate(message.getTaxRate());
         transDoc.setEarnings(message.getRent());
         transDoc.setAmountOfTax(message.getRentTax());
+        //租户赋值
+        setTenantValue(trans,transDoc);
         docList.add(transDoc);
 
         standardMessage.setAcctDocGenTrans(trans);
@@ -379,12 +399,9 @@ public class FinVouMessageSceneClient {
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
         if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())){
             transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_OUTPUT_TAX_DIRECT_RENT);
-        }else{
-            transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_OUTPUT_TAX_BACK_RENT);
-        }
-        if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())){
             transDoc.setTransType(ClientConstants.TRANS_TYPE_OUTPUT_TAX_DIRECT_RENT);
         }else{
+            transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_OUTPUT_TAX_BACK_RENT);
             transDoc.setTransType(ClientConstants.TRANS_TYPE_OUTPUT_TAX_BACK_RENT);
         }
         transDoc.setTransType(ClientConstants.TRANS_TYPE_DOWN_PAYMENT);
@@ -402,6 +419,9 @@ public class FinVouMessageSceneClient {
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
         transDoc.setTaxRate(message.getTaxRate());
+        //租户赋值
+        setTenantValue(trans,transDoc);
+
         docList.add(transDoc);
         standardMessage.setAcctDocGenTrans(trans);
         standardMessage.setAcctDocGenSubTransList(docList);
@@ -409,5 +429,17 @@ public class FinVouMessageSceneClient {
         sender.send(standardMessage);
     }
 
+    /**
+     * 租户赋值
+     * @param trans 财务子交易
+     * @param transDoc 制证子交易流水
+     */
+    private void setTenantValue(AcctDocGenTrans trans,AcctDocGenTransDoc transDoc){
+        trans.setTntInstId(config.getTntInstId());
+        trans.setTenantName(config.getTenantName());
+
+        transDoc.setTntInstId(config.getTntInstId());
+        transDoc.setTenantName(config.getTenantName());
+    }
 
 }
