@@ -1,7 +1,5 @@
 package cn.seehoo.firstparty.financial.voucher.common;
 
-import java.math.BigDecimal;
-
 /**
  * Notice: 财务凭证字典
  *
