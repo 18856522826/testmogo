@@ -1,6 +1,7 @@
 package cn.seehoo.firstparty.financial.voucher.client;
 
 import cn.seehoo.firstparty.financial.voucher.common.ClientConstants;
+import cn.seehoo.firstparty.financial.voucher.config.FinVouMessageConfig;
 import cn.seehoo.firstparty.financial.voucher.model.*;
 import cn.seehoo.firstparty.financial.voucher.model.basic.AcctDocGenTrans;
 import cn.seehoo.firstparty.financial.voucher.model.basic.AcctDocGenTransDoc;
@@ -26,6 +27,10 @@ public class FinVouMessageSceneClient {
      * 财务凭证消息发送者
      */
     private final FinVouMessageSender sender;
+    /**
+     * 财务凭证配置信息
+     */
+    private final FinVouMessageConfig config;
 
     /**
      * 保证金收取场景
