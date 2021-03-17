@@ -46,7 +46,11 @@ public class StartRentCollectionMessage extends CommonMessage {
     /**
      * 不含税留购价
      */
-    private BigDecimal retentionExcludTax;
+    private BigDecimal retentionExcludeTax;
+    /**
+     * 留购价款税额
+     */
+    private BigDecimal retentionTax;
     /**
      * 主表产品方案
      */
@@ -66,15 +70,15 @@ public class StartRentCollectionMessage extends CommonMessage {
     /**
      * 税后利息总额
      */
-    private BigDecimal interestExcludTax;
+    private BigDecimal interestExcludeTax;
     /**
      * 税后租金总额
      */
-    private BigDecimal rentExcludTax;
+    private BigDecimal rentExcludeTax;
     /**
      * 不含税剩余未收本金
      */
-    private BigDecimal principalExcludTax;
+    private BigDecimal principalExcludeTax;
 
     /**
      * 租金税额

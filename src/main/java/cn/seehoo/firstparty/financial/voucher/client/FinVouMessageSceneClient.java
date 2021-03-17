@@ -239,7 +239,7 @@ public class FinVouMessageSceneClient {
         transDoc.setTotalCapital(message.getDownPayment());
         transDoc.setNoTaxTotalCapital(message.getDownPayment());
         transDoc.setNoTaxCapital(message.getDownPayment());
-        transDoc.setNoTaxOddCorpus(message.getPrincipalExcludTax());
+        transDoc.setNoTaxOddCorpus(message.getPrincipalExcludeTax());
         transDoc.setTaxOddCorpus(message.getRentTax());
         transDoc.setGrossInterest(message.getSumInterest());
         //租户赋值
@@ -302,19 +302,19 @@ public class FinVouMessageSceneClient {
         transDoc.setResidueUncollectedInterest(message.getSurplusInterest());
         transDoc.setProvisionInterest(message.getSurplusInterest());
         transDoc.setProvisionTaxes(message.getInterestTax());
-        transDoc.setEarnings(message.getInterestExcludTax());
+        transDoc.setEarnings(message.getInterestExcludeTax());
         transDoc.setAmountOfTax(message.getInterestTax());
-        transDoc.setNoTaxAmount(message.getRentExcludTax());
+        transDoc.setNoTaxAmount(message.getRentExcludeTax());
         transDoc.setContractPrice(message.getVehicleSalesPrice());
         transDoc.setIncludeTaxRent(message.getRent());
-        transDoc.setNoTaxRent(message.getRentExcludTax());
+        transDoc.setNoTaxRent(message.getRentExcludeTax());
         transDoc.setTaxRent(message.getRentTax());
         transDoc.setTotalCapital(message.getLoanAmount());
-        transDoc.setNoTaxTotalCapital(message.getPrincipalExcludTax());
+        transDoc.setNoTaxTotalCapital(message.getPrincipalExcludeTax());
         transDoc.setTaxTotalCapital(message.getPrincipalTax());
-        transDoc.setNoTaxBuyoutPrice(message.getRetentionPrice());
-        transDoc.setTaxBuyoutPrice(message.getRentExcludTax());
-        transDoc.setNoTaxResidueCapital(message.getPrincipalExcludTax());
+        transDoc.setNoTaxBuyoutPrice(message.getRetentionExcludeTax());
+        transDoc.setTaxBuyoutPrice(message.getRetentionTax());
+        transDoc.setNoTaxResidueCapital(message.getPrincipalExcludeTax());
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);

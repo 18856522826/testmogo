@@ -67,7 +67,7 @@ public class DownPaymentCollectionMessage extends CommonMessage{
     /**
      * 剩余不含税本金
      */
-    private BigDecimal principalExcludTax;
+    private BigDecimal principalExcludeTax;
     /**
      * 销售还款剩余未还税额
      */
