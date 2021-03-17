@@ -405,7 +405,6 @@ public class FinVouMessageSceneClient {
             transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_OUTPUT_TAX_BACK_RENT);
             transDoc.setTransType(ClientConstants.TRANS_TYPE_OUTPUT_TAX_BACK_RENT);
         }
-        transDoc.setTransType(ClientConstants.TRANS_TYPE_DOWN_PAYMENT);
         transDoc.setAmount(message.getInterestTax());
         transDoc.setInterest(message.getInterest());
         transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
@@ -415,11 +414,11 @@ public class FinVouMessageSceneClient {
         transDoc.setPlatformPartner(message.getMerchantName());
         transDoc.setCashFlow(String.valueOf(message.getInterestTax()));
         transDoc.setFinancialProduct(message.getProductName());
+        transDoc.setTaxRate(message.getTaxRate());
         transDoc.setCurrentAccounting(ClientConstants.CURRENT_ACCOUNTING);
         transDoc.setTerm(message.getCurrentTerm());
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
-        transDoc.setTaxRate(message.getTaxRate());
         //租户赋值
         setTenantValue(trans,transDoc);
 
