@@ -16,9 +16,25 @@ public interface ClientConstants {
      */
     String CCY_CNY = "CNY";
     /**
+     * 记录类型 01混合，02主记录，03子记录
+     */
+    String MSG_TYPE = "01";
+    /**
+     * 业务板块 01小微租赁
+     */
+    String  BUSINESS_RESTRICTION = "01";
+    /**
      * 是否动产
      */
     String IS_MOVABLE_PROPERTY = "是";
+    /**
+     * 系统来源
+     */
+    String SYSTEM_SOURCE = "03";
+    /**
+     * 来源类型
+     */
+    String SOURCE_TYPE = "01";
     /**
      * 是否冲销-正常
      */
@@ -86,10 +102,6 @@ public interface ClientConstants {
      * 制证交易名称-计提销项税额
      */
     String TRANS_NAME_OUTPUT_TAX ="计提销项税额";
-    /**
-     * 业务板块 01小微租赁
-     */
-    String BUSINESS_RESTRICTION = "01";
     /**
      * 子交易名称-收取保证金场景
      */

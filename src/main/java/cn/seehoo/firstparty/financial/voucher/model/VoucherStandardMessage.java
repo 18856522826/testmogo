@@ -1,6 +1,7 @@
 package cn.seehoo.firstparty.financial.voucher.model;
 
 
+import cn.seehoo.firstparty.financial.voucher.common.ClientConstants;
 import cn.seehoo.firstparty.financial.voucher.model.basic.AcctDocGenTrans;
 import cn.seehoo.firstparty.financial.voucher.model.basic.AcctDocGenTransDoc;
 import com.alibaba.fastjson.annotation.JSONField;
@@ -26,7 +27,7 @@ public class VoucherStandardMessage implements Serializable {
      * 记录类型：01混合，02主记录，03子记录
      */
     @JSONField(name = "MsgType")
-    private String msgType = "01";
+    private String msgType = ClientConstants.MSG_TYPE;
     /**
      * 报文发送时间
      */

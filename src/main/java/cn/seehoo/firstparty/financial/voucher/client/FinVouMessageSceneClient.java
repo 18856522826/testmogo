@@ -40,7 +40,6 @@ public class FinVouMessageSceneClient {
     public void marginCollection(MarginCollectionMessage message) throws Exception {
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
-        standardMessage.setMsgId(UUID.randomUUID().toString().replaceAll("-", ""));
         standardMessage.setIsChargeAgainst(message.getAdjustType());
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
@@ -81,7 +80,6 @@ public class FinVouMessageSceneClient {
     public void assetCollection(AssetCollectionMessage message) throws Exception {
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
-        standardMessage.setMsgId(UUID.randomUUID().toString().replaceAll("-", ""));
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
@@ -135,7 +133,6 @@ public class FinVouMessageSceneClient {
     public void makePaymentCollection(MakePaymentCollectionMessage message) throws Exception {
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
-        standardMessage.setMsgId(UUID.randomUUID().toString().replaceAll("-", ""));
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
@@ -185,7 +182,6 @@ public class FinVouMessageSceneClient {
     public void downPaymentCollection(DownPaymentCollectionMessage message) throws Exception {
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
-        standardMessage.setMsgId(UUID.randomUUID().toString().replaceAll("-", ""));
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
@@ -247,7 +243,6 @@ public class FinVouMessageSceneClient {
     public void startRentCollection(StartRentCollectionMessage message) throws Exception {
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
-        standardMessage.setMsgId(UUID.randomUUID().toString().replaceAll("-", ""));
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
@@ -319,7 +314,6 @@ public class FinVouMessageSceneClient {
     public void interestIncomeCollection(InterestIncomeCollectionMessage message) throws Exception {
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
-        standardMessage.setMsgId(UUID.randomUUID().toString().replaceAll("-", ""));
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
@@ -371,7 +365,6 @@ public class FinVouMessageSceneClient {
     public void computeOutputTaxCollection(ComputeOutputTaxCollectionMessage message) throws Exception {
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
-        standardMessage.setMsgId(UUID.randomUUID().toString().replaceAll("-", ""));
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();

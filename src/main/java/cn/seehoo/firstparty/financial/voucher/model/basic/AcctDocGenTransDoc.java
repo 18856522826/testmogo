@@ -147,7 +147,7 @@ public class AcctDocGenTransDoc {
      * 是否动产
      */
     @JSONField(name = "IsMovableProperty")
-    private String isMovableProperty;
+    private String isMovableProperty = ClientConstants.IS_MOVABLE_PROPERTY;
     /**
      * 往来核算
      */
@@ -183,13 +183,13 @@ public class AcctDocGenTransDoc {
      * 系统来源
      */
     @JSONField(name = "SystemSource")
-    private String systemSource;
+    private String systemSource = ClientConstants.SYSTEM_SOURCE;
     /**
      * 来源类型
      * 01系统，02手工
      */
     @JSONField(name = "SourceType")
-    private String sourceType;
+    private String sourceType = ClientConstants.SOURCE_TYPE;
     /**
      * 制单人
      */
