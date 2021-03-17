@@ -362,6 +362,7 @@ public class FinVouMessageSceneClient {
         transDoc.setCashFlow(String.valueOf(message.getRent()));
         transDoc.setFinancialProduct(message.getProductName());
         transDoc.setCurrentAccounting(ClientConstants.CURRENT_ACCOUNTING);
+        transDoc.setTerm(message.getCurrentTerm());
         transDoc.setSumTerm(message.getLoanTerm());
         transDoc.setBuyoutPrice(message.getRetentionPrice());
         transDoc.setProvisionInterest(message.getSurplusInterest());

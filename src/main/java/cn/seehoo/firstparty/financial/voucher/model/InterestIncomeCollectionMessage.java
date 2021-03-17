@@ -44,6 +44,10 @@ public class InterestIncomeCollectionMessage extends CommonMessage {
      */
     private String custName;
     /**
+     * 当前期数
+     */
+    private Integer currentTerm;
+    /**
      * 融资期限
      */
     private Integer loanTerm;
