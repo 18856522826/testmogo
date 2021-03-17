@@ -232,6 +232,7 @@ public class FinVouMessageSceneClient {
         transDoc.setResidueUncollectedInterest(message.getSurplusInterest());
         transDoc.setProvisionInterest(message.getSurplusInterest());
         transDoc.setProvisionTaxes(message.getInterestTax());
+        transDoc.setDepositType(ClientConstants.DEPOSIT_TYPE);
         transDoc.setNoTaxAmount(message.getDownPayment());
         transDoc.setIncludeTaxRent(message.getDownPayment());
         transDoc.setNoTaxRent(message.getDownPayment());
