@@ -27,10 +27,10 @@ public class FinVouMessageConfig {
     /**
      * 国银银行账户开户名称
      */
-    private String gyBankAccountName;
+    private String bankAccountName;
     /**
      * 国银银行账户开户号码
      */
-    private String gyBankAccountNo;
+    private String bankAccountNo;
 
 }
