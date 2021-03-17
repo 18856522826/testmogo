@@ -307,8 +307,8 @@ public class FinVouMessageSceneClient {
         transDoc.setTotalCapital(message.getLoanAmount());
         transDoc.setNoTaxTotalCapital(message.getPrincipalExcludTax());
         transDoc.setTaxTotalCapital(message.getPrincipalTax());
-        transDoc.setNoTaxBuyoutPrice(message.getNoTaxBuyoutPrice());
-        transDoc.setTaxBuyoutPrice(message.getTaxBuyoutPrice());
+        transDoc.setNoTaxBuyoutPrice(message.getRetentionPrice());
+        transDoc.setTaxBuyoutPrice(message.getRentExcludTax());
         transDoc.setNoTaxResidueCapital(message.getPrincipalExcludTax());
         docList.add(transDoc);
 

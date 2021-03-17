@@ -44,6 +44,10 @@ public class StartRentCollectionMessage extends CommonMessage {
      */
     private BigDecimal retentionPrice;
     /**
+     * 不含税留购价
+     */
+    private BigDecimal retentionExcludTax;
+    /**
      * 主表产品方案
      */
     private String productName;
@@ -88,14 +92,5 @@ public class StartRentCollectionMessage extends CommonMessage {
      * 放款金额
      */
     private BigDecimal loanAmount;
-    /**
-     * 不含税买断价
-     */
-    private BigDecimal noTaxBuyoutPrice;
-    /**
-     * 买断价税额
-     */
-    private BigDecimal taxBuyoutPrice;
-
 
 }
