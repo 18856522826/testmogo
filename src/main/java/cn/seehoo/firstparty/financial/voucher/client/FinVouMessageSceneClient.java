@@ -36,11 +36,7 @@ public class FinVouMessageSceneClient {
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
         standardMessage.setMsgId(UUID.randomUUID().toString().replaceAll("-", ""));
-        if (message.getAdjustAmount().compareTo(BigDecimal.ZERO)>0){
-            standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
-        }else{
-            standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_RED);
-        }
+        standardMessage.setIsChargeAgainst(message.getAdjustType());
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
         trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
@@ -96,11 +92,9 @@ public class FinVouMessageSceneClient {
         if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())){
             transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_ASSET_DIRECT_RENT);
             transDoc.setTransType(ClientConstants.TRANS_TYPE_ASSET_DIRECT_RENT);
-            transDoc.setTaxRate(ClientConstants.TAX_RATE_DIRECT_RENT);
         }else{
             transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_ASSET_LEASE_BACK);
             transDoc.setTransType(ClientConstants.TRANS_TYPE_ASSET_LEASE_BACK);
-            transDoc.setTaxRate(ClientConstants.TAX_RATE_LEASE_BACK);
         }
         transDoc.setAmount(message.getLoanAmount());
         transDoc.setRemanentCapital(message.getSurplusPrincipal());
@@ -115,6 +109,7 @@ public class FinVouMessageSceneClient {
         transDoc.setPlatformPartner(message.getMerchantName());
         transDoc.setCashFlow(String.valueOf(message.getLoanAmount()));
         transDoc.setFinancialProduct(message.getProductName());
+        transDoc.setTaxRate(message.getTaxRate());
         transDoc.setCurrentAccounting(ClientConstants.CURRENT_ACCOUNTING);
         transDoc.setTerm(message.getLoanTerm());
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
@@ -201,7 +196,6 @@ public class FinVouMessageSceneClient {
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
         transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_DOWN_PAYMENT);
         transDoc.setTransType(ClientConstants.TRANS_TYPE_DOWN_PAYMENT);
-        transDoc.setCcy(ClientConstants.CCY_CNY);
         transDoc.setAmount(message.getDownPayment());
         transDoc.setRemanentCapital(message.getSurplusPrincipal());
         transDoc.setInterest(BigDecimal.ZERO);
@@ -213,11 +207,7 @@ public class FinVouMessageSceneClient {
         transDoc.setPlatformPartner(message.getMerchantName());
         transDoc.setCashFlow(String.valueOf(message.getDownPayment()));
         transDoc.setFinancialProduct(message.getProductName());
-        if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())){
-            transDoc.setTaxRate(ClientConstants.TAX_RATE_DIRECT_RENT);
-        }else{
-            transDoc.setTaxRate(ClientConstants.TAX_RATE_LEASE_BACK);
-        }
+        transDoc.setTaxRate(message.getTaxRate());
         transDoc.setCurrentAccounting(ClientConstants.CURRENT_ACCOUNTING);
         transDoc.setTerm(message.getLoanTerm());
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
@@ -269,13 +259,11 @@ public class FinVouMessageSceneClient {
         if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())){
             transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_RENT_DIRECT_RENT);
             transDoc.setTransType(ClientConstants.TRANS_TYPE_RENT_DIRECT_RENT);
-            transDoc.setTaxRate(ClientConstants.TAX_RATE_DIRECT_RENT);
         }else{
             transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_RENT_LEASE_BACK);
             transDoc.setTransType(ClientConstants.TRANS_TYPE_RENT_LEASE_BACK);
-            transDoc.setTaxRate(ClientConstants.TAX_RATE_LEASE_BACK);
         }
-        transDoc.setCcy(ClientConstants.CCY_CNY);
+        transDoc.setTaxRate(message.getTaxRate());
         transDoc.setAmount(message.getRent());
         transDoc.setRemanentCapital(message.getSurplusPrincipal());
         transDoc.setInterest(message.getSurplusInterest());
@@ -343,13 +331,10 @@ public class FinVouMessageSceneClient {
         if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())){
             transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_INTEREST_DIRECT_RENT);
             transDoc.setTransType(ClientConstants.TRANS_TYPE_INTEREST_DIRECT_RENT);
-            transDoc.setTaxRate(ClientConstants.TAX_RATE_DIRECT_RENT);
         }else{
             transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_INTEREST_LEASE_BACK);
             transDoc.setTransType(ClientConstants.TRANS_TYPE_INTEREST_LEASE_BACK);
-            transDoc.setTaxRate(ClientConstants.TAX_RATE_LEASE_BACK);
         }
-        transDoc.setCcy(ClientConstants.CCY_CNY);
         transDoc.setAmount(message.getRent());
         transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
         transDoc.setProductNm(message.getProductName());
@@ -363,6 +348,7 @@ public class FinVouMessageSceneClient {
         transDoc.setBuyoutPrice(message.getRetentionPrice());
         transDoc.setProvisionInterest(message.getSurplusInterest());
         transDoc.setProvisionTaxes(message.getInterestTax());
+        transDoc.setTaxRate(message.getTaxRate());
         transDoc.setEarnings(message.getRent());
         transDoc.setAmountOfTax(message.getRentTax());
         docList.add(transDoc);
@@ -404,7 +390,6 @@ public class FinVouMessageSceneClient {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_OUTPUT_TAX_BACK_RENT);
         }
         transDoc.setTransType(ClientConstants.TRANS_TYPE_DOWN_PAYMENT);
-        transDoc.setCcy(ClientConstants.CCY_CNY);
         transDoc.setAmount(message.getInterestTax());
         transDoc.setInterest(message.getInterest());
         transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
@@ -414,15 +399,11 @@ public class FinVouMessageSceneClient {
         transDoc.setPlatformPartner(message.getMerchantName());
         transDoc.setCashFlow(String.valueOf(message.getInterestTax()));
         transDoc.setFinancialProduct(message.getProductName());
-        if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())){
-            transDoc.setTaxRate(ClientConstants.TAX_RATE_DIRECT_RENT);
-        }else{
-            transDoc.setTaxRate(ClientConstants.TAX_RATE_LEASE_BACK);
-        }
         transDoc.setCurrentAccounting(ClientConstants.CURRENT_ACCOUNTING);
-        transDoc.setTerm(message.getLoanTerm());
+        transDoc.setTerm(message.getCurrentTerm());
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
-        transDoc.setSumTerm(message.getSumTerm());
+        transDoc.setSumTerm(message.getLoanTerm());
+        transDoc.setTaxRate(message.getTaxRate());
         docList.add(transDoc);
         standardMessage.setAcctDocGenTrans(trans);
         standardMessage.setAcctDocGenSubTransList(docList);

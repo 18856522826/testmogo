@@ -9,6 +9,7 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Notice: 标准财务凭证消息定义：会计平台所需标准消息
@@ -35,7 +36,7 @@ public class VoucherStandardMessage implements Serializable {
      * 报文编号
      */
     @JSONField(name = "MsgId")
-    private String msgId;
+    private String msgId = UUID.randomUUID().toString().replaceAll("-", "") ;
     /**
      * 是否冲销，0正常 1 红冲 2蓝冲
      */

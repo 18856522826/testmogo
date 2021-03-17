@@ -45,9 +45,13 @@ public class ComputeOutputTaxCollectionMessage extends CommonMessage{
     /**
      * 还款计划表对应期数
      */
-    private Integer loanTerm;
+    private Integer currentTerm;
     /**
      *主表融租期限
      */
-    private Integer sumTerm;
+    private Integer loanTerm;
+    /**
+     * 税率
+     */
+    private BigDecimal taxRate;
 }

@@ -72,6 +72,10 @@ public class DownPaymentCollectionMessage extends CommonMessage{
      * 销售还款剩余未还税额
      */
     private BigDecimal rentTax;
+    /**
+     * 税率
+     */
+    private BigDecimal taxRate;
 
 
 }

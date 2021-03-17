@@ -199,14 +199,6 @@ public interface ClientConstants {
      */
     String DEPOSIT_TYPE = "01";
     /**
-     * 税率 直租
-     */
-    BigDecimal TAX_RATE_DIRECT_RENT = new BigDecimal("13");
-    /**
-     * 税率 回租
-     */
-    BigDecimal TAX_RATE_LEASE_BACK = new BigDecimal("6");
-    /**
      * 合同名称
      */
     String CONTRACT_NAME = "融资租赁合同";

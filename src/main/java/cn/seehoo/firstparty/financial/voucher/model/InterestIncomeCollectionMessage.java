@@ -59,4 +59,8 @@ public class InterestIncomeCollectionMessage extends CommonMessage {
      * 财务还款计划表本月后剩余利息税金总和
      */
     private BigDecimal interestTax;
+    /**
+     * 税率
+     */
+    private BigDecimal taxRate;
 }

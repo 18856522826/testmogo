@@ -63,5 +63,9 @@ public class AssetCollectionMessage extends CommonMessage{
      * 贷款期数(月)
      */
     private Integer loanTerm;
+    /**
+     * 税率
+     */
+    private BigDecimal taxRate;
 
 }

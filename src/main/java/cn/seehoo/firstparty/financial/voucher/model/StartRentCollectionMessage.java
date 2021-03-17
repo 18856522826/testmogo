@@ -92,5 +92,8 @@ public class StartRentCollectionMessage extends CommonMessage {
      * 放款金额
      */
     private BigDecimal loanAmount;
-
+    /**
+     * 税率
+     */
+    private BigDecimal taxRate;
 }
