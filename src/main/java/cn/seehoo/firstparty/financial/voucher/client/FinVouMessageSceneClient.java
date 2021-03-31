@@ -10,7 +10,6 @@ import lombok.AllArgsConstructor;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Notice: 财务凭证信息场景客户端：提供各场景消息转换、组装及发送功能
@@ -241,7 +240,7 @@ public class FinVouMessageSceneClient {
         transDoc.setNoTaxTotalCapital(message.getDownPayment());
         transDoc.setNoTaxCapital(message.getDownPayment());
         transDoc.setNoTaxOddCorpus(message.getPrincipalExcludeTax());
-        transDoc.setTaxOddCorpus(message.getRentTax());
+        transDoc.setTaxOddCorpus(message.getPrincipalTax());
         transDoc.setGrossInterest(message.getSumInterest());
         //租户赋值
         setTenantValue(trans,transDoc);
@@ -302,7 +301,7 @@ public class FinVouMessageSceneClient {
         transDoc.setResidueUncollectedCapital(message.getSurplusPrincipal());
         transDoc.setResidueUncollectedInterest(message.getSurplusInterest());
         transDoc.setProvisionInterest(message.getSurplusInterest());
-        transDoc.setProvisionTaxes(message.getInterestTax());
+        transDoc.setProvisionTaxes(message.getRentTax());
         transDoc.setEarnings(message.getInterestExcludeTax());
         transDoc.setAmountOfTax(message.getInterestTax());
         transDoc.setNoTaxAmount(message.getRentExcludeTax());
