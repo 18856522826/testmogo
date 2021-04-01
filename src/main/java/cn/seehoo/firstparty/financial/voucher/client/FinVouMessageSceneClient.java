@@ -6,6 +6,7 @@ import cn.seehoo.firstparty.financial.voucher.model.*;
 import cn.seehoo.firstparty.financial.voucher.model.basic.AcctDocGenTrans;
 import cn.seehoo.firstparty.financial.voucher.model.basic.AcctDocGenTransDoc;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import java.util.List;
  * @date 2021/3/15
  * @since 1.0
  */
+@Slf4j
 @AllArgsConstructor
 public class FinVouMessageSceneClient {
     /**
@@ -36,6 +38,7 @@ public class FinVouMessageSceneClient {
      * @throws Exception 异常信息
      */
     public void marginCollection(MarginCollectionMessage message) throws Exception {
+        log.info("场景一 保证金收取,入参:{}",message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
         standardMessage.setIsChargeAgainst(message.getAdjustType());
@@ -81,6 +84,7 @@ public class FinVouMessageSceneClient {
      * @throws Exception 异常信息
      */
     public void assetCollection(AssetCollectionMessage message) throws Exception {
+        log.info("场景二 取得资产,入参:{}",message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
@@ -140,6 +144,7 @@ public class FinVouMessageSceneClient {
      * @throws Exception 异常信息
      */
     public void makePaymentCollection(MakePaymentCollectionMessage message) throws Exception {
+        log.info("场景三 支付价款,入参:{}",message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
@@ -151,8 +156,6 @@ public class FinVouMessageSceneClient {
         trans.setTransName(ClientConstants.TRANS_NAME_MAKE_PAYMENT);
         trans.setContractId(message.getBusinessNo());
         trans.setIputFlowId(message.getBusinessNo());
-        //Todo:后续待提供默认值
-        trans.setBusinessRestriction("01");
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
@@ -194,6 +197,7 @@ public class FinVouMessageSceneClient {
      * @throws Exception 异常信息
      */
     public void downPaymentCollection(DownPaymentCollectionMessage message) throws Exception {
+        log.info("场景四 购入融资租赁资产,入参:{}",message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
@@ -258,6 +262,7 @@ public class FinVouMessageSceneClient {
      * @throws Exception 异常信息
      */
     public void startRentCollection(StartRentCollectionMessage message) throws Exception {
+        log.info("场景五 起租,入参:{}",message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
@@ -331,6 +336,7 @@ public class FinVouMessageSceneClient {
      * @throws Exception 异常信息
      */
     public void interestIncomeCollection(InterestIncomeCollectionMessage message) throws Exception {
+        log.info("场景六 计提利息收入,入参:{}",message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
@@ -385,6 +391,7 @@ public class FinVouMessageSceneClient {
      * @throws Exception 异常信息
      */
     public void computeOutputTaxCollection(ComputeOutputTaxCollectionMessage message) throws Exception {
+        log.info("场景七 计算销项税,入参:{}",message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
