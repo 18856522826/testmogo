@@ -212,4 +212,8 @@ public interface ClientConstants {
      * 合同名称
      */
     String CONTRACT_NAME = "融资租赁合同";
+    /**
+     * 辅助核算，产品
+     */
+    String PRODUCT_NM = "04";
 }

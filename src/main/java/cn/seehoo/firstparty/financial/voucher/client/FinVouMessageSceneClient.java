@@ -65,6 +65,7 @@ public class FinVouMessageSceneClient {
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setDepositType(ClientConstants.DEPOSIT_TYPE);
+        transDoc.setProductNm(ClientConstants.PRODUCT_NM);
         //国银收款账号信息
         transDoc.setPayeeAcctNo(config.getBankAccountNo());
         transDoc.setPayeeBankName(config.getBankAccountName());
@@ -295,7 +296,7 @@ public class FinVouMessageSceneClient {
         transDoc.setSumInterest(message.getSurplusInterest());
         transDoc.setFee(message.getRetentionPrice());
         transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
-        transDoc.setProductNm(message.getProductName());
+        transDoc.setProductNm(ClientConstants.PRODUCT_NM);
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setCustNm(message.getCustName());
         transDoc.setPlatformPartner(message.getMerchantName());
@@ -313,7 +314,7 @@ public class FinVouMessageSceneClient {
         transDoc.setEarnings(message.getInterestExcludeTax());
         transDoc.setAmountOfTax(message.getInterestTax());
         transDoc.setNoTaxAmount(message.getRentExcludeTax());
-        transDoc.setContractPrice(message.getVehicleSalesPrice());
+        transDoc.setContractPrice(message.getLoanAmount());
         transDoc.setIncludeTaxRent(message.getRent());
         transDoc.setNoTaxRent(message.getRentExcludeTax());
         transDoc.setTaxRent(message.getRentTax());
