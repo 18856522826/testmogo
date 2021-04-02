@@ -324,6 +324,7 @@ public class FinVouMessageSceneClient {
         transDoc.setTaxBuyoutPrice(message.getRetentionTax());
         transDoc.setNoTaxResidueCapital(message.getPrincipalExcludeTax());
         transDoc.setNoTaxContractPrice(message.getLoanAmount());
+        transDoc.setGoodsTax(message.getSurplusInterest());
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
