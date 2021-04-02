@@ -28,7 +28,7 @@ public interface ClientConstants {
     /**
      * 系统来源
      */
-    String SYSTEM_SOURCE = "03";
+    String SYSTEM_SOURCE = "01";
     /**
      * 来源类型
      */
