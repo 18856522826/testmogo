@@ -62,7 +62,7 @@ public class FinVouMessageSceneClient {
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setPlatformPartner(message.getMerchantName());
         transDoc.setCashFlow(String.valueOf(message.getAdjustAmount()));
-        transDoc.setCurrentAccounting(ClientConstants.CURRENT_ACCOUNTING);
+        transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setDepositType(ClientConstants.DEPOSIT_TYPE);
         //国银收款账号信息
@@ -121,7 +121,7 @@ public class FinVouMessageSceneClient {
         transDoc.setCashFlow(String.valueOf(message.getLoanAmount()));
         transDoc.setFinancialProduct(message.getProductName());
         transDoc.setTaxRate(message.getTaxRate());
-        transDoc.setCurrentAccounting(ClientConstants.CURRENT_ACCOUNTING);
+        transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setTerm(message.getLoanTerm());
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
@@ -179,7 +179,7 @@ public class FinVouMessageSceneClient {
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setPlatformPartner(message.getMerchantName());
         transDoc.setCashFlow(String.valueOf(message.getLoanAmount()));
-        transDoc.setCurrentAccounting(ClientConstants.CURRENT_ACCOUNTING);
+        transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         //国银付款账号信息
         transDoc.setPayerAcctNo(config.getBankAccountNo());
@@ -230,7 +230,7 @@ public class FinVouMessageSceneClient {
         transDoc.setCashFlow(String.valueOf(message.getDownPayment()));
         transDoc.setFinancialProduct(message.getProductName());
         transDoc.setTaxRate(message.getTaxRate());
-        transDoc.setCurrentAccounting(ClientConstants.CURRENT_ACCOUNTING);
+        transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setTerm(message.getLoanTerm());
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
@@ -301,7 +301,7 @@ public class FinVouMessageSceneClient {
         transDoc.setPlatformPartner(message.getMerchantName());
         transDoc.setCashFlow(String.valueOf(message.getRent()));
         transDoc.setFinancialProduct(message.getProductName());
-        transDoc.setCurrentAccounting(ClientConstants.CURRENT_ACCOUNTING);
+        transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setTerm(message.getLoanTerm());
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
@@ -370,7 +370,7 @@ public class FinVouMessageSceneClient {
         transDoc.setPlatformPartner(message.getMerchantName());
         transDoc.setCashFlow(String.valueOf(message.getRent()));
         transDoc.setFinancialProduct(message.getProductName());
-        transDoc.setCurrentAccounting(ClientConstants.CURRENT_ACCOUNTING);
+        transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setTerm(message.getCurrentTerm());
         transDoc.setSumTerm(message.getLoanTerm());
         transDoc.setBuyoutPrice(message.getRetentionPrice());
@@ -426,7 +426,7 @@ public class FinVouMessageSceneClient {
         transDoc.setCashFlow(String.valueOf(message.getInterestTax()));
         transDoc.setFinancialProduct(message.getProductName());
         transDoc.setTaxRate(message.getTaxRate());
-        transDoc.setCurrentAccounting(ClientConstants.CURRENT_ACCOUNTING);
+        transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setTerm(message.getCurrentTerm());
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());

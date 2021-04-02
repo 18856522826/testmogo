@@ -201,10 +201,6 @@ public interface ClientConstants {
      */
     String PAYMENT_ID_ZERO = "0";
     /**
-     * 往来核算 --收取保证金场景
-     */
-    String CURRENT_ACCOUNTING="平台合作方";
-    /**
      * 保证金类型
      */
     String DEPOSIT_TYPE = "01";
