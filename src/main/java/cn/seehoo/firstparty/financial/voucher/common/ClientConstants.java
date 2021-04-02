@@ -191,11 +191,11 @@ public interface ClientConstants {
     /**
      * 交易类型-计算销项税（直租）
      */
-    String TRANS_TYPE_OUTPUT_TAX_DIRECT_RENT="0130101";
+    String TRANS_TYPE_OUTPUT_TAX_DIRECT_RENT="0150101";
     /**
      * 交易类型-计算销项税（回租）
      */
-    String TRANS_TYPE_OUTPUT_TAX_BACK_RENT="0130201";
+    String TRANS_TYPE_OUTPUT_TAX_BACK_RENT="0150201";
     /**
      * 支付Id--收取保证金场景
      */
