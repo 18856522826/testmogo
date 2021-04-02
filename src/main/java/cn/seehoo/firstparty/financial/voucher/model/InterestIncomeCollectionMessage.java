@@ -32,6 +32,11 @@ public class InterestIncomeCollectionMessage extends CommonMessage {
      */
     private BigDecimal rent;
     /**
+     *
+     * 财务还款计划当月利息
+     */
+    private BigDecimal interest;
+    /**
      * 财务还款计划表当月租金税额总和
      */
     private BigDecimal rentTax;
