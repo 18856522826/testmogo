@@ -71,7 +71,7 @@ public interface ClientConstants {
     /**
      * 业务类型-计提利息收入、计算销项税
      */
-    String BUSINESS_TYPE_012 = "012";
+    String BUSINESS_TYPE_012 = "013";
     /**
      * 制证交易名称 收取保证金场景
      */
