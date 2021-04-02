@@ -125,6 +125,9 @@ public class FinVouMessageSceneClient {
         transDoc.setTerm(message.getLoanTerm());
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
+        transDoc.setContractPrice(message.getLoanAmount());
+        transDoc.setNoTaxContractPrice(message.getPrincipalExcludeTax());
+        transDoc.setGoodsTax(message.getPrincipalTax());
         //国银收款账号信息
         transDoc.setPayeeAcctNo(config.getBankAccountNo());
         transDoc.setPayeeBankName(config.getBankAccountName());

@@ -40,6 +40,14 @@ public class AssetCollectionMessage extends CommonMessage{
      */
     private BigDecimal surplusPrincipal;
     /**
+     * 剩余不含税本金
+     */
+    private BigDecimal principalExcludeTax;
+    /**
+     * 剩余本金税额
+     */
+    private BigDecimal principalTax;
+    /**
      * 当前剩余未还利息
      */
     private BigDecimal surplusInterest;
