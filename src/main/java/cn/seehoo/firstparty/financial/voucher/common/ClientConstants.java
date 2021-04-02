@@ -57,6 +57,10 @@ public interface ClientConstants {
     String LEASE_TYPE_ALL = "03";
 
     /**
+     * 业务类型-收取保证金
+     */
+    String BUSINESS_TYPE_005 = "005";
+    /**
      * 业务类型-收取保证金、取得资产、支付价款
      */
     String BUSINESS_TYPE_001 = "001";
@@ -71,7 +75,7 @@ public interface ClientConstants {
     /**
      * 业务类型-计提利息收入、计算销项税
      */
-    String BUSINESS_TYPE_012 = "013";
+    String BUSINESS_TYPE_013 = "013";
     /**
      * 制证交易名称 收取保证金场景
      */

@@ -45,7 +45,7 @@ public class FinVouMessageSceneClient {
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
         trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
-        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_001);
+        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_005);
         trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_MARGIN);
         trans.setContractId(message.getBusinessNo());
@@ -326,6 +326,14 @@ public class FinVouMessageSceneClient {
         transDoc.setNoTaxContractPrice(message.getLoanAmount());
         transDoc.setGoodsTax(message.getSurplusInterest());
         transDoc.setNoTaxInterest(message.getInterestExcludeTax());
+        transDoc.setTaxInterest(message.getInterestTax());
+        transDoc.setIncludeCapital(message.getPrincipalExcludeTax().add(message.getPrincipalTax()));
+        transDoc.setNoTaxPresentCapital(message.getPrincipalExcludeTax());
+        transDoc.setTaxCapital(message.getPrincipalTax());
+        transDoc.setNoTaxOddCorpus(message.getPrincipalExcludeTax());
+        transDoc.setTaxOddCorpus(message.getPrincipalTax());
+        transDoc.setGrossInterest(message.getInterestTax());
+
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -349,7 +357,7 @@ public class FinVouMessageSceneClient {
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
         trans.setLeaseType(message.getLeaseType());
-        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_012);
+        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_013);
         trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_INTEREST_INCOME);
         trans.setContractId(message.getContractNo());
@@ -404,7 +412,7 @@ public class FinVouMessageSceneClient {
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
         trans.setLeaseType(message.getLeaseType());
-        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_012);
+        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_013);
         trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_OUTPUT_TAX);
         trans.setContractId(message.getContractNo());
