@@ -73,7 +73,11 @@ public interface ClientConstants {
      */
     String BUSINESS_TYPE_002 = "002";
     /**
-     * 业务类型-计提利息收入、计算销项税
+     * 业务类型-计提利息收入
+     */
+    String BUSINESS_TYPE_012 = "012";
+    /**
+     * 业务类型-计算销项税
      */
     String BUSINESS_TYPE_013 = "013";
     /**

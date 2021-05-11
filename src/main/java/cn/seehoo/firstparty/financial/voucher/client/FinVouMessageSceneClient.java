@@ -358,7 +358,7 @@ public class FinVouMessageSceneClient {
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
         trans.setLeaseType(message.getLeaseType());
-        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_013);
+        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_012);
         trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_INTEREST_INCOME);
         trans.setContractId(message.getContractNo());
