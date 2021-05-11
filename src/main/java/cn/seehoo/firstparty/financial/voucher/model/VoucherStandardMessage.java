@@ -4,6 +4,7 @@ package cn.seehoo.firstparty.financial.voucher.model;
 import cn.seehoo.firstparty.financial.voucher.common.ClientConstants;
 import cn.seehoo.firstparty.financial.voucher.model.basic.AcctDocGenTrans;
 import cn.seehoo.firstparty.financial.voucher.model.basic.AcctDocGenTransDoc;
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
 
@@ -53,4 +54,8 @@ public class VoucherStandardMessage implements Serializable {
      */
     @JSONField(name = "AcctDocGenSubTransList")
     private List<AcctDocGenTransDoc> acctDocGenSubTransList;
+
+    public String toString() {
+        return JSONObject.toJSONString(this);
+    }
 }
