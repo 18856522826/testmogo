@@ -100,4 +100,8 @@ public class StartRentCollectionMessage extends CommonMessage {
      * 税率
      */
     private BigDecimal taxRate;
+    /**
+     * 首付款金额
+     */
+    private BigDecimal downPayment;
 }
