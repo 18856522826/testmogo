@@ -458,7 +458,7 @@ public class FinVouMessageSceneClient {
      * @param message 当前场景业务信息
      * @throws Exception 异常信息
      */
-    private void downPaymentInAssetsCollection(DownPaymentInAssetsCollectionMessage message) throws Exception {
+    public void downPaymentInAssetsCollection(DownPaymentInAssetsCollectionMessage message) throws Exception {
         log.info("场景八 首付款计入融资租赁资产,入参:{}",message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
@@ -502,7 +502,7 @@ public class FinVouMessageSceneClient {
      * @param message 当前场景业务信息
      * @throws Exception 异常信息
      */
-    private void payDownPaymentCollection(PayDownPaymentCollectionMessage message) throws Exception {
+    public void payDownPaymentCollection(PayDownPaymentCollectionMessage message) throws Exception {
         log.info("场景九 承租人支付首付款,入参:{}",message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
