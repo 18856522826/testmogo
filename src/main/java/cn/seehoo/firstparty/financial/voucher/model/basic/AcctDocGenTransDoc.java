@@ -57,7 +57,7 @@ public class AcctDocGenTransDoc {
      * 利息
      */
     @JSONField(name = "Interest")
-    private BigDecimal interest;
+    private BigDecimal interest = BigDecimal.ZERO;
     /**
      * 总利息
      */
@@ -72,7 +72,7 @@ public class AcctDocGenTransDoc {
      * 支付ID
      */
     @JSONField(name = "PaymentId")
-    private String paymentId;
+    private String paymentId = ClientConstants.PAYMENT_ID_ZERO;
     /**
      * 摘要
      */

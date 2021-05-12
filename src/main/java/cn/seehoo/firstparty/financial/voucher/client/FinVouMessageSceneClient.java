@@ -262,7 +262,7 @@ public class FinVouMessageSceneClient {
     }
 
     /**
-     * 起租 场景所需财务信息
+     * 起租 场景所需财务信息  直租回租逻辑不同，目前逻辑属于回租
      * @param message 当前场景业务信息
      * @throws Exception 异常信息
      */
@@ -437,6 +437,95 @@ public class FinVouMessageSceneClient {
         transDoc.setCustNm(message.getCustName());
         transDoc.setPlatformPartner(message.getMerchantName());
         transDoc.setCashFlow(String.valueOf(message.getInterestTax()));
+        transDoc.setFinancialProduct(message.getProductName());
+        transDoc.setTaxRate(message.getTaxRate());
+        transDoc.setCurrentAccounting(message.getMerchantName());
+        transDoc.setTerm(message.getCurrentTerm());
+        transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setSumTerm(message.getLoanTerm());
+        //租户赋值
+        setTenantValue(trans,transDoc);
+
+        docList.add(transDoc);
+        standardMessage.setAcctDocGenTrans(trans);
+        standardMessage.setAcctDocGenSubTransList(docList);
+        //发送
+        sender.send(standardMessage);
+    }
+
+    /**
+     * 首付款计入融资租赁资产 目前逻辑只符合回租
+     * @param message 当前场景业务信息
+     * @throws Exception 异常信息
+     */
+    private void downPaymentInAssetsCollection(DownPaymentInAssetsCollectionMessage message) throws Exception {
+        log.info("场景八 首付款计入融资租赁资产,入参:{}",message.toString());
+        //标准财务凭证消息
+        VoucherStandardMessage standardMessage = new VoucherStandardMessage();
+        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
+        //制证交易流水
+        AcctDocGenTrans trans = new AcctDocGenTrans();
+        trans.setLeaseType(message.getLeaseType());
+        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_052);
+        trans.setInputId(message.getBusinessNo());
+        trans.setTransName(ClientConstants.TRANS_NAME_DOWN_PAYMENT_IN_ASSETS);
+        trans.setContractId(message.getContractNo());
+        trans.setIputFlowId(message.getBusinessNo());
+        //制证子交易流水
+        List<AcctDocGenTransDoc> docList = new ArrayList<>();
+        AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
+        transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_DOWN_PAYMENT_IN_ASSETS);
+        transDoc.setTransType(ClientConstants.TRANS_TYPE_DOWN_PAYMENT_IN_ASSETS);
+        transDoc.setAmount(message.getDownPayment());
+        transDoc.setProductNm(message.getProductName());
+        transDoc.setSuppierNm(message.getMerchantName());
+        transDoc.setCustNm(message.getCustName());
+        transDoc.setPlatformPartner(message.getMerchantName());
+        transDoc.setCashFlow(String.valueOf(message.getDownPayment()));
+        transDoc.setFinancialProduct(message.getProductName());
+        transDoc.setTaxRate(message.getTaxRate());
+        transDoc.setCurrentAccounting(message.getMerchantName());
+        transDoc.setTerm(message.getCurrentTerm());
+        transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setSumTerm(message.getLoanTerm());
+        //租户赋值
+        setTenantValue(trans,transDoc);
+
+        docList.add(transDoc);
+        standardMessage.setAcctDocGenTrans(trans);
+        standardMessage.setAcctDocGenSubTransList(docList);
+        //发送
+        sender.send(standardMessage);
+    }
+    /**
+     * 承租人支付首付款 目前逻辑只符合回租
+     * @param message 当前场景业务信息
+     * @throws Exception 异常信息
+     */
+    private void payDownPaymentCollection(PayDownPaymentCollectionMessage message) throws Exception {
+        log.info("场景九 承租人支付首付款,入参:{}",message.toString());
+        //标准财务凭证消息
+        VoucherStandardMessage standardMessage = new VoucherStandardMessage();
+        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
+        //制证交易流水
+        AcctDocGenTrans trans = new AcctDocGenTrans();
+        trans.setLeaseType(message.getLeaseType());
+        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_052);
+        trans.setInputId(message.getBusinessNo());
+        trans.setTransName(ClientConstants.TRANS_NAME_PAY_DOWN_PAYMENT);
+        trans.setContractId(message.getContractNo());
+        trans.setIputFlowId(message.getBusinessNo());
+        //制证子交易流水
+        List<AcctDocGenTransDoc> docList = new ArrayList<>();
+        AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
+        transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_PAY_DOWN_PAYMENT);
+        transDoc.setTransType(ClientConstants.TRANS_TYPE_PAY_DOWN_PAYMENT);
+        transDoc.setAmount(message.getDownPayment());
+        transDoc.setProductNm(message.getProductName());
+        transDoc.setSuppierNm(message.getMerchantName());
+        transDoc.setCustNm(message.getCustName());
+        transDoc.setPlatformPartner(message.getMerchantName());
+        transDoc.setCashFlow(String.valueOf(message.getDownPayment()));
         transDoc.setFinancialProduct(message.getProductName());
         transDoc.setTaxRate(message.getTaxRate());
         transDoc.setCurrentAccounting(message.getMerchantName());

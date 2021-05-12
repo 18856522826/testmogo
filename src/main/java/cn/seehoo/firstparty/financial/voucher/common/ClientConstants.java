@@ -81,6 +81,10 @@ public interface ClientConstants {
      */
     String BUSINESS_TYPE_013 = "013";
     /**
+     * 业务类型-首付款计入融资租赁资产
+     */
+    String BUSINESS_TYPE_052 = "052";
+    /**
      * 制证交易名称 收取保证金场景
      */
     String TRANS_NAME_MARGIN = "收取保证金";
@@ -108,6 +112,14 @@ public interface ClientConstants {
      * 制证交易名称-计提销项税额
      */
     String TRANS_NAME_OUTPUT_TAX ="计提销项税额";
+    /**
+     * 制证交易名称-首付款计入融资租赁资产
+     */
+    String TRANS_NAME_DOWN_PAYMENT_IN_ASSETS ="首付款计入融资租赁资产";
+    /**
+     * 制证交易名称-承租人支付首付款
+     */
+    String TRANS_NAME_PAY_DOWN_PAYMENT ="承租人支付首付款";
     /**
      * 子交易名称-收取保证金场景
      */
@@ -157,6 +169,14 @@ public interface ClientConstants {
      */
     String SUB_TRANS_NAME_OUTPUT_TAX_BACK_RENT="回租逐期开票计提销项税额";
     /**
+     * 子交易名称-首付款计入融资租赁资产
+     */
+    String SUB_TRANS_NAME_DOWN_PAYMENT_IN_ASSETS="首付款计入融资租赁资产";
+    /**
+     * 子交易名称-承租人支付首付款
+     */
+    String SUB_TRANS_NAME_PAY_DOWN_PAYMENT="承租人支付首付款";
+    /**
      * 交易类型-收取保证金场景
      */
     String TRANS_TYPE_MARGIN = "0050301";
@@ -204,6 +224,14 @@ public interface ClientConstants {
      * 交易类型-计算销项税（回租）
      */
     String TRANS_TYPE_OUTPUT_TAX_BACK_RENT="0130201";
+    /**
+     * 交易类型-首付款计入融资租赁资产
+     */
+    String TRANS_TYPE_DOWN_PAYMENT_IN_ASSETS="0520201";
+    /**
+     * 交易类型-承租人支付首付款
+     */
+    String TRANS_TYPE_PAY_DOWN_PAYMENT="0520202";
     /**
      * 支付Id--收取保证金场景
      */
