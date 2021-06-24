@@ -85,6 +85,22 @@ public interface ClientConstants {
      */
     String BUSINESS_TYPE_052 = "052";
     /**
+     *业务类型-逐期结转
+     */
+    String BUSINESS_TYPE_003="003";
+    /**
+     *业务类型-逐期结转
+     */
+    String BUSINESS_TYPE_006="006";
+    /**
+     *业务类型-暂挂账
+     */
+    String BUSINESS_TYPE_007="007";
+    /**
+     *业务类型-暂挂账
+     */
+    String BUSINESS_TYPE_009="009";
+    /**
      * 制证交易名称 收取保证金场景
      */
     String TRANS_NAME_MARGIN = "收取保证金";
@@ -120,6 +136,22 @@ public interface ClientConstants {
      * 制证交易名称-承租人支付首付款
      */
     String TRANS_NAME_PAY_DOWN_PAYMENT ="承租人支付首付款";
+    /**
+     * 制证交易名称-逐期结转
+     */
+    String TRANS_NAME_CARRY_FORWARD ="逐期结转";
+    /**
+     * 制证交易名称-实收当期租金
+     */
+    String TRANS_NAME_CURRENT_RENT_BANK ="收取租金";
+    /**
+     * 制证交易名称-不明来款
+     */
+    String TRANS_NAME_UNKNOWN_PAYMENT="不明来款";
+    /**
+     * 制证交易名称-动用业务保证金-代偿
+     */
+    String TRANS_NAME_USE_BUSINESS_MARGIN ="业务保证金代偿";
     /**
      * 子交易名称-收取保证金场景
      */
@@ -177,6 +209,50 @@ public interface ClientConstants {
      */
     String SUB_TRANS_NAME_PAY_DOWN_PAYMENT="承租人支付首付款";
     /**
+     * 子交易名称-逐期结转
+     */
+    String SUB_TRANS_NAME_CARRY_FORWARD="逐期结转";
+    /**
+     * 子交易名称-实收当期租金
+     */
+    String SUB_TRANS_NAME_CURRENT_RENT_BANK="实收当期租金";
+    /**
+     * 子交易名称-预收下期租金
+     */
+    String SUB_TRANS_NAME_NEXT_RENT_BANK="预收下期租金";
+    /**
+     * 子交易名称-预收下期租金退回
+     */
+    String SUB_TRANS_NAME_NEXT_RENT_RETURN="预收下期租金退回";
+    /**
+     * 子交易名称-暂挂账
+     */
+    String SUB_TRANS_NAME_PENDING_ACCOUNT="暂挂账";
+    /**
+     * 子交易名称-租金被认领
+     */
+    String SUB_TRANS_NAME_RENT_CLAIM="租金被认领";
+    /**
+     * 子交易名称-保证金被认领
+     */
+    String SUB_TRANS_NAME_MARGIN_CLAIM="保证金被认领";
+    /**
+     * 子交易名称-罚息被认领
+     */
+    String SUB_TRANS_NAME_PENALTY_INTEREST_CLAIM="罚息被认领";
+    /**
+     * 子交易名称-被认领-选择退回
+     */
+    String SUB_TRANS_NAME_CLAIM_RETURN="被认领-选择退回";
+    /**
+     * 子交易名称-未被认领-确实无法偿付的其他应付款项
+     */
+    String SUB_TRANS_NAME_UN_CLAIM_NOT_REPAID="未被认领-确实无法偿付的其他应付款项";
+    /**
+     * 子交易名称-未被认领-确实无法偿付的其他应付款项
+     */
+    String SUB_TRANS_NAME_USE_BUSINESS_MARGIN="业务保证金代偿";
+    /**
      * 交易类型-收取保证金场景
      */
     String TRANS_TYPE_MARGIN = "0050301";
@@ -232,6 +308,51 @@ public interface ClientConstants {
      * 交易类型-承租人支付首付款
      */
     String TRANS_TYPE_PAY_DOWN_PAYMENT="0520202";
+    /**
+     * 交易类型-逐期结转
+     */
+    String TRANS_TYPE_CARRY_FORWARD="0030301";
+    /**
+     * 交易类型-实收当期租金（网商银行）
+     */
+    String TRANS_TYPE_CURRENT_RENT_BANK="0060301";
+    /**
+     * 交易类型-预收下期租金（网商银行）
+     */
+    String TRANS_TYPE_NEXT_RENT_BANK="0060302";
+    /**
+     * 交易类型-预收下期租金（网商银行）
+     */
+    String TRANS_TYPE_NEXT_RENT_RETURN="0060303";
+    /**
+     * 交易类型-暂挂账
+     */
+    String TRANS_TYPE_PENDING_ACCOUNT="0070301";
+    /**
+     * 交易类型-租金被认领
+     */
+    String TRANS_TYPE_RENT_CLAIM="0070302";
+    /**
+     * 交易类型-保证金被认领
+     */
+    String TRANS_TYPE_MARGIN_CLAIM="0070303";
+    /**
+     * 交易类型-罚息被认领
+     */
+    String TRANS_TYPE_PENALTY_INTEREST_CLAIM="0070306";
+    /**
+     * 交易类型-被认领-选择退回
+     */
+    String TRANS_TYPE_CLAIM_RETURN="0070304";
+    /**
+     * 交易类型-未被认领-确实无法偿付的其他应付款项
+     */
+    String TRANS_TYPE_UN_CLAIM_NOT_REPAID="0070305";
+    /**
+     * 交易类型-未被认领-确实无法偿付的其他应付款项
+     */
+    String TRANS_TYPE_USE_BUSINESS_MARGIN="0090301";
+
     /**
      * 支付Id--收取保证金场景
      */

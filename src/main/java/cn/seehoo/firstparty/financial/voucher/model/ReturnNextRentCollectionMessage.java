@@ -1,0 +1,58 @@
+package cn.seehoo.firstparty.financial.voucher.model;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+import java.math.BigDecimal;
+
+/**
+ * Notice: 预收下期租金退回
+ *
+ * @author xuxu
+ * @version 1.0
+ * @date 2021/6/23
+ * @since 1.0
+ */
+@Getter
+@Setter
+@ToString
+public class ReturnNextRentCollectionMessage extends CommonMessage {
+    private static final long serialVersionUID = 6259765811103367802L;
+    /**
+     * 租赁类型
+     */
+    private String leaseType;
+    /**
+     * 合同号码
+     */
+    private String contractNo;
+    /**
+     * 对应收款金额
+     */
+    private BigDecimal correspondRefundAmount;
+    /**
+     *对应收款利息
+     */
+    private BigDecimal correspondRefundInterest;
+    /**
+     * 产品名称
+     */
+    private String productName;
+    /**
+     * 客户姓名
+     */
+    private String custName;
+    /*
+     * 当前期数
+     */
+    private Integer currentTerm;
+    /*
+     * 贷款期数(月)
+     */
+    private Integer loanTerm;
+    /**
+     * 税率
+     */
+    private BigDecimal taxRate;
+}
