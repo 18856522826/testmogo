@@ -234,7 +234,7 @@ public class FinVouMessageSceneClient {
         transDoc.setTaxRate(message.getTaxRate());
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setTerm(message.getLoanTerm());
-        transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
         transDoc.setBuyoutPrice(message.getRetentionPrice());
         transDoc.setResidueUncollectedCapital(message.getSurplusPrincipal());
@@ -574,7 +574,7 @@ public class FinVouMessageSceneClient {
         transDoc.setTaxRate(message.getTaxRate());
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setTerm(message.getCurrentTerm());
-        transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
         //租户赋值
         setTenantValue(trans,transDoc);
@@ -588,7 +588,7 @@ public class FinVouMessageSceneClient {
      * 实收当期租金场景所需财务信息
      * @param message 当前场景业务信息
      */
-    public void ActuallyCurrentRent(ActuallyCurrentRentCollectionMessage message) throws Exception {
+    public void actuallyCurrentRent(ActuallyCurrentRentCollectionMessage message) throws Exception {
         log.info("场景十一&十二 实收当期租金场景所需财务信息,入参:{}",message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
@@ -617,7 +617,7 @@ public class FinVouMessageSceneClient {
         transDoc.setTaxRate(message.getTaxRate());
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setTerm(message.getCurrentTerm());
-        transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
         //租户赋值
         setTenantValue(trans,transDoc);
@@ -660,7 +660,7 @@ public class FinVouMessageSceneClient {
         transDoc.setTaxRate(message.getTaxRate());
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setTerm(message.getCurrentTerm());
-        transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
         //租户赋值
         setTenantValue(trans,transDoc);
@@ -703,7 +703,7 @@ public class FinVouMessageSceneClient {
         transDoc.setTaxRate(message.getTaxRate());
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setTerm(message.getCurrentTerm());
-        transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
         //租户赋值
         setTenantValue(trans,transDoc);
@@ -738,7 +738,7 @@ public class FinVouMessageSceneClient {
         transDoc.setAmount(message.getCorrespondAccountAmount());
         transDoc.setInterest(BigDecimal.ZERO);
         transDoc.setCashFlow(String.valueOf(message.getCorrespondAccountAmount()));
-        transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -780,7 +780,7 @@ public class FinVouMessageSceneClient {
         transDoc.setTaxRate(message.getTaxRate());
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setTerm(message.getCurrentTerm());
-        transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
         //租户赋值
         setTenantValue(trans,transDoc);
@@ -817,7 +817,7 @@ public class FinVouMessageSceneClient {
         transDoc.setPlatformPartner(message.getMerchantName());
         transDoc.setCashFlow(String.valueOf(message.getMarginAmount()));
         transDoc.setCurrentAccounting(message.getMerchantName());
-        transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
 
         //租户赋值
         setTenantValue(trans,transDoc);
@@ -831,7 +831,7 @@ public class FinVouMessageSceneClient {
      * 罚息被认领场景所需财务信息
      * @param message 当前场景业务信息
      */
-    public void marginClaim (PenaltyInterestClaimCollectionMessage message) throws Exception {
+    public void penaltyInterestClaim (PenaltyInterestClaimCollectionMessage message) throws Exception {
         log.info("场景二十 罚息被认领场景所需财务信息,入参:{}",message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
@@ -858,7 +858,7 @@ public class FinVouMessageSceneClient {
         transDoc.setFinancialProduct(message.getProductName());
         transDoc.setTaxRate(message.getTaxRate());
         transDoc.setCurrentAccounting(message.getMerchantName());
-        transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
         //租户赋值
         setTenantValue(trans,transDoc);
@@ -894,7 +894,7 @@ public class FinVouMessageSceneClient {
         transDoc.setCashFlow(String.valueOf(message.getCorrespondAmount()));
         transDoc.setTaxRate(message.getTaxRate());
         transDoc.setCurrentAccounting(message.getMerchantName());
-        transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
 
         //租户赋值
         setTenantValue(trans,transDoc);
@@ -941,7 +941,7 @@ public class FinVouMessageSceneClient {
      * 动用业务保证金-代偿
      * @param message 当前场景业务信息
      */
-    public void UseBusinessMargin(UseBusinessMarginCollectionMessage message) throws Exception {
+    public void useBusinessMargin(UseBusinessMarginCollectionMessage message) throws Exception {
         log.info("场景二十三 动用业务保证金-代偿场景所需财务信息,入参:{}",message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
