@@ -619,6 +619,8 @@ public class FinVouMessageSceneClient {
         transDoc.setTerm(message.getCurrentTerm());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
+        transDoc.setSystemSource(ClientConstants.SYSTEM_SOURCE_3);
+
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -662,6 +664,7 @@ public class FinVouMessageSceneClient {
         transDoc.setTerm(message.getCurrentTerm());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
+        transDoc.setSystemSource(ClientConstants.SYSTEM_SOURCE_3);
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -705,6 +708,8 @@ public class FinVouMessageSceneClient {
         transDoc.setTerm(message.getCurrentTerm());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
+        transDoc.setSystemSource(ClientConstants.SYSTEM_SOURCE_3);
+
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -739,6 +744,7 @@ public class FinVouMessageSceneClient {
         transDoc.setInterest(BigDecimal.ZERO);
         transDoc.setCashFlow(String.valueOf(message.getCorrespondAccountAmount()));
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setSystemSource(ClientConstants.SYSTEM_SOURCE_3);
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -782,6 +788,7 @@ public class FinVouMessageSceneClient {
         transDoc.setTerm(message.getCurrentTerm());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
+        transDoc.setSystemSource(ClientConstants.SYSTEM_SOURCE_3);
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -818,6 +825,7 @@ public class FinVouMessageSceneClient {
         transDoc.setCashFlow(String.valueOf(message.getMarginAmount()));
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setSystemSource(ClientConstants.SYSTEM_SOURCE_3);
 
         //租户赋值
         setTenantValue(trans,transDoc);
@@ -860,6 +868,7 @@ public class FinVouMessageSceneClient {
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
+        transDoc.setSystemSource(ClientConstants.SYSTEM_SOURCE_3);
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -895,6 +904,7 @@ public class FinVouMessageSceneClient {
         transDoc.setTaxRate(message.getTaxRate());
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setSystemSource(ClientConstants.SYSTEM_SOURCE_3);
 
         //租户赋值
         setTenantValue(trans,transDoc);
@@ -929,6 +939,7 @@ public class FinVouMessageSceneClient {
         transDoc.setAmount(message.getCorrespondAmount());
         transDoc.setCashFlow(String.valueOf(message.getCorrespondAmount()));
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setSystemSource(ClientConstants.SYSTEM_SOURCE_3);
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -971,6 +982,7 @@ public class FinVouMessageSceneClient {
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setTerm(message.getCurrentTerm());
         transDoc.setSumTerm(message.getLoanTerm());
+        transDoc.setSystemSource(ClientConstants.SYSTEM_SOURCE_3);
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);

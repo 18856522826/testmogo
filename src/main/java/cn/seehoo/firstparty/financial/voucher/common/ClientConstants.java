@@ -30,6 +30,10 @@ public interface ClientConstants {
      */
     String SYSTEM_SOURCE = "01";
     /**
+     * 系统来源_03
+     */
+    String SYSTEM_SOURCE_3="03";
+    /**
      * 来源类型
      */
     String SOURCE_TYPE = "01";
