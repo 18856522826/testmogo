@@ -891,7 +891,7 @@ public class FinVouMessageSceneClient {
         trans.setLeaseType(message.getLeaseType());
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_007);
         trans.setInputId(message.getCollectionDetailsId());
-        trans.setTransName(ClientConstants.TRANS_NAME_CURRENT_RENT_BANK);
+        trans.setTransName(ClientConstants.TRANS_NAME_UNKNOWN_PAYMENT);
         trans.setContractId(message.getCollectionDetailsId());
         trans.setIputFlowId(message.getCollectionDetailsId());
         //制证子交易流水
@@ -928,7 +928,7 @@ public class FinVouMessageSceneClient {
         trans.setLeaseType(message.getLeaseType());
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_007);
         trans.setInputId(message.getCollectionDetailsId());
-        trans.setTransName(ClientConstants.TRANS_NAME_CURRENT_RENT_BANK);
+        trans.setTransName(ClientConstants.TRANS_NAME_UNKNOWN_PAYMENT);
         trans.setContractId(message.getCollectionDetailsId());
         trans.setIputFlowId(message.getCollectionDetailsId());
         //制证子交易流水
