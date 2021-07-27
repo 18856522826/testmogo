@@ -980,6 +980,82 @@ public class FinVouMessageSceneClient {
         sender.send(standardMessage);
     }
     /**
+     * 内部资金调拨——提现场景所需财务信息
+     * @param message 当前场景业务信息
+     */
+    public void fundTransferWithdrawCollection(FundTransferWithdrawCollectionMessage message) throws Exception {
+        log.info("场景二十四 内部资金调拨——提现场景所需财务信息,入参:{}",message.toString());
+        //标准财务凭证消息
+        VoucherStandardMessage standardMessage = new VoucherStandardMessage();
+        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
+        //制证交易流水
+        AcctDocGenTrans trans = new AcctDocGenTrans();
+        trans.setLeaseType(message.getLeaseType());
+        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_039);
+        trans.setInputId(message.getCollectionDetailsId());
+        trans.setTransName(ClientConstants.TRANS_NAME_FUND_TRANSFER);
+        trans.setContractId(message.getCollectionDetailsId());
+        trans.setIputFlowId(message.getCollectionDetailsId());
+        //制证子交易流水
+        List<AcctDocGenTransDoc> docList = new ArrayList<>();
+        AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
+        transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_FUND_TRANSFER_WITHDRAW);
+        transDoc.setTransType(ClientConstants.TRANS_TYPE_FUND_TRANSFER_WITHDRAW);
+        transDoc.setAmount(message.getCorrespondAmount());
+        transDoc.setInterest(message.getCorrespondInterest());
+        transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
+        transDoc.setPlatformPartner(message.getMerchantName());
+        transDoc.setCurrentAccounting(message.getMerchantName());
+        transDoc.setCashFlow(String.valueOf(message.getCorrespondAmount()));
+        transDoc.setTaxRate(message.getTaxRate());
+        transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        //租户赋值
+        setTenantValue(trans,transDoc);
+        docList.add(transDoc);
+        standardMessage.setAcctDocGenTrans(trans);
+        standardMessage.setAcctDocGenSubTransList(docList);
+        //发送
+        sender.send(standardMessage);
+    }
+    /**
+     * 内部资金调拨场景所需财务信息
+     * @param message 当前场景业务信息
+     */
+    public void fundTransferCollection(FundTransferCollectionMessage message) throws Exception {
+        log.info("场景二十五 内部资金调拨场景所需财务信息,入参:{}",message.toString());
+        //标准财务凭证消息
+        VoucherStandardMessage standardMessage = new VoucherStandardMessage();
+        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
+        //制证交易流水
+        AcctDocGenTrans trans = new AcctDocGenTrans();
+        trans.setLeaseType(message.getLeaseType());
+        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_039);
+        trans.setInputId(message.getCollectionDetailsId());
+        trans.setTransName(ClientConstants.TRANS_NAME_FUND_TRANSFER);
+        trans.setContractId(message.getCollectionDetailsId());
+        trans.setIputFlowId(message.getCollectionDetailsId());
+        //制证子交易流水
+        List<AcctDocGenTransDoc> docList = new ArrayList<>();
+        AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
+        transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_FUND_TRANSFER);
+        transDoc.setTransType(ClientConstants.TRANS_TYPE_FUND_TRANSFER);
+        transDoc.setAmount(message.getCorrespondAmount());
+        transDoc.setInterest(message.getCorrespondInterest());
+        transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
+        transDoc.setPlatformPartner(message.getMerchantName());
+        transDoc.setCurrentAccounting(message.getMerchantName());
+        transDoc.setCashFlow(String.valueOf(message.getCorrespondAmount()));
+        transDoc.setTaxRate(message.getTaxRate());
+        transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        //租户赋值
+        setTenantValue(trans,transDoc);
+        docList.add(transDoc);
+        standardMessage.setAcctDocGenTrans(trans);
+        standardMessage.setAcctDocGenSubTransList(docList);
+        //发送
+        sender.send(standardMessage);
+    }
+    /**
      * 租户赋值
      * @param trans 财务子交易
      * @param transDoc 制证子交易流水

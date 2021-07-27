@@ -105,6 +105,10 @@ public interface ClientConstants {
      */
     String BUSINESS_TYPE_009="009";
     /**
+     *业务类型-内部资金调拨
+     */
+    String BUSINESS_TYPE_039="039";
+    /**
      * 制证交易名称 收取保证金场景
      */
     String TRANS_NAME_MARGIN = "收取保证金";
@@ -156,6 +160,10 @@ public interface ClientConstants {
      * 制证交易名称-动用业务保证金-代偿
      */
     String TRANS_NAME_USE_BUSINESS_MARGIN ="业务保证金代偿";
+    /**
+     * 制证交易名称-内部资金调拨
+     */
+    String TRANS_NAME_FUND_TRANSFER="内部资金调拨";
     /**
      * 子交易名称-收取保证金场景
      */
@@ -257,6 +265,14 @@ public interface ClientConstants {
      */
     String SUB_TRANS_NAME_USE_BUSINESS_MARGIN="业务保证金代偿";
     /**
+     * 子交易名称-资金调拨_提现
+     */
+    String SUB_TRANS_NAME_FUND_TRANSFER_WITHDRAW="提现";
+    /**
+     * 子交易名称-资金调拨
+     */
+    String SUB_TRANS_NAME_FUND_TRANSFER="资金调拨";
+    /**
      * 交易类型-收取保证金场景
      */
     String TRANS_TYPE_MARGIN = "0050301";
@@ -356,6 +372,14 @@ public interface ClientConstants {
      * 交易类型-未被认领-确实无法偿付的其他应付款项
      */
     String TRANS_TYPE_USE_BUSINESS_MARGIN="0090301";
+    /**
+     * 交易类型-资金调拨-提现
+     */
+    String TRANS_TYPE_FUND_TRANSFER_WITHDRAW="0390301";
+    /**
+     * 交易类型-资金调拨
+     */
+    String TRANS_TYPE_FUND_TRANSFER="0390302";
 
     /**
      * 支付Id--收取保证金场景
