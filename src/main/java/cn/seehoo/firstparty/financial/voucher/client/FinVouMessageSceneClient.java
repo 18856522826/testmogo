@@ -552,7 +552,7 @@ public class FinVouMessageSceneClient {
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
-        trans.setLeaseType(message.getLeaseType());
+        trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_003);
         trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_CARRY_FORWARD);
@@ -595,7 +595,7 @@ public class FinVouMessageSceneClient {
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
-        trans.setLeaseType(message.getLeaseType());
+        trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_006);
         trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_CURRENT_RENT_BANK);
@@ -642,7 +642,7 @@ public class FinVouMessageSceneClient {
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
-        trans.setLeaseType(message.getLeaseType());
+        trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_006);
         trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_CURRENT_RENT_BANK);
@@ -689,7 +689,7 @@ public class FinVouMessageSceneClient {
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
-        trans.setLeaseType(message.getLeaseType());
+        trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_006);
         trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_CURRENT_RENT_BANK);
@@ -736,7 +736,7 @@ public class FinVouMessageSceneClient {
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
-        trans.setLeaseType(message.getLeaseType());
+        trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_007);
         trans.setInputId(message.getCollectionDetailsId());
         trans.setTransName(ClientConstants.TRANS_NAME_UNKNOWN_PAYMENT);
@@ -770,7 +770,7 @@ public class FinVouMessageSceneClient {
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
-        trans.setLeaseType(message.getLeaseType());
+        trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_007);
         trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_UNKNOWN_PAYMENT);
@@ -813,7 +813,7 @@ public class FinVouMessageSceneClient {
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
-        trans.setLeaseType(message.getLeaseType());
+        trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_007);
         trans.setInputId(message.getDepositId());
         trans.setTransName(ClientConstants.TRANS_NAME_CURRENT_RENT_BANK);
@@ -849,7 +849,7 @@ public class FinVouMessageSceneClient {
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
-        trans.setLeaseType(message.getLeaseType());
+        trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_007);
         trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_UNKNOWN_PAYMENT);
@@ -890,7 +890,7 @@ public class FinVouMessageSceneClient {
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
-        trans.setLeaseType(message.getLeaseType());
+        trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_007);
         trans.setInputId(message.getCollectionDetailsId());
         trans.setTransName(ClientConstants.TRANS_NAME_UNKNOWN_PAYMENT);
@@ -927,7 +927,7 @@ public class FinVouMessageSceneClient {
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
-        trans.setLeaseType(message.getLeaseType());
+        trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_007);
         trans.setInputId(message.getCollectionDetailsId());
         trans.setTransName(ClientConstants.TRANS_NAME_UNKNOWN_PAYMENT);
@@ -960,7 +960,7 @@ public class FinVouMessageSceneClient {
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
-        trans.setLeaseType(message.getLeaseType());
+        trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_009);
         trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_USE_BUSINESS_MARGIN);
@@ -1002,7 +1002,7 @@ public class FinVouMessageSceneClient {
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
-        trans.setLeaseType(message.getLeaseType());
+        trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_039);
         trans.setInputId(message.getCollectionDetailsId());
         trans.setTransName(ClientConstants.TRANS_NAME_FUND_TRANSFER);
@@ -1040,7 +1040,7 @@ public class FinVouMessageSceneClient {
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
-        trans.setLeaseType(message.getLeaseType());
+        trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_039);
         trans.setInputId(message.getCollectionDetailsId());
         trans.setTransName(ClientConstants.TRANS_NAME_FUND_TRANSFER);
