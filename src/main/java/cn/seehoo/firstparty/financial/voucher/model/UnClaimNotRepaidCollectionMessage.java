@@ -31,4 +31,20 @@ public class UnClaimNotRepaidCollectionMessage extends CommonMessage{
      * 对应金额
      */
     private BigDecimal correspondAmount;
+    /**
+     *付款方开户行名称
+     */
+    private String payerBankName;
+    /**
+     *付款方账号
+     */
+    private String payerAcctNo;
+    /**
+     *收款方开户行名称
+     */
+    private String payeeBankName;
+    /**
+     *收款方账号
+     */
+    private String payeeAcctNo;
 }
