@@ -619,6 +619,10 @@ public class FinVouMessageSceneClient {
         transDoc.setTerm(message.getCurrentTerm());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
+        transDoc.setPayeeBankName(message.getPayeeBankName());
+        transDoc.setPayerBankName(message.getPayerBankName());
+        transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
+        transDoc.setPayerAcctNo(message.getPayerAcctNo());
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -662,6 +666,10 @@ public class FinVouMessageSceneClient {
         transDoc.setTerm(message.getCurrentTerm());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
+        transDoc.setPayeeBankName(message.getPayeeBankName());
+        transDoc.setPayerBankName(message.getPayerBankName());
+        transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
+        transDoc.setPayerAcctNo(message.getPayerAcctNo());
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -705,6 +713,10 @@ public class FinVouMessageSceneClient {
         transDoc.setTerm(message.getCurrentTerm());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
+        transDoc.setPayeeBankName(message.getPayeeBankName());
+        transDoc.setPayerBankName(message.getPayerBankName());
+        transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
+        transDoc.setPayerAcctNo(message.getPayerAcctNo());
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
