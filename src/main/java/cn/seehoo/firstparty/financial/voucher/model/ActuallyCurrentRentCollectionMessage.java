@@ -64,11 +64,7 @@ public class ActuallyCurrentRentCollectionMessage extends CommonMessage{
      */
     private String payerAcctNo;
     /**
-     * 账户业务模式
+     * 账户key
      */
-    private String bizType;
-    /**
-     * 账户用途
-     */
-    private String useType;
+    private String bizUseType;
 }

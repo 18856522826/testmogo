@@ -619,9 +619,9 @@ public class FinVouMessageSceneClient {
         transDoc.setTerm(message.getCurrentTerm());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
-        transDoc.setPayeeBankName(config.getAccount(message.getBizType(),message.getUseType()).getPayeeBankName());
+        transDoc.setPayeeBankName(config.getAccountConfigs().get(message.getBizUseType()).getPayeeBankName());
         transDoc.setPayerBankName(message.getPayerBankName());
-        transDoc.setPayeeAcctNo(config.getAccount(message.getBizType(),message.getUseType()).getPayeeAcctNo());
+        transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
         //租户赋值
         setTenantValue(trans,transDoc);
@@ -666,9 +666,9 @@ public class FinVouMessageSceneClient {
         transDoc.setTerm(message.getCurrentTerm());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
-        transDoc.setPayeeBankName(config.getAccount(message.getBizType(),message.getUseType()).getPayeeBankName());
+        transDoc.setPayeeBankName(config.getAccountConfigs().get(message.getBizUseType()).getPayeeBankName());
         transDoc.setPayerBankName(message.getPayerBankName());
-        transDoc.setPayeeAcctNo(config.getAccount(message.getBizType(),message.getUseType()).getPayeeAcctNo());
+        transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
         //租户赋值
         setTenantValue(trans,transDoc);
@@ -713,9 +713,9 @@ public class FinVouMessageSceneClient {
         transDoc.setTerm(message.getCurrentTerm());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
-        transDoc.setPayeeBankName(config.getAccount(message.getBizType(),message.getUseType()).getPayeeBankName());
+        transDoc.setPayeeBankName(config.getAccountConfigs().get(message.getBizUseType()).getPayeeBankName());
         transDoc.setPayerBankName(message.getPayerBankName());
-        transDoc.setPayeeAcctNo(config.getAccount(message.getBizType(),message.getUseType()).getPayeeAcctNo());
+        transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
         //租户赋值
         setTenantValue(trans,transDoc);

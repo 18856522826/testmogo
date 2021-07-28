@@ -38,15 +38,5 @@ public class FinVouMessageConfig {
     /**
      * 账户配置
      */
-    private Map<String,Map<String, AccountConfig>> accountConfigs;
-
-    /**
-     * 获取账户配置
-     * @param bizType 业务类型
-     * @param useType 使用类型
-     * @return 账户配置
-     */
-    public AccountConfig getAccount(String bizType,String useType){
-        return accountConfigs.get(bizType).get(useType);
-    }
+    private Map<String, AccountConfig> accountConfigs;
 }
