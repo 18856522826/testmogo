@@ -56,14 +56,6 @@ public class ActuallyCurrentRentCollectionMessage extends CommonMessage{
      */
     private BigDecimal taxRate;
     /**
-     *收款方开户行名称
-     */
-    private String payeeBankName;
-    /**
-     *收款方账号
-     */
-    private String payeeAcctNo;
-    /**
      *付款方开户行名称
      */
     private String payerBankName;
@@ -71,4 +63,12 @@ public class ActuallyCurrentRentCollectionMessage extends CommonMessage{
      *付款方账号
      */
     private String payerAcctNo;
+    /**
+     * 账户业务模式
+     */
+    private String bizType;
+    /**
+     * 账户用途
+     */
+    private String useType;
 }

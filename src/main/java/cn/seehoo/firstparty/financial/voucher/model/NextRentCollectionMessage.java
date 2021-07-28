@@ -56,13 +56,13 @@ public class NextRentCollectionMessage extends CommonMessage{
      */
     private BigDecimal taxRate;
     /**
-     *收款方开户行名称
+     * 账户业务模式
      */
-    private String payeeBankName;
+    private String bizType;
     /**
-     *收款方账号
+     * 账户用途
      */
-    private String PayeeAcctNo;
+    private String useType;
     /**
      *付款方开户行名称
      */
