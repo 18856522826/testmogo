@@ -623,6 +623,12 @@ public class FinVouMessageSceneClient {
         transDoc.setPayerBankName(message.getPayerBankName());
         transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
+        transDoc.setIncludeTaxRent(message.getIncludeTaxRent());
+        transDoc.setNoTaxRent(message.getNoTaxRent());
+        transDoc.setTaxRent(message.getTaxRent());
+        transDoc.setIncludeCapital(message.getIncludeCapital());
+        transDoc.setNoTaxInterest(message.getNoTaxInterest());
+        transDoc.setTaxInterest(message.getTaxInterest());
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -670,6 +676,12 @@ public class FinVouMessageSceneClient {
         transDoc.setPayerBankName(message.getPayerBankName());
         transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
+        transDoc.setIncludeTaxRent(message.getIncludeTaxRent());
+        transDoc.setNoTaxRent(message.getNoTaxRent());
+        transDoc.setTaxRent(message.getTaxRent());
+        transDoc.setIncludeCapital(message.getIncludeCapital());
+        transDoc.setNoTaxInterest(message.getNoTaxInterest());
+        transDoc.setTaxInterest(message.getTaxInterest());
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -717,6 +729,12 @@ public class FinVouMessageSceneClient {
         transDoc.setPayerBankName(message.getPayerBankName());
         transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
+        transDoc.setIncludeTaxRent(message.getIncludeTaxRent());
+        transDoc.setNoTaxRent(message.getNoTaxRent());
+        transDoc.setTaxRent(message.getTaxRent());
+        transDoc.setIncludeCapital(message.getIncludeCapital());
+        transDoc.setNoTaxInterest(message.getNoTaxInterest());
+        transDoc.setTaxInterest(message.getTaxInterest());
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);

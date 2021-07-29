@@ -67,4 +67,28 @@ public class ActuallyCurrentRentCollectionMessage extends CommonMessage{
      * 账户key
      */
     private String bizUseType;
+    /**
+     * 租金（含税）
+     */
+    private BigDecimal includeTaxRent;
+    /**
+     * 不含税租金
+     */
+    private BigDecimal noTaxRent;
+    /**
+     * 租金税额
+     */
+    private BigDecimal taxRent;
+    /**
+     * 本金（含税）
+     */
+    private BigDecimal includeCapital;
+    /**
+     * 不含税利息
+     */
+    private BigDecimal noTaxInterest;
+    /**
+     * 利息税额
+     */
+    private BigDecimal taxInterest;
 }
