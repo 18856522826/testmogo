@@ -820,6 +820,12 @@ public class FinVouMessageSceneClient {
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
         transDoc.setPayeeBankName(message.getPayeeBankName());
         transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
+        transDoc.setIncludeTaxRent(message.getIncludeTaxRent());
+        transDoc.setNoTaxRent(message.getNoTaxRent());
+        transDoc.setTaxRent(message.getTaxRent());
+        transDoc.setIncludeCapital(message.getIncludeCapital());
+        transDoc.setNoTaxInterest(message.getNoTaxInterest());
+        transDoc.setTaxInterest(message.getTaxInterest());
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
