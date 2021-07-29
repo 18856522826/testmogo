@@ -71,4 +71,28 @@ public class RentClaimCollectionMessage  extends CommonMessage{
      *收款方账号
      */
     private String payeeAcctNo;
+    /**
+     * 租金（含税）
+     */
+    private BigDecimal includeTaxRent;
+    /**
+     * 不含税租金
+     */
+    private BigDecimal noTaxRent;
+    /**
+     * 租金税额
+     */
+    private BigDecimal taxRent;
+    /**
+     * 本金（含税）
+     */
+    private BigDecimal includeCapital;
+    /**
+     * 不含税利息
+     */
+    private BigDecimal noTaxInterest;
+    /**
+     * 利息税额
+     */
+    private BigDecimal taxInterest;
 }
