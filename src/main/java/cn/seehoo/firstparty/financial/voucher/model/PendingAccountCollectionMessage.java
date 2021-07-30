@@ -47,4 +47,8 @@ public class PendingAccountCollectionMessage extends CommonMessage{
      *收款方账号
      */
     private String payeeAcctNo;
+    /**
+     * 客户姓名
+     */
+    private String custName;
 }
