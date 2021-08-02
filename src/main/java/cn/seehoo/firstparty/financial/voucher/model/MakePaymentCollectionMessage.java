@@ -41,11 +41,19 @@ public class MakePaymentCollectionMessage extends CommonMessage{
     private BigDecimal sumInterest;
 
     /**
-     * 收款方开户行名称
+     * 付款方开户行名称
      */
     private String payerBankName;
     /**
-     * 收款方账号
+     * 付款方账号
      */
     private String payerAcctNo;
+    /**
+     * 收款方开户行名称
+     */
+    private String payeeBankName;
+    /**
+     * 收款方账号
+     */
+    private String payeeAcctNo;
 }
