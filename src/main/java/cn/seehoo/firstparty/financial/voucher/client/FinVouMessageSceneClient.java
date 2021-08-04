@@ -944,7 +944,6 @@ public class FinVouMessageSceneClient {
         transDoc.setTaxRate(message.getTaxRate());
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
-        transDoc.setSystemSource(ClientConstants.SYSTEM_SOURCE_3);
         transDoc.setPayeeBankName(message.getPayeeBankName());
         transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
         transDoc.setPayerBankName(message.getPayerBankName());
