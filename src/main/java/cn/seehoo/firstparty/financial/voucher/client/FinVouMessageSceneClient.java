@@ -1067,8 +1067,13 @@ public class FinVouMessageSceneClient {
         transDoc.setPlatformPartner(message.getMerchantName());
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setCashFlow(String.valueOf(message.getCorrespondAmount()));
-        transDoc.setTaxRate(message.getTaxRate());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setPayerBankName(message.getPayerBankName());
+        transDoc.setPayerAcctNo(message.getPayerAcctNo());
+        transDoc.setPayeeBankName(message.getPayeeBankName());
+        transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
+        transDoc.setIncludeTaxRent(message.getIncludeTaxRent());
+        transDoc.setIncludeCapital(message.getIncludeCapital());
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -1105,8 +1110,13 @@ public class FinVouMessageSceneClient {
         transDoc.setPlatformPartner(message.getMerchantName());
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setCashFlow(String.valueOf(message.getCorrespondAmount()));
-        transDoc.setTaxRate(message.getTaxRate());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setPayerBankName(message.getPayerBankName());
+        transDoc.setPayerAcctNo(message.getPayerAcctNo());
+        transDoc.setPayeeBankName(message.getPayeeBankName());
+        transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
+        transDoc.setIncludeTaxRent(message.getIncludeTaxRent());
+        transDoc.setIncludeCapital(message.getIncludeCapital());
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);

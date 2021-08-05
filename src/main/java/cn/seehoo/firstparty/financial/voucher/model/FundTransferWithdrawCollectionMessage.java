@@ -36,8 +36,28 @@ public class FundTransferWithdrawCollectionMessage extends CommonMessage{
      */
     private BigDecimal correspondInterest;
     /**
-     * 税率
+     * 租金（含税）
      */
-    private BigDecimal taxRate;
+    private BigDecimal includeTaxRent;
+    /**
+     * 本金（含税）
+     */
+    private BigDecimal includeCapital;
+    /**
+     *付款方开户行名称
+     */
+    private String payerBankName;
+    /**
+     *付款方账号
+     */
+    private String payerAcctNo;
+    /**
+     *收款方开户行名称
+     */
+    private String payeeBankName;
+    /**
+     *收款方账号
+     */
+    private String payeeAcctNo;
 
 }
