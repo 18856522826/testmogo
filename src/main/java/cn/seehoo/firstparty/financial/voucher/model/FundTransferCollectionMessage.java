@@ -59,4 +59,8 @@ public class FundTransferCollectionMessage  extends CommonMessage{
      *收款方账号
      */
     private String payeeAcctNo;
+    /**
+     * 支付机构
+     */
+    private String paymentAgency;
 }
