@@ -397,4 +397,8 @@ public interface ClientConstants {
      * 辅助核算，产品
      */
     String PRODUCT_NM = "04";
+    /**
+     * 取得资产 产品 3.0-05，4.0-06
+     */
+    String PRODUCT_NM_ASSET="06";
 }

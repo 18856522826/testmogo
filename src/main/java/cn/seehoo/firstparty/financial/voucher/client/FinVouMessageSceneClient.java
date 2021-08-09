@@ -116,7 +116,7 @@ public class FinVouMessageSceneClient {
         transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
         transDoc.setPayerBankName(message.getPayerBankName());
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
-        transDoc.setProductNm(message.getProductName());
+        transDoc.setProductNm(ClientConstants.PRODUCT_NM_ASSET);
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setCustNm(message.getCustName());
         transDoc.setPlatformPartner(message.getMerchantName());
@@ -127,7 +127,8 @@ public class FinVouMessageSceneClient {
         transDoc.setTerm(message.getLoanTerm());
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
-        transDoc.setContractPrice(message.getLoanAmount());
+        //取投资总额
+        transDoc.setContractPrice(message.getInvestTotalAmount());
         transDoc.setNoTaxContractPrice(message.getPrincipalExcludeTax());
         transDoc.setGoodsTax(message.getPrincipalTax());
         //国银收款账号信息

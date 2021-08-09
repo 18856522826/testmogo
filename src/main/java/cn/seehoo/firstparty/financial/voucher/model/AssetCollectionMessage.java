@@ -32,6 +32,10 @@ public class AssetCollectionMessage extends CommonMessage{
      */
     private String leaseType;
     /**
+     * 投资总额
+     */
+    private BigDecimal investTotalAmount;
+    /**
      * 放款金额
      */
     private BigDecimal loanAmount;
