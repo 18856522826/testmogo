@@ -66,7 +66,7 @@ public class FinVouMessageSceneClient {
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setDepositType(ClientConstants.DEPOSIT_TYPE);
-        transDoc.setProductNm(ClientConstants.PRODUCT_NM);
+        transDoc.setProductNm(ClientConstants.PRODUCT_NM_ASSET);
         //国银收款账号信息
         transDoc.setPayeeAcctNo(config.getBankAccountNo());
         transDoc.setPayeeBankName(config.getBankAccountName());
@@ -298,7 +298,7 @@ public class FinVouMessageSceneClient {
         transDoc.setSumInterest(message.getSurplusInterest());
         transDoc.setFee(message.getRetentionPrice());
         transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
-        transDoc.setProductNm(ClientConstants.PRODUCT_NM);
+        transDoc.setProductNm(ClientConstants.PRODUCT_NM_ASSET);
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setCustNm(message.getCustName());
         transDoc.setPlatformPartner(message.getMerchantName());
