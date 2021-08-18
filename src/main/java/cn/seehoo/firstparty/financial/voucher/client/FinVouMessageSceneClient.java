@@ -160,7 +160,7 @@ public class FinVouMessageSceneClient {
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_001);
         trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_MAKE_PAYMENT);
-        trans.setContractId(message.getBusinessNo());
+        trans.setContractId(message.getContractNo());
         trans.setIputFlowId(message.getBusinessNo());
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();

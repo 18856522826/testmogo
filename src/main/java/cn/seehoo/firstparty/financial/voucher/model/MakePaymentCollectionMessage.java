@@ -24,6 +24,10 @@ public class MakePaymentCollectionMessage extends CommonMessage{
      */
     private String leaseType;
     /**
+     * 合同号码
+     */
+    private String contractNo;
+    /**
      * 放款金额
      */
     private BigDecimal loanAmount;
