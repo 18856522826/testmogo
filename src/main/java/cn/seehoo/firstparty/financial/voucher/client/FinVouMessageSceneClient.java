@@ -187,6 +187,7 @@ public class FinVouMessageSceneClient {
         transDoc.setCashFlow(String.valueOf(message.getLoanAmount()));
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setProductNm(ClientConstants.PRODUCT_NM_ASSET);
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -776,6 +777,7 @@ public class FinVouMessageSceneClient {
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
         transDoc.setCustNm(message.getCustName());
         transDoc.setCurrentAccounting("乘用车待核查客户");
+        transDoc.setProductNm(ClientConstants.PRODUCT_NM_ASSET);
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -865,6 +867,7 @@ public class FinVouMessageSceneClient {
         transDoc.setCashFlow(String.valueOf(message.getMarginAmount()));
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setProductNm(ClientConstants.PRODUCT_NM_ASSET);
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -951,6 +954,7 @@ public class FinVouMessageSceneClient {
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
         transDoc.setCustNm(message.getCustName());
         transDoc.setCurrentAccounting("乘用车待核查客户");
+        transDoc.setProductNm(ClientConstants.PRODUCT_NM_ASSET);
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -990,6 +994,7 @@ public class FinVouMessageSceneClient {
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
         transDoc.setCustNm(message.getCustName());
         transDoc.setCurrentAccounting("乘用车待核查客户");
+        transDoc.setProductNm(ClientConstants.PRODUCT_NM_ASSET);
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -1077,6 +1082,7 @@ public class FinVouMessageSceneClient {
         transDoc.setIncludeCapital(message.getIncludeCapital());
         transDoc.setPlatformPartner(message.getPaymentAgency());
         transDoc.setCurrentAccounting(message.getPaymentAgency());
+        transDoc.setProductNm(ClientConstants.PRODUCT_NM_ASSET);
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -1122,6 +1128,7 @@ public class FinVouMessageSceneClient {
         transDoc.setIncludeCapital(message.getIncludeCapital());
         transDoc.setPlatformPartner(message.getPaymentAgency());
         transDoc.setCurrentAccounting(message.getPaymentAgency());
+        transDoc.setProductNm(ClientConstants.PRODUCT_NM_ASSET);
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
