@@ -29,5 +29,9 @@ public class CommonMessage implements Serializable {
      * 合作方名称
      */
     private String merchantName;
+    /**
+     * 业务类型
+     */
+    private String businessType;
 
 }
