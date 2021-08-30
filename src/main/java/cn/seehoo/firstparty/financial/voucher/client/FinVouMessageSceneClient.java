@@ -383,7 +383,7 @@ public class FinVouMessageSceneClient {
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setCustNm(message.getCustName());
         transDoc.setPlatformPartner(message.getMerchantName());
-        transDoc.setCashFlow(String.valueOf(message.getRent()));
+        transDoc.setCashFlow(String.valueOf(message.getInterest()));
         transDoc.setFinancialProduct(message.getProductName());
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setTerm(message.getCurrentTerm());
