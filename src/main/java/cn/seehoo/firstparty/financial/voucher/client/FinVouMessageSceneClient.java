@@ -392,7 +392,7 @@ public class FinVouMessageSceneClient {
         transDoc.setProvisionInterest(message.getSurplusInterest());
         transDoc.setProvisionTaxes(message.getInterestTax());
         transDoc.setTaxRate(message.getTaxRate());
-        transDoc.setEarnings(message.getRent());
+        transDoc.setEarnings(message.getInterest());
         transDoc.setAmountOfTax(message.getRentTax());
         //租户赋值
         setTenantValue(trans,transDoc);
