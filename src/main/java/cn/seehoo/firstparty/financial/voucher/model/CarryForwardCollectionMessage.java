@@ -55,4 +55,8 @@ public class CarryForwardCollectionMessage extends CommonMessage{
      * 税率
      */
     private BigDecimal taxRate;
+    /**
+     * 本金
+     */
+    private BigDecimal includeCapital;
 }
