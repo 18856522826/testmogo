@@ -377,7 +377,7 @@ public class FinVouMessageSceneClient {
             transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_INTEREST_LEASE_BACK);
             transDoc.setTransType(ClientConstants.TRANS_TYPE_INTEREST_LEASE_BACK);
         }
-        transDoc.setAmount(message.getInterest());
+        transDoc.setAmount(BigDecimal.ZERO);
         transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
         transDoc.setProductNm(ClientConstants.PRODUCT_NM_ASSET);
         transDoc.setSuppierNm(message.getMerchantName());
