@@ -377,13 +377,13 @@ public class FinVouMessageSceneClient {
             transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_INTEREST_LEASE_BACK);
             transDoc.setTransType(ClientConstants.TRANS_TYPE_INTEREST_LEASE_BACK);
         }
-        transDoc.setAmount(message.getInterest());
+        transDoc.setAmount(BigDecimal.ZERO);
         transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
         setProductNm(transDoc,message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setCustNm(message.getCustName());
         transDoc.setPlatformPartner(message.getMerchantName());
-        transDoc.setCashFlow(String.valueOf(message.getRent()));
+        transDoc.setCashFlow(String.valueOf(message.getInterest()));
         transDoc.setFinancialProduct(message.getProductName());
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setTerm(message.getCurrentTerm());
@@ -392,7 +392,7 @@ public class FinVouMessageSceneClient {
         transDoc.setProvisionInterest(message.getSurplusInterest());
         transDoc.setProvisionTaxes(message.getInterestTax());
         transDoc.setTaxRate(message.getTaxRate());
-        transDoc.setEarnings(message.getRent());
+        transDoc.setEarnings(message.getInterest());
         transDoc.setAmountOfTax(message.getRentTax());
         //租户赋值
         setTenantValue(trans,transDoc);
@@ -578,6 +578,7 @@ public class FinVouMessageSceneClient {
         transDoc.setTerm(message.getCurrentTerm());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
+        transDoc.setIncludeCapital(message.getIncludeCapital());
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);

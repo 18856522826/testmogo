@@ -183,7 +183,7 @@ public class AcctDocGenTransDoc {
      * 系统来源
      */
     @JSONField(name = "SystemSource")
-    private String systemSource = ClientConstants.SYSTEM_SOURCE;
+    private String systemSource = ClientConstants.SYSTEM_SOURCE_3;
     /**
      * 来源类型
      * 01系统，02手工
