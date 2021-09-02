@@ -124,7 +124,7 @@ public class FinVouMessageSceneClient {
         transDoc.setFinancialProduct(message.getProductName());
         transDoc.setTaxRate(message.getTaxRate());
         transDoc.setCurrentAccounting(message.getMerchantName());
-        transDoc.setTerm(0);
+        transDoc.setTerm(message.getLoanTerm());
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
         //取投资总额
@@ -235,7 +235,7 @@ public class FinVouMessageSceneClient {
         transDoc.setFinancialProduct(message.getProductName());
         transDoc.setTaxRate(message.getTaxRate());
         transDoc.setCurrentAccounting(message.getMerchantName());
-        transDoc.setTerm(0);
+        transDoc.setTerm(message.getLoanTerm());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
         transDoc.setBuyoutPrice(message.getRetentionPrice());
@@ -306,7 +306,7 @@ public class FinVouMessageSceneClient {
         transDoc.setCashFlow(String.valueOf(message.getRent()));
         transDoc.setFinancialProduct(message.getProductName());
         transDoc.setCurrentAccounting(message.getMerchantName());
-        transDoc.setTerm(0);
+        transDoc.setTerm(message.getLoanTerm());
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
         transDoc.setBuyoutPrice(message.getRetentionPrice());
@@ -487,7 +487,7 @@ public class FinVouMessageSceneClient {
         transDoc.setFinancialProduct(message.getProductName());
         transDoc.setTaxRate(message.getTaxRate());
         transDoc.setCurrentAccounting(message.getMerchantName());
-        transDoc.setTerm(0);
+        transDoc.setTerm(message.getCurrentTerm());
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
         //租户赋值
@@ -531,7 +531,7 @@ public class FinVouMessageSceneClient {
         transDoc.setFinancialProduct(message.getProductName());
         transDoc.setTaxRate(message.getTaxRate());
         transDoc.setCurrentAccounting(message.getMerchantName());
-        transDoc.setTerm(0);
+        transDoc.setTerm(message.getCurrentTerm());
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
         //租户赋值
@@ -1087,6 +1087,7 @@ public class FinVouMessageSceneClient {
         transDoc.setCurrentAccounting(message.getPaymentAgency());
         transDoc.setProductNm(ClientConstants.PRODUCT_NM_ASSET);
         transDoc.setSuppierNm(message.getMerchantName());
+
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
