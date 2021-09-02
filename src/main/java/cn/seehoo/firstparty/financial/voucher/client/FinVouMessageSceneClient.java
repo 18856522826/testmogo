@@ -914,6 +914,8 @@ public class FinVouMessageSceneClient {
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
         transDoc.setPayeeBankName(message.getPayeeBankName());
         transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
+        transDoc.setOutputAmountOfTax(message.getCorrespondPaymentAmount().divide(BigDecimal.ONE.add(message.getTaxRate()),2,BigDecimal.ROUND_HALF_UP).multiply(message.getTaxRate()).setScale(2,BigDecimal.ROUND_HALF_UP));
+        transDoc.setPenalSum(message.getCorrespondPaymentAmount().subtract(transDoc.getOutputAmountOfTax()));
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -1084,6 +1086,7 @@ public class FinVouMessageSceneClient {
         transDoc.setPlatformPartner(message.getPaymentAgency());
         transDoc.setCurrentAccounting(message.getPaymentAgency());
         transDoc.setProductNm(ClientConstants.PRODUCT_NM_ASSET);
+        transDoc.setSuppierNm(message.getMerchantName());
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -1118,7 +1121,6 @@ public class FinVouMessageSceneClient {
         transDoc.setInterest(message.getCorrespondInterest());
         transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
         transDoc.setPlatformPartner(message.getMerchantName());
-        transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setCashFlow(String.valueOf(message.getCorrespondAmount()));
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
