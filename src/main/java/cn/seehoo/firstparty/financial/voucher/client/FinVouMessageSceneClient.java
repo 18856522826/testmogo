@@ -1085,6 +1085,8 @@ public class FinVouMessageSceneClient {
         transDoc.setCurrentAccounting(message.getPaymentAgency());
         transDoc.setProductNm(ClientConstants.PRODUCT_NM_ASSET);
         transDoc.setSuppierNm(message.getPaymentAgency());
+        transDoc.setOutputAmountOfTax(message.getOutputAmountOfTax());
+        transDoc.setPenalSum(message.getPenalSum());
 
         //租户赋值
         setTenantValue(trans,transDoc);
