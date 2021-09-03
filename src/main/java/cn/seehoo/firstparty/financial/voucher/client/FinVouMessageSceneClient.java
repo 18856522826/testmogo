@@ -1073,8 +1073,6 @@ public class FinVouMessageSceneClient {
         transDoc.setAmount(message.getCorrespondAmount());
         transDoc.setInterest(message.getCorrespondInterest());
         transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
-        transDoc.setPlatformPartner(message.getMerchantName());
-        transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setCashFlow(String.valueOf(message.getCorrespondAmount()));
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setPayerBankName(message.getPayerBankName());
@@ -1086,7 +1084,7 @@ public class FinVouMessageSceneClient {
         transDoc.setPlatformPartner(message.getPaymentAgency());
         transDoc.setCurrentAccounting(message.getPaymentAgency());
         transDoc.setProductNm(ClientConstants.PRODUCT_NM_ASSET);
-        transDoc.setSuppierNm(message.getMerchantName());
+        transDoc.setSuppierNm(message.getPaymentAgency());
 
         //租户赋值
         setTenantValue(trans,transDoc);
