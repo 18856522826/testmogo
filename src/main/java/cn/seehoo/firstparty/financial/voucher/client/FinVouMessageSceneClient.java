@@ -832,8 +832,6 @@ public class FinVouMessageSceneClient {
         transDoc.setIncludeCapital(message.getIncludeCapital());
         transDoc.setNoTaxInterest(message.getNoTaxInterest());
         transDoc.setTaxInterest(message.getTaxInterest());
-        transDoc.setOutputAmountOfTax(message.getCorrespondPaymentAmount().divide(BigDecimal.ONE.add(message.getTaxRate()),2,BigDecimal.ROUND_HALF_UP).multiply(message.getTaxRate()).setScale(2,BigDecimal.ROUND_HALF_UP));
-        transDoc.setPenalSum(message.getCorrespondPaymentAmount().subtract(transDoc.getOutputAmountOfTax()));
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -1085,11 +1083,9 @@ public class FinVouMessageSceneClient {
         transDoc.setIncludeCapital(message.getIncludeCapital());
         transDoc.setPlatformPartner(message.getPaymentAgency());
         transDoc.setCurrentAccounting(message.getPaymentAgency());
-        transDoc.setProductNm(ClientConstants.PRODUCT_NM_ASSET);
         transDoc.setSuppierNm(message.getPaymentAgency());
         transDoc.setOutputAmountOfTax(message.getOutputAmountOfTax());
         transDoc.setPenalSum(message.getPenalSum());
-
         transDoc.setProductNm(ClientConstants.PRODUCT_NM_6);
         //租户赋值
         setTenantValue(trans,transDoc);
