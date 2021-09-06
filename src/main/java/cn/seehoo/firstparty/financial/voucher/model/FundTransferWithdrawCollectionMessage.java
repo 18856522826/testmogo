@@ -63,5 +63,13 @@ public class FundTransferWithdrawCollectionMessage extends CommonMessage{
      * 支付机构
      */
     private String paymentAgency;
+    /**
+     *销项税额
+     */
+    private BigDecimal outputAmountOfTax;
+    /**
+     * 违约金
+     */
+    private BigDecimal penalSum;
 
 }
