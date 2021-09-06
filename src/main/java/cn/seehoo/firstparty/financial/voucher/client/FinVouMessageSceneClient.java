@@ -811,7 +811,7 @@ public class FinVouMessageSceneClient {
         transDoc.setTransType(ClientConstants.TRANS_TYPE_RENT_CLAIM);
         transDoc.setAmount(message.getCorrespondPaymentAmount());
         transDoc.setInterest(message.getCorrespondInterest());
-        setProductNm(transDoc,message.getBusinessType());
+        transDoc.setProductNm(ClientConstants.PRODUCT_NM_6);
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setCustNm(message.getCustName());
         transDoc.setPlatformPartner(message.getMerchantName());
@@ -900,7 +900,7 @@ public class FinVouMessageSceneClient {
         transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_PENALTY_INTEREST_CLAIM);
         transDoc.setTransType(ClientConstants.TRANS_TYPE_PENALTY_INTEREST_CLAIM);
         transDoc.setAmount(message.getCorrespondPaymentAmount());
-        setProductNm(transDoc,message.getBusinessType());
+        transDoc.setProductNm(ClientConstants.PRODUCT_NM_6);
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setCustNm(message.getCustName());
         transDoc.setPlatformPartner(message.getMerchantName());
