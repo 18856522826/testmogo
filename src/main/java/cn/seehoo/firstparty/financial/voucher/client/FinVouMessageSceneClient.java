@@ -1063,7 +1063,7 @@ public class FinVouMessageSceneClient {
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_039);
         trans.setInputId(message.getCollectionDetailsId());
         trans.setTransName(ClientConstants.TRANS_NAME_FUND_TRANSFER);
-        trans.setContractId(message.getCollectionDetailsId());
+        trans.setContractId("0");
         trans.setIputFlowId(message.getCollectionDetailsId());
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
@@ -1080,7 +1080,7 @@ public class FinVouMessageSceneClient {
         transDoc.setPayeeBankName(message.getPayeeBankName());
         transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
         transDoc.setPlatformPartner(message.getPaymentAgency());
-        transDoc.setCurrentAccounting(message.getPaymentAgency());
+        transDoc.setCurrentAccounting("乘用车待核查客户");
         transDoc.setSuppierNm(message.getPaymentAgency());
         transDoc.setProductNm(ClientConstants.PRODUCT_NM_6);
         transDoc.setFlowsMoney(BigDecimal.ZERO);
