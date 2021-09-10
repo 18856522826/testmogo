@@ -134,6 +134,8 @@ public class FinVouMessageSceneClient {
         //国银收款账号信息
         transDoc.setPayeeAcctNo(config.getBankAccountNo());
         transDoc.setPayeeBankName(config.getBankAccountName());
+        transDoc.setGenerateDate(message.getDate());
+        transDoc.setGenerateTime(message.getDate());
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -187,6 +189,8 @@ public class FinVouMessageSceneClient {
         transDoc.setCashFlow(String.valueOf(message.getLoanAmount()));
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setGenerateTime(message.getDate());
+        transDoc.setGenerateDate(message.getDate());
         setProductNm(transDoc,message.getBusinessType());
         //租户赋值
         setTenantValue(trans,transDoc);
@@ -337,6 +341,8 @@ public class FinVouMessageSceneClient {
         transDoc.setNoTaxOddCorpus(message.getPrincipalExcludeTax());
         transDoc.setTaxOddCorpus(message.getPrincipalTax());
         transDoc.setGrossInterest(message.getInterestTax());
+        transDoc.setGenerateDate(message.getDate());
+        transDoc.setGenerateTime(message.getDate());
 
         //租户赋值
         setTenantValue(trans,transDoc);
@@ -394,6 +400,9 @@ public class FinVouMessageSceneClient {
         transDoc.setTaxRate(message.getTaxRate());
         transDoc.setEarnings(message.getInterest());
         transDoc.setAmountOfTax(message.getRentTax());
+        transDoc.setGenerateTime(message.getDate());
+        transDoc.setGenerateDate(message.getDate());
+
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -445,6 +454,8 @@ public class FinVouMessageSceneClient {
         transDoc.setTerm(message.getCurrentTerm());
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
+        transDoc.setGenerateTime(message.getDate());
+        transDoc.setGenerateDate(message.getDate());
         //租户赋值
         setTenantValue(trans,transDoc);
 
@@ -579,6 +590,8 @@ public class FinVouMessageSceneClient {
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
         transDoc.setIncludeCapital(message.getIncludeCapital());
+        transDoc.setGenerateTime(message.getDate());
+        transDoc.setGenerateDate(message.getDate());
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -632,6 +645,8 @@ public class FinVouMessageSceneClient {
         transDoc.setIncludeCapital(message.getIncludeCapital());
         transDoc.setNoTaxInterest(message.getNoTaxInterest());
         transDoc.setTaxInterest(message.getTaxInterest());
+        transDoc.setGenerateTime(message.getDate());
+        transDoc.setGenerateDate(message.getDate());
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);

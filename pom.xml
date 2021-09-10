@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>cn.seehoo.firstparty</groupId>
 	<artifactId>financial-voucher-client</artifactId>
-	<version>1.0.3-SNAPSHOT</version>
+	<version>1.0.4-SNAPSHOT</version>
 	<name>financial-voucher-client</name>
 	<description>
 		财务凭证客户端，提供场景化财务凭证模板组装及发送功能

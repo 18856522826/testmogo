@@ -5,7 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * Notice: 通用的财务凭证信息
@@ -33,5 +33,9 @@ public class CommonMessage implements Serializable {
      * 业务类型
      */
     private String businessType;
+    /**
+     * 生成时间
+     */
+    private Date date;
 
 }
