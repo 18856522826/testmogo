@@ -293,15 +293,16 @@ public class FinVouMessageSceneClient {
             transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_RENT_DIRECT_RENT);
             transDoc.setTransType(ClientConstants.TRANS_TYPE_RENT_DIRECT_RENT);
             //放款金额或归属国银的还款计划表本金和
-            transDoc.setContractPrice(message.getGyPrincipalExcludeTax().add(message.getGyPrincipalTax()));
+            transDoc.setNoTaxContractPrice(message.getGyPrincipalExcludeTax().add(message.getGyPrincipalTax()));
             //归属国银的还款计划表利息和（含税）+留购价
-            transDoc.setNoTaxContractPrice(message.getGyInterestSum().add(message.getGyInterestTaxSum()).add(message.getRetentionPrice()));
+            transDoc.setGoodsTax(message.getGyInterestSum().add(message.getGyInterestTaxSum()).add(message.getRetentionPrice()));
             //归属国银的还款计划表税后本金和
-            transDoc.setGoodsTax(message.getGyPrincipalExcludeTax());
+            transDoc.setContractPrice(message.getGyPrincipalExcludeTax());
             //归属国银的还款计划表利息和（去税）+税后留购价
-            transDoc.setIncludeTaxRent(message.getGyInterestSum().add(message.getRetentionExcludeTax()));
-            //归属国银的还款计划表利息税和+留购价税
-            transDoc.setNoTaxRent(message.getGyInterestTaxSum().add(message.getRetentionTax()));
+            transDoc.setNoTaxInterest(message.getGyInterestSum().add(message.getRetentionExcludeTax()));
+            //归属国银的还款计划表租金税和+留购价税
+            transDoc.setTaxInterest(message.getGyInterestTaxSum().add(message.getGyPrincipalTax()).add(message.getRetentionTax()));
+            transDoc.setAmount(BigDecimal.ZERO);
         }else{
             transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_RENT_LEASE_BACK);
             transDoc.setTransType(ClientConstants.TRANS_TYPE_RENT_LEASE_BACK);
@@ -325,9 +326,11 @@ public class FinVouMessageSceneClient {
             transDoc.setNoTaxBuyoutPrice(message.getRetentionExcludeTax());
             transDoc.setTaxBuyoutPrice(message.getRetentionTax());
             transDoc.setNoTaxResidueCapital(message.getPrincipalExcludeTax());
+            transDoc.setAmount(message.getRent());
+            transDoc.setNoTaxInterest(message.getInterestExcludeTax().add(message.getRetentionExcludeTax()));
+            transDoc.setTaxInterest(message.getInterestTax().add(message.getRetentionTax()));
         }
         transDoc.setTaxRate(message.getTaxRate());
-        transDoc.setAmount(message.getRent());
         transDoc.setRemanentCapital(message.getSurplusPrincipal());
         transDoc.setInterest(message.getSurplusInterest());
         transDoc.setSumInterest(message.getSurplusInterest());
@@ -343,8 +346,6 @@ public class FinVouMessageSceneClient {
         transDoc.setTerm(0);
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
-        transDoc.setNoTaxInterest(message.getInterestExcludeTax().add(message.getRetentionExcludeTax()));
-        transDoc.setTaxInterest(message.getInterestTax().add(message.getRetentionTax()));
         transDoc.setIncludeCapital(message.getPrincipalExcludeTax().add(message.getPrincipalTax()));
         transDoc.setNoTaxPresentCapital(message.getPrincipalExcludeTax());
         transDoc.setTaxCapital(message.getPrincipalTax());
