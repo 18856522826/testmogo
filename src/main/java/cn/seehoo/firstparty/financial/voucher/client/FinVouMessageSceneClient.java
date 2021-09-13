@@ -294,11 +294,11 @@ public class FinVouMessageSceneClient {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_RENT_DIRECT_RENT);
             //放款金额或归属国银的还款计划表本金和
             transDoc.setContractPrice(message.getGyPrincipalExcludeTax().add(message.getGyPrincipalTax()));
-            //归属国银的还款计划表利息和+留购价
-            transDoc.setNoTaxContractPrice(message.getGyInterestSum().add(message.getRetentionPrice()));
+            //归属国银的还款计划表利息和（含税）+留购价
+            transDoc.setNoTaxContractPrice(message.getGyInterestSum().add(message.getGyInterestTaxSum()).add(message.getRetentionPrice()));
             //归属国银的还款计划表税后本金和
             transDoc.setGoodsTax(message.getGyPrincipalExcludeTax());
-            //归属国银的还款计划表利息和+税后留购价
+            //归属国银的还款计划表利息和（去税）+税后留购价
             transDoc.setIncludeTaxRent(message.getGyInterestSum().add(message.getRetentionExcludeTax()));
             //归属国银的还款计划表利息税和+留购价税
             transDoc.setNoTaxRent(message.getGyInterestTaxSum().add(message.getRetentionTax()));
