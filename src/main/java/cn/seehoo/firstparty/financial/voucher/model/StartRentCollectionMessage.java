@@ -104,4 +104,21 @@ public class StartRentCollectionMessage extends CommonMessage {
      * 首付款金额
      */
     private BigDecimal downPayment;
+    /**
+     * 归属状态为国银的利息和（去税）
+     */
+    private BigDecimal gyInterestSum;
+    /**
+     * 归属状态为国银的税后本金和
+     */
+    private BigDecimal gyPrincipalExcludeTax;
+    /**
+     * 归属状态为国银的本金税和
+     */
+    private BigDecimal gyPrincipalTax;
+    /**
+     * 归属状态为国银的利息税和
+     */
+    private BigDecimal gyInterestTaxSum;
+
 }
