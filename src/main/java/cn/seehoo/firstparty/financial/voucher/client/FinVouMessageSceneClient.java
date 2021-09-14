@@ -99,6 +99,8 @@ public class FinVouMessageSceneClient {
         trans.setContractId(message.getContractNo());
         trans.setIputFlowId(message.getBusinessNo());
         trans.setContractName(ClientConstants.CONTRACT_NAME);
+        trans.setGenerateDate(message.getDate());
+        trans.setGenerateTime(message.getDate());
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
@@ -164,6 +166,8 @@ public class FinVouMessageSceneClient {
         trans.setTransName(ClientConstants.TRANS_NAME_MAKE_PAYMENT);
         trans.setContractId(message.getContractNo());
         trans.setIputFlowId(message.getBusinessNo());
+        trans.setGenerateDate(message.getDate());
+        trans.setGenerateTime(message.getDate());
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
@@ -286,6 +290,8 @@ public class FinVouMessageSceneClient {
         trans.setContractId(message.getContractNo());
         trans.setIputFlowId(message.getBusinessNo());
         trans.setContractName(ClientConstants.CONTRACT_NAME);
+        trans.setGenerateDate(message.getDate());
+        trans.setGenerateTime(message.getDate());
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
@@ -384,6 +390,8 @@ public class FinVouMessageSceneClient {
         trans.setContractId(message.getContractNo());
         trans.setIputFlowId(message.getBusinessNo());
         trans.setContractName(ClientConstants.CONTRACT_NAME);
+        trans.setGenerateDate(message.getDate());
+        trans.setGenerateTime(message.getDate());
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
@@ -441,6 +449,8 @@ public class FinVouMessageSceneClient {
         trans.setTransName(ClientConstants.TRANS_NAME_OUTPUT_TAX);
         trans.setContractId(message.getContractNo());
         trans.setIputFlowId(message.getBusinessNo());
+        trans.setGenerateDate(message.getDate());
+        trans.setGenerateTime(message.getDate());
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
@@ -628,6 +638,8 @@ public class FinVouMessageSceneClient {
         trans.setTransName(ClientConstants.TRANS_NAME_CURRENT_RENT_BANK);
         trans.setContractId(message.getContractNo());
         trans.setIputFlowId(message.getBusinessNo());
+        trans.setGenerateTime(message.getDate());
+        trans.setGenerateDate(message.getDate());
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
