@@ -1116,7 +1116,7 @@ public class FinVouMessageSceneClient {
         //留购价
         transDoc.setIncludeTaxRent(message.getRetentionPrice());
         //租金
-        transDoc.setNoTaxRent(message.getCorrespondAmount());
+        transDoc.setNoTaxRent(BigDecimal.ZERO);
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
