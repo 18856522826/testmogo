@@ -1184,6 +1184,53 @@ public class FinVouMessageSceneClient {
         sender.send(standardMessage);
     }
     /**
+     * 实收滞纳金、违约金场景所需财务信息
+     * @param message 当前场景业务信息
+     */
+    public void actualReceiptsPenalty (ActualReceiptsPenaltyCollectionMessage message) throws Exception {
+        log.info("场景二十六 实收滞纳金、违约金场景所需财务信息,入参:{}",message.toString());
+        //标准财务凭证消息
+        VoucherStandardMessage standardMessage = new VoucherStandardMessage();
+        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
+        //制证交易流水
+        AcctDocGenTrans trans = new AcctDocGenTrans();
+        trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
+        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_014);
+        trans.setInputId(message.getBusinessNo());
+        trans.setTransName(ClientConstants.TRANS_NAME_FUND_LATE_FEES);
+        trans.setContractId(message.getContractNo());
+        trans.setIputFlowId(message.getBusinessNo());
+        //制证子交易流水
+        List<AcctDocGenTransDoc> docList = new ArrayList<>();
+        AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
+        transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_FUND_LATE_FEES);
+        transDoc.setTransType(ClientConstants.TRANS_TYPE_FUND_LATE_FEES);
+        transDoc.setAmount(message.getCorrespondPaymentAmount());
+        transDoc.setProductNm(ClientConstants.PRODUCT_NM_6);
+        transDoc.setSuppierNm(message.getMerchantName());
+        transDoc.setCustNm(message.getCustName());
+        transDoc.setPlatformPartner(message.getMerchantName());
+        transDoc.setCashFlow(String.valueOf(message.getCorrespondPaymentAmount()));
+        transDoc.setFinancialProduct(message.getProductName());
+        transDoc.setTaxRate(message.getTaxRate());
+        transDoc.setCurrentAccounting(message.getMerchantName());
+        transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setSumTerm(message.getLoanTerm());
+        transDoc.setPayerBankName(message.getPayerBankName());
+        transDoc.setPayerAcctNo(message.getPayerAcctNo());
+        transDoc.setPayeeBankName(message.getPayeeBankName());
+        transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
+        transDoc.setTaxLateFee(message.getCorrespondPaymentAmount().divide(BigDecimal.ONE.add(message.getTaxRate()),2,BigDecimal.ROUND_HALF_UP).multiply(message.getTaxRate()).setScale(2,BigDecimal.ROUND_HALF_UP));
+        transDoc.setPenalSum(message.getCorrespondPaymentAmount().subtract(transDoc.getTaxLateFee()));
+        //租户赋值
+        setTenantValue(trans,transDoc);
+        docList.add(transDoc);
+        standardMessage.setAcctDocGenTrans(trans);
+        standardMessage.setAcctDocGenSubTransList(docList);
+        //发送
+        sender.send(standardMessage);
+    }
+    /**
      * 租户赋值
      * @param trans 财务子交易
      * @param transDoc 制证子交易流水
