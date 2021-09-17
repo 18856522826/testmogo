@@ -183,7 +183,11 @@ public class FinVouMessageSceneClient {
         transDoc.setInterest(message.getSurplusInterest());
         transDoc.setSumInterest(message.getSumInterest());
         transDoc.setPaymentId(message.getBusinessNo());
-        transDoc.setPayeeBankName(message.getPayeeBankName());
+        if (ClientConstants.PRODUCT_TYPE.equals(message.getBusinessType())){
+            transDoc.setPayeeBankName("网商银行");
+        }else {
+            transDoc.setPayeeBankName("建设银行");
+        }
         transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
         //国银付款账号信息
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
