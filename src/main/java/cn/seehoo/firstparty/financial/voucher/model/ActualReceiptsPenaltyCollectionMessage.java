@@ -62,4 +62,8 @@ public class ActualReceiptsPenaltyCollectionMessage extends CommonMessage{
      *收款方账号
      */
     private String payeeAcctNo;
+    /**
+     * 账户key
+     */
+    private String bizUseType;
 }

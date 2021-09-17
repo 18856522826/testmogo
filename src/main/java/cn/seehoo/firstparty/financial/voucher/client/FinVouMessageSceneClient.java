@@ -952,7 +952,7 @@ public class FinVouMessageSceneClient {
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
         transDoc.setPayeeBankName(message.getPayeeBankName());
         transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
-        transDoc.setOutputAmountOfTax(message.getCorrespondPaymentAmount().divide(BigDecimal.ONE.add(message.getTaxRate()),2,BigDecimal.ROUND_HALF_UP).multiply(message.getTaxRate()).setScale(2,BigDecimal.ROUND_HALF_UP));
+        transDoc.setOutputAmountOfTax(getTaxAmount(message.getCorrespondPaymentAmount(),message.getTaxRate().divide(new BigDecimal("100"),2,BigDecimal.ROUND_HALF_UP)));
         transDoc.setPenalSum(message.getCorrespondPaymentAmount().subtract(transDoc.getOutputAmountOfTax()));
         //租户赋值
         setTenantValue(trans,transDoc);
@@ -1218,9 +1218,9 @@ public class FinVouMessageSceneClient {
         transDoc.setSumTerm(message.getLoanTerm());
         transDoc.setPayerBankName(message.getPayerBankName());
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
-        transDoc.setPayeeBankName(message.getPayeeBankName());
-        transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
-        transDoc.setTaxLateFee(message.getCorrespondPaymentAmount().divide(BigDecimal.ONE.add(message.getTaxRate()),2,BigDecimal.ROUND_HALF_UP).multiply(message.getTaxRate()).setScale(2,BigDecimal.ROUND_HALF_UP));
+        transDoc.setPayeeBankName(config.getAccountConfigs().get(message.getBizUseType()).getPayeeBankName());
+        transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeBankName());
+        transDoc.setTaxLateFee(getTaxAmount(message.getCorrespondPaymentAmount(),message.getTaxRate().divide(new BigDecimal("100"),2,BigDecimal.ROUND_HALF_UP)));
         transDoc.setPenalSum(message.getCorrespondPaymentAmount().subtract(transDoc.getTaxLateFee()));
         //租户赋值
         setTenantValue(trans,transDoc);
@@ -1254,5 +1254,8 @@ public class FinVouMessageSceneClient {
         }else {
             transDoc.setProductNm(ClientConstants.PRODUCT_NM_5);
         }
+    }
+    private BigDecimal getTaxAmount(BigDecimal amount,BigDecimal rate){
+       return amount.divide(BigDecimal.ONE.add(rate),2,BigDecimal.ROUND_HALF_UP).multiply(rate).setScale(2,BigDecimal.ROUND_HALF_UP);
     }
 }
