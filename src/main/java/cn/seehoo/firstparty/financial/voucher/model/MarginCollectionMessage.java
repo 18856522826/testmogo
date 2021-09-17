@@ -38,4 +38,12 @@ public class MarginCollectionMessage extends CommonMessage implements Serializab
      * 付款方账号
      */
     private String payerAcctNo;
+    /**
+     *收款方开户行名称
+     */
+    private String payeeBankName;
+    /**
+     *收款方账号
+     */
+    private String payeeAcctNo;
 }

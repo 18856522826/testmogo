@@ -59,6 +59,8 @@ public class FinVouMessageSceneClient {
         transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
         transDoc.setPayerBankName(message.getPayerBankName());
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
+        transDoc.setPayeeBankName(message.getPayeeBankName());
+        transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setCustNm(message.getMerchantName());
         transDoc.setPlatformPartner(message.getMerchantName());
