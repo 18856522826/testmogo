@@ -1219,7 +1219,7 @@ public class FinVouMessageSceneClient {
         transDoc.setPayerBankName(message.getPayerBankName());
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
         transDoc.setPayeeBankName(config.getAccountConfigs().get(message.getBizUseType()).getPayeeBankName());
-        transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeBankName());
+        transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
         transDoc.setTaxLateFee(getTaxAmount(message.getCorrespondPaymentAmount(),message.getTaxRate().divide(new BigDecimal("100"),2,BigDecimal.ROUND_HALF_UP)));
         transDoc.setPenalSum(message.getCorrespondPaymentAmount().subtract(transDoc.getTaxLateFee()));
         //租户赋值
