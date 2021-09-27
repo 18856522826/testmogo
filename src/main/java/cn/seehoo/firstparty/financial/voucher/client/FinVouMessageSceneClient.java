@@ -1237,6 +1237,100 @@ public class FinVouMessageSceneClient {
         sender.send(standardMessage);
     }
     /**
+     * 转待凭证场景所需财务信息
+     * @param message 当前场景业务信息
+     */
+    public void transferVoucher (TransferAndInvoiceCollectionMessage message) throws Exception {
+        log.info("场景二十六 转待凭证场景所需财务信息,入参:{}",message.toString());
+        //标准财务凭证消息
+        VoucherStandardMessage standardMessage = new VoucherStandardMessage();
+        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
+        //制证交易流水
+        AcctDocGenTrans trans = new AcctDocGenTrans();
+        trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
+        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_001);
+        trans.setInputId(message.getBusinessNo());
+        trans.setTransName(ClientConstants.TRANS_NAME_ASSET);
+        trans.setContractId(message.getContractNo());
+        trans.setIputFlowId(message.getBusinessNo());
+        trans.setGenerateTime(message.getDate());
+        trans.setGenerateDate(message.getDate());
+        //制证子交易流水
+        List<AcctDocGenTransDoc> docList = new ArrayList<>();
+        AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
+        transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_TRANSFER_VOUCHER);
+        transDoc.setTransType(ClientConstants.TRANS_TYPE_TRANSFER_VOUCHER);
+        transDoc.setAmount(message.getAmount());
+        transDoc.setProductNm(ClientConstants.PRODUCT_NM_5);
+        transDoc.setSuppierNm(message.getMerchantName());
+        transDoc.setPlatformPartner(message.getMerchantName());
+        transDoc.setCustNm(message.getCustName());
+        transDoc.setCashFlow(String.valueOf(message.getAmount()));
+        transDoc.setFinancialProduct(message.getProductName());
+        transDoc.setTaxRate(message.getTaxRate());
+        transDoc.setCurrentAccounting(message.getMerchantName());
+        transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setTerm(0);
+        transDoc.setSumTerm(message.getLoanTerm());
+        transDoc.setGenerateTime(message.getDate());
+        transDoc.setGenerateDate(message.getDate());
+
+        //租户赋值
+        setTenantValue(trans,transDoc);
+        docList.add(transDoc);
+        standardMessage.setAcctDocGenTrans(trans);
+        standardMessage.setAcctDocGenSubTransList(docList);
+        //发送
+        sender.send(standardMessage);
+    }
+    /**
+     * 发票认证场景所需财务信息
+     * @param message 当前场景业务信息
+     */
+    public void invoiceAuth (TransferAndInvoiceCollectionMessage message) throws Exception {
+        log.info("场景二十六 发票认证场景所需财务信息,入参:{}",message.toString());
+        //标准财务凭证消息
+        VoucherStandardMessage standardMessage = new VoucherStandardMessage();
+        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
+        //制证交易流水
+        AcctDocGenTrans trans = new AcctDocGenTrans();
+        trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
+        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_001);
+        trans.setInputId(message.getBusinessNo());
+        trans.setTransName(ClientConstants.TRANS_NAME_ASSET);
+        trans.setContractId(message.getContractNo());
+        trans.setIputFlowId(message.getBusinessNo());
+        trans.setGenerateTime(message.getDate());
+        trans.setGenerateDate(message.getDate());
+        //制证子交易流水
+        List<AcctDocGenTransDoc> docList = new ArrayList<>();
+        AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
+        transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_INVOICE_AUTH);
+        transDoc.setTransType(ClientConstants.TRANS_TYPE_INVOICE_AUTH);
+        transDoc.setAmount(message.getAmount());
+        transDoc.setProductNm(ClientConstants.PRODUCT_NM_5);
+        transDoc.setSuppierNm(message.getMerchantName());
+        transDoc.setPlatformPartner(message.getMerchantName());
+        transDoc.setCustNm(message.getCustName());
+        transDoc.setCashFlow(String.valueOf(message.getAmount()));
+        transDoc.setFinancialProduct(message.getProductName());
+        transDoc.setTaxRate(message.getTaxRate());
+        transDoc.setCurrentAccounting(message.getMerchantName());
+        transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setTerm(0);
+        transDoc.setSumTerm(message.getLoanTerm());
+        transDoc.setGenerateTime(message.getDate());
+        transDoc.setGenerateDate(message.getDate());
+
+        //租户赋值
+        setTenantValue(trans,transDoc);
+        docList.add(transDoc);
+        standardMessage.setAcctDocGenTrans(trans);
+        standardMessage.setAcctDocGenSubTransList(docList);
+        //发送
+        sender.send(standardMessage);
+    }
+    /**
      * 租户赋值
      * @param trans 财务子交易
      * @param transDoc 制证子交易流水

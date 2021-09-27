@@ -285,6 +285,14 @@ public interface ClientConstants {
      */
     String SUB_TRANS_NAME_FUND_LATE_FEES="实收滞纳金、违约金（网商银行）";
     /**
+     * 子交易名称-转待凭证
+     */
+    String SUB_TRANS_NAME_TRANSFER_VOUCHER="转待凭证";
+    /**
+     * 子交易名称-发票认证
+     */
+    String SUB_TRANS_NAME_INVOICE_AUTH="发票认证";
+    /**
      * 交易类型-收取保证金场景
      */
     String TRANS_TYPE_MARGIN = "0050301";
@@ -396,6 +404,14 @@ public interface ClientConstants {
      * 交易类型-实收滞纳金
      */
     String TRANS_TYPE_FUND_LATE_FEES="0140302";
+    /**
+     * 交易类型-转待凭证
+     */
+    String TRANS_TYPE_TRANSFER_VOUCHER="0010103";
+    /**
+     * 交易类型-发票认证
+     */
+    String TRANS_TYPE_INVOICE_AUTH="0010104";
 
     /**
      * 支付Id--收取保证金场景
