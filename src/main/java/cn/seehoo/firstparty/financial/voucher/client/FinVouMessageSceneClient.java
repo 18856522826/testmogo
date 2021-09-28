@@ -1255,6 +1255,7 @@ public class FinVouMessageSceneClient {
         trans.setIputFlowId(message.getBusinessNo());
         trans.setGenerateTime(message.getDate());
         trans.setGenerateDate(message.getDate());
+        trans.setContractName(ClientConstants.CONTRACT_NAME);
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
@@ -1302,6 +1303,8 @@ public class FinVouMessageSceneClient {
         trans.setIputFlowId(message.getBusinessNo());
         trans.setGenerateTime(message.getDate());
         trans.setGenerateDate(message.getDate());
+        trans.setContractName(ClientConstants.CONTRACT_NAME);
+
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
@@ -1321,6 +1324,7 @@ public class FinVouMessageSceneClient {
         transDoc.setSumTerm(message.getLoanTerm());
         transDoc.setGenerateTime(message.getDate());
         transDoc.setGenerateDate(message.getDate());
+
 
         //租户赋值
         setTenantValue(trans,transDoc);
