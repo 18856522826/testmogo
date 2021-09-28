@@ -69,9 +69,6 @@ public class FinVouMessageSceneClient {
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setDepositType(ClientConstants.DEPOSIT_TYPE);
         transDoc.setProductNm(ClientConstants.PRODUCT_NM_6);
-        //国银收款账号信息
-        transDoc.setPayeeAcctNo(config.getBankAccountNo());
-        transDoc.setPayeeBankName(config.getBankAccountName());
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
