@@ -92,6 +92,7 @@ public class FinVouMessageSceneClient {
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
         trans.setLeaseType(message.getLeaseType());
+        trans.setCertificateLeaseType(message.getLeaseType());
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_001);
         trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_ASSET);
@@ -160,6 +161,7 @@ public class FinVouMessageSceneClient {
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
         trans.setLeaseType(message.getLeaseType());
+        trans.setCertificateLeaseType(message.getLeaseType());
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_001);
         trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_MAKE_PAYMENT);
@@ -222,6 +224,7 @@ public class FinVouMessageSceneClient {
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
         trans.setLeaseType(message.getLeaseType());
+        trans.setCertificateLeaseType(message.getLeaseType());
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_051);
         trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_DOWN_PAYMENT);
@@ -287,6 +290,7 @@ public class FinVouMessageSceneClient {
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
         trans.setLeaseType(message.getLeaseType());
+        trans.setCertificateLeaseType(message.getLeaseType());
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_002);
         trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_START_RENT);
@@ -387,6 +391,7 @@ public class FinVouMessageSceneClient {
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
         trans.setLeaseType(message.getLeaseType());
+        trans.setCertificateLeaseType(message.getLeaseType());
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_012);
         trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_INTEREST_INCOME);
@@ -447,6 +452,7 @@ public class FinVouMessageSceneClient {
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
         trans.setLeaseType(message.getLeaseType());
+        trans.setCertificateLeaseType(message.getLeaseType());
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_013);
         trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_OUTPUT_TAX);
@@ -503,6 +509,7 @@ public class FinVouMessageSceneClient {
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
         trans.setLeaseType(message.getLeaseType());
+        trans.setCertificateLeaseType(message.getLeaseType());
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_052);
         trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_DOWN_PAYMENT_IN_ASSETS);
@@ -547,6 +554,7 @@ public class FinVouMessageSceneClient {
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
         trans.setLeaseType(message.getLeaseType());
+        trans.setCertificateLeaseType(message.getLeaseType());
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_052);
         trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_PAY_DOWN_PAYMENT);
@@ -673,6 +681,7 @@ public class FinVouMessageSceneClient {
         transDoc.setTaxInterest(message.getTaxInterest());
         transDoc.setGenerateTime(message.getDate());
         transDoc.setGenerateDate(message.getDate());
+        transDoc.setSpecialSupplierName(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -726,6 +735,7 @@ public class FinVouMessageSceneClient {
         transDoc.setIncludeCapital(message.getIncludeCapital());
         transDoc.setNoTaxInterest(message.getNoTaxInterest());
         transDoc.setTaxInterest(message.getTaxInterest());
+        transDoc.setSpecialSupplierName(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -779,6 +789,7 @@ public class FinVouMessageSceneClient {
         transDoc.setIncludeCapital(message.getIncludeCapital());
         transDoc.setNoTaxInterest(message.getNoTaxInterest());
         transDoc.setTaxInterest(message.getTaxInterest());
+        transDoc.setSpecialSupplierName(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -1225,6 +1236,7 @@ public class FinVouMessageSceneClient {
         transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
         transDoc.setTaxLateFee(getTaxAmount(message.getCorrespondPaymentAmount(),message.getTaxRate().divide(new BigDecimal("100"),2,BigDecimal.ROUND_HALF_UP)));
         transDoc.setPenalSum(message.getCorrespondPaymentAmount().subtract(transDoc.getTaxLateFee()));
+        transDoc.setSpecialSupplierName(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
@@ -1245,6 +1257,7 @@ public class FinVouMessageSceneClient {
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
         trans.setLeaseType(ClientConstants.LEASE_TYPE_DIRECT_RENT);
+        trans.setCertificateLeaseType(ClientConstants.LEASE_TYPE_DIRECT_RENT);
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_001);
         trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_ASSET);
@@ -1293,6 +1306,7 @@ public class FinVouMessageSceneClient {
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
         trans.setLeaseType(ClientConstants.LEASE_TYPE_DIRECT_RENT);
+        trans.setCertificateLeaseType(ClientConstants.LEASE_TYPE_DIRECT_RENT);
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_001);
         trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_ASSET);

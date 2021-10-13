@@ -87,4 +87,9 @@ public class AcctDocGenTrans {
      */
     @JSONField(name = "BusinessRestriction")
     private String businessRestriction = ClientConstants.BUSINESS_RESTRICTION;
+    /**
+     * 直租-01 回租-02
+     */
+    @JSONField(name = "certificateLeaseType")
+    private String certificateLeaseType;
 }

@@ -496,4 +496,9 @@ public class AcctDocGenTransDoc {
      */
     @JSONField(name = "TaxFlowsMoney")
     private BigDecimal taxFlowsMoney;
+    /**
+     * 三方机构全称
+     */
+    @JSONField(name = "SpecialSupplierName")
+    private String specialSupplierName;
 }

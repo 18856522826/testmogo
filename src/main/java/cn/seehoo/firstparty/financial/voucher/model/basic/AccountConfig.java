@@ -24,4 +24,8 @@ public class AccountConfig {
      *收款方账号
      */
     private String payeeAcctNo;
+    /**
+     * 三方机构代扣全称
+     */
+    private String SpecialSupplierName;
 }
