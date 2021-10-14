@@ -63,7 +63,8 @@ public class FundTransferWithdrawCollectionMessage extends CommonMessage{
      * 留购价
      */
     private BigDecimal retentionPrice;
-
-
-
+    /**
+     * 账户key
+     */
+    private String bizUseType;
 }
