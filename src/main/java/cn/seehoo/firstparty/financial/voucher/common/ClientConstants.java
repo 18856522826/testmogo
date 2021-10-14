@@ -93,7 +93,7 @@ public interface ClientConstants {
      */
     String BUSINESS_TYPE_003="003";
     /**
-     *业务类型-逐期结转
+     *业务类型-实收当期
      */
     String BUSINESS_TYPE_006="006";
     /**
