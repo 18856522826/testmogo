@@ -55,4 +55,8 @@ public class UseBusinessMarginCollectionMessage extends CommonMessage {
      * 税率
      */
     private BigDecimal taxRate;
+    /**
+     * 是否返还
+     */
+    private String exchanged;
 }
