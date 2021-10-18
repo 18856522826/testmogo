@@ -1084,6 +1084,7 @@ public class FinVouMessageSceneClient {
         trans.setTransName(ClientConstants.TRANS_NAME_USE_BUSINESS_MARGIN);
         trans.setContractId(message.getContractNo());
         trans.setIputFlowId(message.getBusinessNo());
+        trans.setCertificateLeaseType(message.getLeaseType());
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
