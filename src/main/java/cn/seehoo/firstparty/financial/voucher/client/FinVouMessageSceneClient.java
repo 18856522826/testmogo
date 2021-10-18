@@ -1102,6 +1102,10 @@ public class FinVouMessageSceneClient {
         transDoc.setChargeAgainstFlag(Integer.parseInt(message.getExchanged()));
         transDoc.setTerm(message.getCurrentTerm());
         transDoc.setSumTerm(message.getLoanTerm());
+        transDoc.setCurrentAccounting(message.getMerchantName());
+        transDoc.setSuppierNm(message.getMerchantName());
+        transDoc.setPlatformPartner(message.getMerchantName());
+
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
