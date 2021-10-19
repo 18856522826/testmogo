@@ -1091,6 +1091,8 @@ public class FinVouMessageSceneClient {
         transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_USE_BUSINESS_MARGIN);
         transDoc.setTransType(ClientConstants.TRANS_TYPE_USE_BUSINESS_MARGIN);
         transDoc.setAmount(message.getBusinessMarginAmount());
+        transDoc.setIncludeTaxRent(message.getBusinessMarginAmount());
+        transDoc.setIncludeCapital(message.getCorrespondCapital());
         transDoc.setInterest(message.getCorrespondInterest());
         transDoc.setProductNm(ClientConstants.PRODUCT_NM_6);
         transDoc.setSuppierNm(message.getMerchantName());

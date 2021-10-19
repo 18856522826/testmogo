@@ -32,6 +32,10 @@ public class UseBusinessMarginCollectionMessage extends CommonMessage {
      */
     private BigDecimal businessMarginAmount;
     /**
+     *对应本金
+     */
+    private BigDecimal correspondCapital;
+    /**
      *对应利息
      */
     private BigDecimal correspondInterest;
