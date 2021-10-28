@@ -1075,7 +1075,7 @@ public class FinVouMessageSceneClient {
         log.info("场景二十三 动用业务保证金-代偿场景所需财务信息,入参:{}",message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
-        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
+        standardMessage.setIsChargeAgainst(message.getExchanged());
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
         trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
@@ -1094,7 +1094,7 @@ public class FinVouMessageSceneClient {
         transDoc.setIncludeTaxRent(message.getBusinessMarginAmount());
         transDoc.setIncludeCapital(message.getCorrespondCapital());
         transDoc.setInterest(message.getCorrespondInterest());
-        transDoc.setProductNm(ClientConstants.PRODUCT_NM_6);
+        setProductNm(transDoc,message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setCustNm(message.getCustName());
         transDoc.setPlatformPartner(message.getMerchantName());
