@@ -85,7 +85,7 @@ public interface ClientConstants {
      */
     String BUSINESS_TYPE_013 = "013";
     /**
-     * 业务类型-补计提销项税
+     * 业务类型-提前结清
      */
     String BUSINESS_TYPE_019 = "019";
     /**
@@ -117,6 +117,10 @@ public interface ClientConstants {
      */
     String BUSINESS_TYPE_014="014";
     /**
+     * 业务类型-行驶购买权-收取名义购买价
+     */
+    String BUSINESS_TYPE_021="021";
+    /**
      * 制证交易名称 收取保证金场景
      */
     String TRANS_NAME_MARGIN = "收取保证金";
@@ -128,6 +132,10 @@ public interface ClientConstants {
      * 制证交易名称-提前结清场景
      */
     String TRANS_NAME_SETTLE_EARLY = "提前结清";
+    /**
+     * 制证交易名称-行驶购买选择权
+     */
+    String TRANS_NAME_USE_RETENTION_PRICE="行驶购买选择权";
     /**
      * 制证交易名称-支付价款场景
      */
@@ -309,6 +317,18 @@ public interface ClientConstants {
      */
     String SUB_TRANS_NAME_RECEIPT_SETTLEMENT="收到结清款";
     /**
+     * 子交易名称-确认结清滞纳金/违约金收入
+     */
+    String SUB_TRANS_NAME_EARLY_CONFIRM_FEE="确认结清滞纳金/违约金收入";
+    /**
+     * 子交易名称-收取名义购买价
+     */
+    String SUB_TRANS_NAME_USE_RETENTION_PRICE="收取名义购买价";
+    /**
+     * 子交易名称-收到结清款
+     */
+    String SUB_TRANS_NAME_EARLY_REPAYMENT="收到结清款";
+    /**
      * 交易类型-收取保证金场景
      */
     String TRANS_TYPE_MARGIN = "0050301";
@@ -316,6 +336,22 @@ public interface ClientConstants {
      * 交易类型-收到结清款场景
      */
     String TRANS_TYPE_RECEIPT_SETTLEMENTN = "0190301";
+    /**
+     * 交易类型-确认结清滞纳金/违约金收入
+     */
+    String TRANS_TYPE_EARLY_CONFIRM_FEE ="0190302";
+    /**
+     * 交易类型-行使购买选择权
+     */
+    String TRANS_TYPE_USE_RETENTION_PRICE="0210301";
+    /**
+     *直租结平
+     */
+    String TRANS_TYPE_EARLY_REPAYMENT_Z="0190103";
+    /**
+     *回租结平
+     */
+    String TRANS_TYPE_EARLY_REPAYMENT_H="0190203";
     /**
      * 交易类型-取得资产 场景
      */
