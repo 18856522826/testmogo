@@ -29,29 +29,9 @@ public class AccruedincomeCollectionMessage extends CommonMessage {
     private String leaseType;
 
     /**
-     * 业务类型
-     */
-    private String bussinessType;
-
-    /**
-     * 申请编号
-     */
-    private String applyNo;
-
-    /**
-     * 提前结清
-     */
-    private String settleEarly;
-
-    /**
      * 合同号码
      */
     private String contractNo;
-
-    /**
-     *补计提收入
-     */
-    private String accrualTask;
 
     /**
      * 0190101-直租补计提收入
@@ -60,7 +40,7 @@ public class AccruedincomeCollectionMessage extends CommonMessage {
     private String transType;
 
     /**
-     * 应计提
+     * 客户姓名
      */
     private BigDecimal custName;
 
@@ -70,23 +50,13 @@ public class AccruedincomeCollectionMessage extends CommonMessage {
     private String productName;
 
     /**
-     * 合作商名称
-     */
-    private String partneName;
-
-    /**
-     * 主产品表方案
-     */
-    private String productTableScheme;
-
-    /**
      * 直租：13 回租6
      */
     private BigDecimal taxRate;
 
     /**
-     * 主表融资期限
+     * 融资期限
      */
-    private BigDecimal financingPeriod;
+    private Integer loanTerm;
 
 }
