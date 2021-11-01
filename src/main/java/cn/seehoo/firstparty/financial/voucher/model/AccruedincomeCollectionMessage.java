@@ -42,7 +42,11 @@ public class AccruedincomeCollectionMessage extends CommonMessage {
     /**
      * 客户姓名
      */
-    private BigDecimal custName;
+    private String custName;
+    /**
+     * 计提收入金额
+     */
+    private BigDecimal amount;
 
     /**
      * 产品名称
