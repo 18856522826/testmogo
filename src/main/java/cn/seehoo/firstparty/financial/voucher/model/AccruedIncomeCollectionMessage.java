@@ -16,7 +16,7 @@ import java.util.Date;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class AccruedincomeCollectionMessage extends CommonMessage {
+public class AccruedIncomeCollectionMessage extends CommonMessage {
 
     /**
      * 是否冲销，0正常 1 红冲 2蓝冲
