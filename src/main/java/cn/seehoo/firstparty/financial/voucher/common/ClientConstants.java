@@ -85,6 +85,10 @@ public interface ClientConstants {
      */
     String BUSINESS_TYPE_013 = "013";
     /**
+     * 业务类型-补计提销项税
+     */
+    String BUSINESS_TYPE_019 = "019";
+    /**
      * 业务类型-首付款计入融资租赁资产
      */
     String BUSINESS_TYPE_052 = "052";
@@ -120,6 +124,10 @@ public interface ClientConstants {
      * 制证交易名称-取得资产场景
      */
     String TRANS_NAME_ASSET = "购入融资资产";
+    /**
+     * 制证交易名称-提前结清场景
+     */
+    String TRANS_NAME_SETTLE_EARLY = "提前结清";
     /**
      * 制证交易名称-支付价款场景
      */
@@ -293,9 +301,21 @@ public interface ClientConstants {
      */
     String SUB_TRANS_NAME_INVOICE_AUTH="发票认证";
     /**
+     * 子交易名称-补计提收入
+     */
+    String SUB_TRANS_NAME_ACCRUED_INCOME="补计提收入";
+    /**
+     * 子交易名称-收到结清款
+     */
+    String SUB_TRANS_NAME_RECEIPT_SETTLEMENT="收到结清款";
+    /**
      * 交易类型-收取保证金场景
      */
     String TRANS_TYPE_MARGIN = "0050301";
+    /**
+     * 交易类型-收到结清款场景
+     */
+    String TRANS_TYPE_RECEIPT_SETTLEMENTN = "0190301";
     /**
      * 交易类型-取得资产 场景
      */
