@@ -33,12 +33,6 @@ public class ReceiptSettlementCollectionMessage extends CommonMessage {
     private String contractNo;
 
     /**
-     * 0190101-直租补计提收入
-     * 0190201-回租补计提收入
-     */
-    private String transType;
-
-    /**
      * 客户姓名
      */
     private String custName;

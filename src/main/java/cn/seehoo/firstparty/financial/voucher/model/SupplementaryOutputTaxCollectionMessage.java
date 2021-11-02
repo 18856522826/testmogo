@@ -33,12 +33,6 @@ public class SupplementaryOutputTaxCollectionMessage extends CommonMessage {
     private String contractNo;
 
     /**
-     * 0190101-直租补计提收入
-     * 0190201-回租补计提收入
-     */
-    private String transType;
-
-    /**
      * 客户姓名
      */
     private String custName;
@@ -51,6 +45,11 @@ public class SupplementaryOutputTaxCollectionMessage extends CommonMessage {
      * 产品名称
      */
     private String productName;
+
+    /**
+     * 3.0业务取05、4.0业务取06
+     */
+    private String businessType;
 
     /**
      * 直租：13 回租6
