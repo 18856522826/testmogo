@@ -333,10 +333,6 @@ public interface ClientConstants {
      */
     String TRANS_TYPE_MARGIN = "0050301";
     /**
-     * 交易类型-收到结清款场景
-     */
-    String TRANS_TYPE_RECEIPT_SETTLEMENTN = "0190301";
-    /**
      * 交易类型-确认结清滞纳金/违约金收入
      */
     String TRANS_TYPE_EARLY_CONFIRM_FEE ="0190302";
@@ -468,6 +464,26 @@ public interface ClientConstants {
      * 交易类型-发票认证
      */
     String TRANS_TYPE_INVOICE_AUTH="0010104";
+    /**
+     * 直租补计提收入
+     */
+    String TRANS_TYPE_DIRECT_RENT="0190101";
+    /**
+     * 回租补计提收入
+     */
+    String TRANS_TYPE_LEASE_BACK="0190201";
+    /**
+     * 直租补计提收入
+     */
+    String TRANS_TYPE_DIRECT_RENT2="0190102";
+    /**
+     * 回租补计提收入
+     */
+    String TRANS_TYPE_LEASE_BACK2="0190202";
+    /**
+     * 收到结清款
+     */
+    String TRANS_TYPE_RECEIPT_SETTLEMENTN = "0190301";
 
     /**
      * 支付Id--收取保证金场景

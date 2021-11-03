@@ -78,7 +78,7 @@ public class ReceiptSettlementCollectionMessage extends CommonMessage {
     private BigDecimal cashFlowAmount;
 
     /**
-     * 收款方开户行名称
+     * 账户key
      */
     private String payeeBankName;
 

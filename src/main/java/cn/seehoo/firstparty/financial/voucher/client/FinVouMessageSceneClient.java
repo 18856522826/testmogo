@@ -1373,7 +1373,7 @@ public class FinVouMessageSceneClient {
         log.info("场景二十七 提前结清-补计提收入,入参:{}",message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
-        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
+        standardMessage.setIsChargeAgainst(message.getIsChargeAgainst());
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
         trans.setLeaseType(message.getLeaseType());
@@ -1390,9 +1390,13 @@ public class FinVouMessageSceneClient {
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
         transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_ACCRUED_INCOME);
-        transDoc.setTransType(message.getTransType());
+        if(ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())){
+            transDoc.setTransType(ClientConstants.TRANS_TYPE_DIRECT_RENT);
+        }else{
+            transDoc.setTransType(ClientConstants.TRANS_TYPE_LEASE_BACK);
+        }
         transDoc.setAmount(message.getAmount());
-        transDoc.setProductNm(message.getProductName());
+        setProductNm(transDoc,message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setPlatformPartner(message.getMerchantName());
         transDoc.setCustNm(message.getCustName());
@@ -1441,9 +1445,13 @@ public class FinVouMessageSceneClient {
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
         transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_ACCRUED_INCOME);
-        transDoc.setTransType(message.getTransType());
+        if(ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())){
+            transDoc.setTransType(ClientConstants.TRANS_TYPE_DIRECT_RENT2);
+        }else{
+            transDoc.setTransType(ClientConstants.TRANS_TYPE_LEASE_BACK2);
+        }
         transDoc.setAmount(message.getAmount());
-        transDoc.setProductNm(message.getProductName());
+        setProductNm(transDoc,message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setPlatformPartner(message.getMerchantName());
         transDoc.setCustNm(message.getCustName());
@@ -1501,8 +1509,8 @@ public class FinVouMessageSceneClient {
         transDoc.setFee(message.getFee());
         transDoc.setInterest(message.getInterest());
         transDoc.setFlowsMoney(message.getCashFlowAmount());
-        transDoc.setPayeeBankName(message.getPayeeBankName());
-        transDoc.setProductNm(message.getProductName());
+        transDoc.setPayeeBankName(config.getAccountConfigs().get(message.getPayeeBankName()).getPayeeBankName());
+        setProductNm(transDoc,message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setPlatformPartner(message.getMerchantName());
         transDoc.setCustNm(message.getCustName());
@@ -1548,7 +1556,7 @@ public class FinVouMessageSceneClient {
         transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_EARLY_CONFIRM_FEE);
         transDoc.setTransType(ClientConstants.TRANS_TYPE_EARLY_CONFIRM_FEE);
         transDoc.setAmount(BigDecimal.ZERO);
-        transDoc.setProductNm(message.getProductName());
+        setProductNm(transDoc,message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setPlatformPartner(message.getMerchantName());
         transDoc.setCustNm(message.getCustName());
@@ -1563,9 +1571,9 @@ public class FinVouMessageSceneClient {
         //滞纳金(违约金）
         transDoc.setPenalSum(message.getPenalSum());
         //不含税滞纳金
-        transDoc.setNoTaxLateFee(message.getNoTaxLateFee());
+        transDoc.setTaxLateFee(getTaxAmount(message.getPenalSum(),message.getTaxRate().divide(new BigDecimal("100"),2,BigDecimal.ROUND_HALF_UP)));
         //滞纳金税额
-        transDoc.setTaxLateFee(message.getTaxLateFee());
+        transDoc.setTaxLateFee(transDoc.getPenalSum().subtract(transDoc.getTaxLateFee()));
 
 
         //租户赋值
