@@ -1548,6 +1548,8 @@ public class FinVouMessageSceneClient {
         trans.setTransName(ClientConstants.TRANS_NAME_SETTLE_EARLY);
         trans.setContractId(message.getContractNo());
         trans.setIputFlowId(message.getBusinessNo());
+        trans.setGenerateTime(message.getDate());
+        trans.setGenerateDate(message.getDate());
         trans.setContractName(ClientConstants.CONTRACT_NAME);
 
         //制证子交易流水
@@ -1601,6 +1603,8 @@ public class FinVouMessageSceneClient {
         trans.setTransName(ClientConstants.TRANS_NAME_SETTLE_EARLY);
         trans.setContractId(message.getContractNo());
         trans.setIputFlowId(message.getBusinessNo());
+        trans.setGenerateTime(message.getDate());
+        trans.setGenerateDate(message.getDate());
         trans.setContractName(ClientConstants.CONTRACT_NAME);
 
         //制证子交易流水
@@ -1656,6 +1660,8 @@ public class FinVouMessageSceneClient {
         trans.setTransName(ClientConstants.TRANS_NAME_USE_RETENTION_PRICE);
         trans.setContractId(message.getContractNo());
         trans.setIputFlowId(message.getBusinessNo());
+        trans.setGenerateTime(message.getDate());
+        trans.setGenerateDate(message.getDate());
         trans.setContractName(ClientConstants.CONTRACT_NAME);
 
         //制证子交易流水
