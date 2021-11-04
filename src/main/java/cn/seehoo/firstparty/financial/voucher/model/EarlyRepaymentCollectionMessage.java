@@ -61,4 +61,16 @@ public class EarlyRepaymentCollectionMessage extends CommonMessage{
      * 当期未收利息
      */
     private BigDecimal currentNotChargeInterest;
+    /**
+     * 收益
+     */
+    private BigDecimal earnings;
+    /**
+     * 租金
+     */
+    private BigDecimal includeTaxRent;
+    /**
+     * 利息税额
+     */
+    private BigDecimal taxInterest;
 }

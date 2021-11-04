@@ -1573,7 +1573,7 @@ public class FinVouMessageSceneClient {
         //滞纳金(违约金）
         transDoc.setPenalSum(message.getPenalSum());
         //不含税滞纳金
-        transDoc.setTaxLateFee(getTaxAmount(message.getPenalSum(),message.getTaxRate().divide(new BigDecimal("100"),2,BigDecimal.ROUND_HALF_UP)));
+        transDoc.setNoTaxLateFee(getTaxAmount(message.getPenalSum(),message.getTaxRate().divide(new BigDecimal("100"),2,BigDecimal.ROUND_HALF_UP)));
         //滞纳金税额
         transDoc.setTaxLateFee(transDoc.getPenalSum().subtract(transDoc.getTaxLateFee()));
 
@@ -1591,7 +1591,7 @@ public class FinVouMessageSceneClient {
      * @param message 入参
      */
     public void earlyRepayment(EarlyRepaymentCollectionMessage message) throws Exception {
-        log.info("场景三十 提前结清-结平,入参:{}",message.toString());
+        log.info("场景三十一 提前结清-结平,入参:{}",message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
@@ -1621,6 +1621,9 @@ public class FinVouMessageSceneClient {
         transDoc.setResidueUncollectedInterest(message.getNotChargeInterest());
         transDoc.setPresentUncollectedCapital(message.getCurrentNotChargePrincipal());
         transDoc.setPresentUncollectedInterest(message.getCurrentNotChargeInterest());
+        transDoc.setEarnings(message.getEarnings());
+        transDoc.setIncludeTaxRent(message.getIncludeTaxRent());
+        transDoc.setTaxInterest(message.getTaxInterest());
         setProductNm(transDoc,message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setPlatformPartner(message.getMerchantName());
@@ -1648,7 +1651,7 @@ public class FinVouMessageSceneClient {
      * @param message 入参
      */
     public void useRetentionPrice(UseRetentionPriceCollectionMessage message) throws Exception {
-        log.info("场景三十 行驶购买权-收取名义购买价,入参:{}",message.toString());
+        log.info("场景三十二 行驶购买权-收取名义购买价,入参:{}",message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
