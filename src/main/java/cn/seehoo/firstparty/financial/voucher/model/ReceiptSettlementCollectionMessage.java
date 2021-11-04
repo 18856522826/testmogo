@@ -18,11 +18,6 @@ import java.math.BigDecimal;
 public class ReceiptSettlementCollectionMessage extends CommonMessage {
 
     /**
-     * 是否冲销，0正常 1 红冲 2蓝冲
-     */
-    private String isChargeAgainst;
-
-    /**
      * 租赁属性
      */
     private String leaseType;
@@ -96,5 +91,20 @@ public class ReceiptSettlementCollectionMessage extends CommonMessage {
      * 融资期限
      */
     private Integer loanTerm;
+
+    /**
+     * 付款方开户行名称
+     */
+    private String payerBankName;
+
+    /**
+     * 付款方账号
+     */
+    private String payerAcctNo;
+
+    /**
+     * 收款方账号
+     */
+    private String payeeAcctNo;
 
 }

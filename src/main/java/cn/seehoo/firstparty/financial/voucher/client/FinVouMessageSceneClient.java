@@ -1482,10 +1482,11 @@ public class FinVouMessageSceneClient {
         log.info("场景二十九 提前结清-收到结清款项,入参:{}",message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
-        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_RED);
+        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
-        trans.setLeaseType(message.getLeaseType());
+        trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
+        trans.setCertificateLeaseType(message.getLeaseType());
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_019);
         trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_SETTLE_EARLY);
@@ -1502,13 +1503,17 @@ public class FinVouMessageSceneClient {
         transDoc.setTransType(ClientConstants.TRANS_TYPE_RECEIPT_SETTLEMENTN);
         transDoc.setAmount(message.getActualRepaymentAmt());
         transDoc.setPenalSum(message.getPenalty());
+        transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
         transDoc.setPresentUncollectedCapital(message.getResidualPrincipal());
         transDoc.setPresentUncollectedInterest(message.getUncollectedInterest());
         transDoc.setBuyoutPrice(message.getPurchasePrice());
         transDoc.setFee(message.getFee());
         transDoc.setInterest(message.getInterest());
         transDoc.setFlowsMoney(message.getCashFlowAmount());
+        transDoc.setPayerBankName(message.getPayerBankName());
         transDoc.setPayeeBankName(config.getAccountConfigs().get(message.getPayeeBankName()).getPayeeBankName());
+        transDoc.setPayerAcctNo(message.getPayerAcctNo());
+        transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
         setProductNm(transDoc,message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setPlatformPartner(message.getMerchantName());
