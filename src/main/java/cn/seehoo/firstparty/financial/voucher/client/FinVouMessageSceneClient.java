@@ -1575,7 +1575,7 @@ public class FinVouMessageSceneClient {
         //不含税滞纳金
         transDoc.setNoTaxLateFee(getTaxAmount(message.getPenalSum(),message.getTaxRate().divide(new BigDecimal("100"),2,BigDecimal.ROUND_HALF_UP)));
         //滞纳金税额
-        transDoc.setTaxLateFee(transDoc.getPenalSum().subtract(transDoc.getTaxLateFee()));
+        transDoc.setTaxLateFee(transDoc.getPenalSum().subtract(transDoc.getNoTaxLateFee()));
 
 
         //租户赋值
