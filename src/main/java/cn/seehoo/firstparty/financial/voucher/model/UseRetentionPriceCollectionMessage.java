@@ -50,4 +50,12 @@ public class UseRetentionPriceCollectionMessage  extends CommonMessage {
      * 账户key
      */
     private String bizUseType;
+    /**
+     *付款方开户行名称
+     */
+    private String payerBankName;
+    /**
+     *付款方账号
+     */
+    private String payerAcctNo;
 }

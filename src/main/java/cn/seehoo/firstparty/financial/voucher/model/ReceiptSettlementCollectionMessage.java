@@ -73,11 +73,6 @@ public class ReceiptSettlementCollectionMessage extends CommonMessage {
     private BigDecimal cashFlowAmount;
 
     /**
-     * 账户key
-     */
-    private String payeeBankName;
-
-    /**
      * 产品名称
      */
     private String productName;
@@ -103,8 +98,8 @@ public class ReceiptSettlementCollectionMessage extends CommonMessage {
     private String payerAcctNo;
 
     /**
-     * 收款方账号
+     * 账户key
      */
-    private String payeeAcctNo;
+    private String bizUseType;
 
 }

@@ -1511,9 +1511,10 @@ public class FinVouMessageSceneClient {
         transDoc.setInterest(message.getInterest());
         transDoc.setFlowsMoney(message.getCashFlowAmount());
         transDoc.setPayerBankName(message.getPayerBankName());
-        transDoc.setPayeeBankName(config.getAccountConfigs().get(message.getPayeeBankName()).getPayeeBankName());
+        transDoc.setPayeeBankName(config.getAccountConfigs().get(message.getBizUseType()).getPayeeBankName());
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
-        transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
+        transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
+        transDoc.setSpecialSupplierName(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
         setProductNm(transDoc,message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setPlatformPartner(message.getMerchantName());
@@ -1661,7 +1662,8 @@ public class FinVouMessageSceneClient {
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
-        trans.setLeaseType(message.getLeaseType());
+        trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
+        trans.setCertificateLeaseType(message.getLeaseType());
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_021);
         trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_USE_RETENTION_PRICE);
@@ -1689,7 +1691,11 @@ public class FinVouMessageSceneClient {
         transDoc.setSumTerm(message.getLoanTerm());
         transDoc.setGenerateTime(message.getDate());
         transDoc.setGenerateDate(message.getDate());
+        transDoc.setPayerBankName(message.getPayerBankName());
         transDoc.setPayeeBankName(config.getAccountConfigs().get(message.getBizUseType()).getPayeeBankName());
+        transDoc.setPayerAcctNo(message.getPayerAcctNo());
+        transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
+        transDoc.setSpecialSupplierName(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
 
 
         //租户赋值
