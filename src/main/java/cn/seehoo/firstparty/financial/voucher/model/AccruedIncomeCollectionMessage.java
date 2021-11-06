@@ -19,11 +19,6 @@ import java.util.Date;
 public class AccruedIncomeCollectionMessage extends CommonMessage {
 
     /**
-     * 是否冲销，0正常 1 红冲 2蓝冲
-     */
-    private String isChargeAgainst;
-
-    /**
      * 租赁属性
      */
     private String leaseType;

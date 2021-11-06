@@ -68,11 +68,6 @@ public class ReceiptSettlementCollectionMessage extends CommonMessage {
     private BigDecimal interest;
 
     /**
-     * 现金流量金额
-     */
-    private BigDecimal cashFlowAmount;
-
-    /**
      * 产品名称
      */
     private String productName;
