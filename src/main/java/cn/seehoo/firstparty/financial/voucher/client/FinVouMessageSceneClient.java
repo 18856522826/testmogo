@@ -1454,7 +1454,6 @@ public class FinVouMessageSceneClient {
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setPlatformPartner(message.getMerchantName());
         transDoc.setCustNm(message.getCustName());
-        transDoc.setCashFlow(String.valueOf(message.getAmount()));
         transDoc.setFinancialProduct(message.getProductName());
         transDoc.setTaxRate(message.getTaxRate());
         transDoc.setCurrentAccounting(message.getMerchantName());
@@ -1657,7 +1656,7 @@ public class FinVouMessageSceneClient {
      * 提前结清-实收租金
      * @param message 入参
      */
-    public void earlyActuallyCurrentRent(EarlyActuallyCurrentCollectionMessage message) throws Exception {
+    public void earlyActuallyCurrentRent(ActuallyCurrentRentCollectionMessage message) throws Exception {
         log.info("场景三十二 提前结清-实收租金,入参:{}", message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
@@ -1689,9 +1688,6 @@ public class FinVouMessageSceneClient {
         transDoc.setTaxInterest(message.getTaxInterest());
         transDoc.setCashFlow(String.valueOf(message.getCurrentPaymentAmount()));
         transDoc.setPayerBankName(message.getPayerBankName());
-        if (ClientConstants.ASSET_TYPE.equals(message.getBusinessType())){
-            transDoc.setPayeeBankName("网商银行");
-        }
         transDoc.setPayeeBankName(config.getAccountConfigs().get(message.getBizUseType()).getPayeeBankName());
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
         transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
