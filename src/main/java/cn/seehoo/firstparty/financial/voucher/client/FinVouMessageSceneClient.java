@@ -1509,9 +1509,9 @@ public class FinVouMessageSceneClient {
         transDoc.setFee(message.getFee());
         transDoc.setInterest(message.getInterest());
         transDoc.setFlowsMoney(message.getPurchasePrice());
-        transDoc.setPayerBankName(message.getPayerBankName());
+        transDoc.setPayerBankName(config.getAccountConfigs().get(message.getBizUseType()).getPayeeBankName());
         transDoc.setPayeeBankName(config.getAccountConfigs().get(message.getBizUseType()).getPayeeBankName());
-        transDoc.setPayerAcctNo(message.getPayerAcctNo());
+        transDoc.setPayerAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
         transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
         transDoc.setSpecialSupplierName(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
         setProductNm(transDoc,message.getBusinessType());
@@ -1577,11 +1577,10 @@ public class FinVouMessageSceneClient {
         transDoc.setGenerateDate(message.getDate());
         //滞纳金(违约金）
         transDoc.setPenalSum(message.getPenalSum());
-        //不含税滞纳金
-        transDoc.setNoTaxLateFee(getTaxAmount(message.getPenalSum(),message.getTaxRate().divide(new BigDecimal("100"),2,BigDecimal.ROUND_HALF_UP)));
         //滞纳金税额
-        transDoc.setTaxLateFee(transDoc.getPenalSum().subtract(transDoc.getNoTaxLateFee()));
-
+        transDoc.setTaxLateFee(getTaxAmount(message.getPenalSum(),message.getTaxRate().divide(new BigDecimal("100"),2,BigDecimal.ROUND_HALF_UP)));
+        //不含税滞纳金
+        transDoc.setNoTaxLateFee(transDoc.getPenalSum().subtract(transDoc.getTaxLateFee()));
 
         //租户赋值
         setTenantValue(trans,transDoc);
@@ -1622,7 +1621,7 @@ public class FinVouMessageSceneClient {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_EARLY_REPAYMENT_H);
         }
         transDoc.setAmount(BigDecimal.ZERO);
-        transDoc.setResidueUncollectedCapital(BigDecimal.ZERO);
+        transDoc.setResidueUncollectedCapital(message.getNotChargePrincipal());
         transDoc.setResidueUncollectedInterest(message.getNotChargeInterest());
         transDoc.setPresentUncollectedCapital(message.getCurrentNotChargePrincipal());
         transDoc.setPresentUncollectedInterest(message.getCurrentNotChargeInterest());
@@ -1687,9 +1686,9 @@ public class FinVouMessageSceneClient {
         transDoc.setNoTaxInterest(message.getNoTaxInterest());
         transDoc.setTaxInterest(message.getTaxInterest());
         transDoc.setCashFlow(String.valueOf(message.getCurrentPaymentAmount()));
-        transDoc.setPayerBankName(message.getPayerBankName());
+        transDoc.setPayerBankName(config.getAccountConfigs().get(message.getBizUseType()).getPayeeBankName());
         transDoc.setPayeeBankName(config.getAccountConfigs().get(message.getBizUseType()).getPayeeBankName());
-        transDoc.setPayerAcctNo(message.getPayerAcctNo());
+        transDoc.setPayerAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
         transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
         transDoc.setSpecialSupplierName(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
         transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
@@ -1755,9 +1754,9 @@ public class FinVouMessageSceneClient {
         transDoc.setSumTerm(message.getLoanTerm());
         transDoc.setGenerateTime(message.getDate());
         transDoc.setGenerateDate(message.getDate());
-        transDoc.setPayerBankName(message.getPayerBankName());
+        transDoc.setPayerBankName(config.getAccountConfigs().get(message.getBizUseType()).getPayeeBankName());
         transDoc.setPayeeBankName(config.getAccountConfigs().get(message.getBizUseType()).getPayeeBankName());
-        transDoc.setPayerAcctNo(message.getPayerAcctNo());
+        transDoc.setPayerAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
         transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
         transDoc.setSpecialSupplierName(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
 
