@@ -329,6 +329,10 @@ public interface ClientConstants {
      */
     String SUB_TRANS_NAME_EARLY_REPAYMENT="收到结清款";
     /**
+     * 子交易名称-结平
+     */
+    String SUB_TRANS_NAME_EARLY_TIE="结平";
+    /**
      * 交易类型-收取保证金场景
      */
     String TRANS_TYPE_MARGIN = "0050301";

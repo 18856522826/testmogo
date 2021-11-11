@@ -1614,7 +1614,7 @@ public class FinVouMessageSceneClient {
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
-        transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_EARLY_REPAYMENT);
+        transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_EARLY_TIE);
         if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())){
             transDoc.setTransType(ClientConstants.TRANS_TYPE_EARLY_REPAYMENT_Z);
         }else{
