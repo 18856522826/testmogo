@@ -1681,10 +1681,8 @@ public class FinVouMessageSceneClient {
 
         transDoc.setIncludeTaxRent(message.getIncludeTaxRent());
         transDoc.setNoTaxRent(message.getNoTaxRent());
-        transDoc.setTaxRent(message.getTaxRent());
         transDoc.setIncludeCapital(message.getIncludeCapital());
         transDoc.setNoTaxInterest(message.getNoTaxInterest());
-        transDoc.setTaxInterest(message.getTaxInterest());
         transDoc.setCashFlow(String.valueOf(message.getCurrentPaymentAmount()));
         transDoc.setPayerBankName(config.getAccountConfigs().get(message.getBizUseType()).getPayeeBankName());
         transDoc.setPayeeBankName(config.getAccountConfigs().get(message.getBizUseType()).getPayeeBankName());
