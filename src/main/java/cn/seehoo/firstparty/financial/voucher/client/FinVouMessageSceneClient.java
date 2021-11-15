@@ -1402,6 +1402,7 @@ public class FinVouMessageSceneClient {
         transDoc.setCustNm(message.getCustName());
         transDoc.setFinancialProduct(message.getProductName());
         transDoc.setTaxRate(message.getTaxRate());
+        transDoc.setIsMovableProperty(ClientConstants.IS_MOVABLE_PROPERTY);
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setTerm(0);
@@ -1456,6 +1457,7 @@ public class FinVouMessageSceneClient {
         transDoc.setCustNm(message.getCustName());
         transDoc.setFinancialProduct(message.getProductName());
         transDoc.setTaxRate(message.getTaxRate());
+        transDoc.setIsMovableProperty(ClientConstants.IS_MOVABLE_PROPERTY);
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setTerm(0);
@@ -1520,6 +1522,7 @@ public class FinVouMessageSceneClient {
         transDoc.setCustNm(message.getCustName());
         transDoc.setFinancialProduct(message.getProductName());
         transDoc.setTaxRate(message.getTaxRate());
+        transDoc.setIsMovableProperty(ClientConstants.IS_MOVABLE_PROPERTY);
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
@@ -1569,6 +1572,7 @@ public class FinVouMessageSceneClient {
         transDoc.setCustNm(message.getCustName());
         transDoc.setFinancialProduct(message.getProductName());
         transDoc.setTaxRate(message.getTaxRate());
+        transDoc.setIsMovableProperty(ClientConstants.IS_MOVABLE_PROPERTY);
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setTerm(0);
@@ -1634,6 +1638,7 @@ public class FinVouMessageSceneClient {
         transDoc.setCustNm(message.getCustName());
         transDoc.setFinancialProduct(message.getProductName());
         transDoc.setTaxRate(message.getTaxRate());
+        transDoc.setIsMovableProperty(ClientConstants.IS_MOVABLE_PROPERTY);
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setTerm(0);
