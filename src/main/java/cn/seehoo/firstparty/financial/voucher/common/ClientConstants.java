@@ -325,6 +325,10 @@ public interface ClientConstants {
      */
     String SUB_TRANS_NAME_USE_RETENTION_PRICE="收取名义购买价";
     /**
+     * 子交易名称-正常结清结转
+     */
+    String SUB_TRANS_NAME_SETTLE_CARRY_FORWARD="正常结清结转";
+    /**
      * 子交易名称-收到结清款
      */
     String SUB_TRANS_NAME_EARLY_REPAYMENT="收到结清款";
@@ -344,6 +348,10 @@ public interface ClientConstants {
      * 交易类型-行使购买选择权
      */
     String TRANS_TYPE_USE_RETENTION_PRICE="0210301";
+    /**
+     * 交易类型-正常结清结转
+     */
+    String TRANS_TYPE_SETTLE_CARRY_FORWARD="0210302";
     /**
      *直租结平
      */
