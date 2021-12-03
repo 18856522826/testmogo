@@ -1147,7 +1147,6 @@ public class FinVouMessageSceneClient {
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
         transDoc.setPayeeBankName(message.getPayeeBankName());
         transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
-        transDoc.setPlatformPartner(message.getPaymentAgency());
         transDoc.setCurrentAccounting("乘用车待核查客户");
         transDoc.setSuppierNm(message.getPaymentAgency());
         transDoc.setProductNm(ClientConstants.PRODUCT_NM_6);
