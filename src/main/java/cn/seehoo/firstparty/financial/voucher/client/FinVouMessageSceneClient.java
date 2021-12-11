@@ -675,6 +675,11 @@ public class FinVouMessageSceneClient {
         transDoc.setPayerBankName(message.getPayerBankName());
         transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
+        //3.0线下且扣款时间为月底最后一天进行特殊处理
+        final String offline="2-4";
+        if (offline.equals(message.getBizUseType())){
+            transDoc.setPayeeBankName("支付宝");
+        }
         transDoc.setIncludeTaxRent(message.getIncludeTaxRent());
         transDoc.setNoTaxRent(message.getNoTaxRent());
         transDoc.setTaxRent(message.getTaxRent());
