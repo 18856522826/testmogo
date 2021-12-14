@@ -676,10 +676,6 @@ public class FinVouMessageSceneClient {
         transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
         //3.0线下且扣款时间为月底最后一天进行特殊处理
-        final String offline="2-4";
-        if (offline.equals(message.getBizUseType())){
-            transDoc.setPayeeBankName("支付宝");
-        }
         transDoc.setIncludeTaxRent(message.getIncludeTaxRent());
         transDoc.setNoTaxRent(message.getNoTaxRent());
         transDoc.setTaxRent(message.getTaxRent());
@@ -689,6 +685,12 @@ public class FinVouMessageSceneClient {
         transDoc.setGenerateTime(message.getDate());
         transDoc.setGenerateDate(message.getDate());
         transDoc.setSpecialSupplierName(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
+        //3.0线下且扣款时间为月底最后一天进行特殊处理
+        final String offline="2-4";
+        if (offline.equals(message.getBizUseType())){
+            transDoc.setPayeeBankName("支付宝");
+            transDoc.setSpecialSupplierName("浙江大搜车融资租赁有限公司");
+        }
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
