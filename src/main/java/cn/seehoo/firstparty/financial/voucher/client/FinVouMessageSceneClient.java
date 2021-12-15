@@ -69,6 +69,13 @@ public class FinVouMessageSceneClient {
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setDepositType(ClientConstants.DEPOSIT_TYPE);
         transDoc.setProductNm(ClientConstants.PRODUCT_NM_6);
+        if (ClientConstants.ASSET_TYPE.equals(message.getBusinessType())){
+            trans.setContractId("9903");
+            transDoc.setProductNm(ClientConstants.PRODUCT_NM_5);
+        }else {
+            trans.setContractId("9904");
+            transDoc.setProductNm(ClientConstants.PRODUCT_NM_6);
+        }
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
