@@ -1216,7 +1216,7 @@ public class FinVouMessageSceneClient {
         transDoc.setIncludeCapital(message.getIncludeCapital());
         transDoc.setPlatformPartner(message.getPaymentAgency());
         transDoc.setCurrentAccounting(message.getPaymentAgency());
-        transDoc.setProductNm(ClientConstants.PRODUCT_NM_6);
+        setProductNm(transDoc,message.getBusinessType());
         //租户赋值
         setTenantValue(trans,transDoc);
         docList.add(transDoc);
