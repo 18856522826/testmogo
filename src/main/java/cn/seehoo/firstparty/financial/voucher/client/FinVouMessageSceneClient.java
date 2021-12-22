@@ -1158,7 +1158,11 @@ public class FinVouMessageSceneClient {
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
         transDoc.setPayeeBankName(message.getPayeeBankName());
         transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
-        transDoc.setCurrentAccounting(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
+        if (ClientConstants.ASSET_TYPE.equals(message.getBusinessType())){
+            transDoc.setCurrentAccounting("浙江大搜车融资租赁有限公司");
+        }else {
+            transDoc.setCurrentAccounting(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
+        }
         transDoc.setSuppierNm(message.getPaymentAgency());
         setProductNm(transDoc,message.getBusinessType());
         transDoc.setFlowsMoney(BigDecimal.ZERO);
