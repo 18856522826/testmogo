@@ -1160,8 +1160,11 @@ public class FinVouMessageSceneClient {
         transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
         if (ClientConstants.ASSET_TYPE.equals(message.getBusinessType())){
             transDoc.setCurrentAccounting("浙江大搜车融资租赁有限公司");
+            transDoc.setSpecialSupplierName("浙江大搜车融资租赁有限公司");
         }else {
+            //三方机构全称
             transDoc.setCurrentAccounting(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
+            transDoc.setSpecialSupplierName(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
         }
         transDoc.setSuppierNm(message.getPaymentAgency());
         setProductNm(transDoc,message.getBusinessType());
