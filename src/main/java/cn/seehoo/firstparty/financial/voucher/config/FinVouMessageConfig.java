@@ -36,6 +36,10 @@ public class FinVouMessageConfig {
      */
     private String bankAccountNo;
     /**
+     * AB口径
+     */
+    private String flag="B";
+    /**
      * 账户配置
      */
     private Map<String, AccountConfig> accountConfigs;
