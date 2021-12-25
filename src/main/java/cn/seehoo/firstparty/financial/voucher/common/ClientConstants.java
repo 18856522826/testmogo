@@ -81,6 +81,10 @@ public interface ClientConstants {
      */
     String BUSINESS_TYPE_012 = "012";
     /**
+     *业务类型-计提利息收入B口径
+     */
+    String BUSINESS_TYPE_058 = "058";
+    /**
      * 业务类型-计算销项税
      */
     String BUSINESS_TYPE_013 = "013";
@@ -153,6 +157,10 @@ public interface ClientConstants {
      */
     String TRANS_NAME_INTEREST_INCOME= "计提利息收入";
     /**
+     * 制证交易名称-计提利息收入 场景B口径
+     */
+    String TRANS_NAME_INTEREST_INCOME_B= "计提利息收入及销项税";
+    /**
      * 制证交易名称-计提销项税额
      */
     String TRANS_NAME_OUTPUT_TAX ="计提销项税额";
@@ -180,6 +188,10 @@ public interface ClientConstants {
      * 制证交易名称-动用业务保证金-代偿
      */
     String TRANS_NAME_USE_BUSINESS_MARGIN ="业务保证金代偿";
+    /**
+     * 制证交易名称-动用业务保证金-代偿
+     */
+    String TRANS_NAME_USE_BUSINESS_MARGIN_B ="平台方保证金代偿";
     /**
      * 制证交易名称-内部资金调拨
      */
@@ -235,7 +247,15 @@ public interface ClientConstants {
     /**
      * 子交易名称-计算销项税场景
      */
+    String SUB_TRANS_NAME_OUTPUT_TAX_DIRECT_RENT_B="直租业务计提销项税额";
+    /**
+     * 子交易名称-计算销项税场景
+     */
     String SUB_TRANS_NAME_OUTPUT_TAX_BACK_RENT="回租逐期开票计提销项税额";
+    /**
+     * 子交易名称-计算销项税场景
+     */
+    String SUB_TRANS_NAME_OUTPUT_TAX_BACK_RENT_B="回租租业务计提销项税额";
     /**
      * 子交易名称-首付款计入融资租赁资产
      */
@@ -253,13 +273,29 @@ public interface ClientConstants {
      */
     String SUB_TRANS_NAME_CURRENT_RENT_BANK="实收当期租金";
     /**
+     * 子交易名称-实收当期租金
+     */
+    String SUB_TRANS_NAME_CURRENT_RENT_BANK_AUTO_B="实收当期租金(第三方支付平台)";
+    /**
+     * 子交易名称-实收当期租金
+     */
+    String SUB_TRANS_NAME_CURRENT_RENT_BANK_MANUAL_B="实收当期租金(网商银行)";
+    /**
      * 子交易名称-预收下期租金
      */
     String SUB_TRANS_NAME_NEXT_RENT_BANK="预收下期租金";
     /**
+     * 子交易名称-预收下期租金
+     */
+    String SUB_TRANS_NAME_NEXT_RENT_BANK_B="预收下期租金(网商银行)";
+    /**
      * 子交易名称-预收下期租金退回
      */
     String SUB_TRANS_NAME_NEXT_RENT_RETURN="预收下期租金退回";
+    /**
+     * 子交易名称-预收下期租金退回 B口径
+     */
+    String SUB_TRANS_NAME_NEXT_RENT_RETURN_B="预收下期租金退回(网商银行)";
     /**
      * 子交易名称-暂挂账
      */
@@ -289,6 +325,10 @@ public interface ClientConstants {
      */
     String SUB_TRANS_NAME_USE_BUSINESS_MARGIN="业务保证金代偿";
     /**
+     * 子交易名称-未被认领-确实无法偿付的其他应付款项
+     */
+    String SUB_TRANS_NAME_USE_BUSINESS_MARGIN_B="平台方保证金代偿";
+    /**
      * 子交易名称-资金调拨_提现
      */
     String SUB_TRANS_NAME_FUND_TRANSFER_WITHDRAW="提现";
@@ -300,6 +340,10 @@ public interface ClientConstants {
      * 子交易名称-实收滞纳金、违约金（网商银行）
      */
     String SUB_TRANS_NAME_FUND_LATE_FEES="实收滞纳金、违约金（网商银行）";
+    /**
+     * 子交易名称-实收滞纳金、违约金（网商银行）
+     */
+    String SUB_TRANS_NAME_FUND_LATE_FEES_B="实收滞纳金、违约金（第三方支付平台）";
     /**
      * 子交易名称-转待凭证
      */
@@ -316,6 +360,10 @@ public interface ClientConstants {
      * 子交易名称-收到结清款
      */
     String SUB_TRANS_NAME_RECEIPT_SETTLEMENT="收到结清款";
+    /**
+     * 子交易名称-收到结清款
+     */
+    String SUB_TRANS_NAME_RECEIPT_SETTLEMENT_B="收到结清款（网商银行）";
     /**
      * 子交易名称-确认结清滞纳金/违约金收入
      */
@@ -393,9 +441,17 @@ public interface ClientConstants {
      */
     String TRANS_TYPE_INTEREST_DIRECT_RENT = "0120101";
     /**
+     * 交易类型-计提利息收入 场景_B口径
+     */
+    String TRANS_TYPE_INTEREST_DIRECT_RENT_B = "0580101";
+    /**
      * 交易类型-计提利息收入 场景
      */
     String TRANS_TYPE_INTEREST_LEASE_BACK = "0120201";
+    /**
+     * 交易类型-计提利息收入 场景_B口径
+     */
+    String TRANS_TYPE_INTEREST_LEASE_BACK_B = "0580201";
     /**
      * 交易类型-计算销项税（直租）
      */
@@ -421,6 +477,10 @@ public interface ClientConstants {
      */
     String TRANS_TYPE_CURRENT_RENT_BANK="0060301";
     /**
+     * 交易类型-实收当期租金手工勾稽
+     */
+    String TRANS_TYPE_CURRENT_RENT_BANK_MANUAL_B="0060304";
+    /**
      * 交易类型-预收下期租金（网商银行）
      */
     String TRANS_TYPE_NEXT_RENT_BANK="0060302";
@@ -428,6 +488,10 @@ public interface ClientConstants {
      * 交易类型-预收下期租金（网商银行）
      */
     String TRANS_TYPE_NEXT_RENT_RETURN="0060303";
+    /**
+     * 交易类型-预收下期租金退回（网商银行）
+     */
+    String TRANS_TYPE_NEXT_RENT_RETURN_B="0060306";
     /**
      * 交易类型-暂挂账
      */
@@ -457,6 +521,10 @@ public interface ClientConstants {
      */
     String TRANS_TYPE_USE_BUSINESS_MARGIN="0090301";
     /**
+     * 交易类型-未被认领-确实无法偿付的其他应付款项
+     */
+    String TRANS_TYPE_USE_BUSINESS_MARGIN_B="0570301";
+    /**
      * 交易类型-资金调拨-提现
      */
     String TRANS_TYPE_FUND_TRANSFER_WITHDRAW="0390301";
@@ -468,6 +536,10 @@ public interface ClientConstants {
      * 交易类型-实收滞纳金
      */
     String TRANS_TYPE_FUND_LATE_FEES="0140302";
+    /**
+     * 交易类型-实收滞纳金 自动
+     */
+    String TRANS_TYPE_FUND_LATE_FEES_AUTO_B ="0140303";
     /**
      * 交易类型-转待凭证
      */
