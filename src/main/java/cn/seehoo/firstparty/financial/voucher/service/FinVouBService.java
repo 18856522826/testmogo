@@ -305,6 +305,15 @@ public class FinVouBService implements FinVouService {
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
+        if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())) {
+            transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_RENT_DIRECT_RENT);
+            transDoc.setTransType(ClientConstants.TRANS_TYPE_RENT_DIRECT_RENT);
+            //本金税额和
+            transDoc.setTaxCapital(message.getGyPrincipalTax());
+        }else {
+            transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_RENT_LEASE_BACK);
+            transDoc.setTransType(ClientConstants.TRANS_TYPE_RENT_LEASE_BACK);
+        }
         transDoc.setAmount(BigDecimal.ZERO);
         //不含税利息和
         transDoc.setNoTaxInterest(message.getGyInterestSum());
@@ -312,8 +321,6 @@ public class FinVouBService implements FinVouService {
         transDoc.setTaxInterest(message.getGyInterestTaxSum());
         //不含税本金和
         transDoc.setContractPrice(message.getGyPrincipalExcludeTax());
-        //本金税额和
-        transDoc.setTaxCapital(message.getGyPrincipalTax());
         //利息和
         transDoc.setGoodsTax(message.getGyInterestSum().add(message.getGyInterestTaxSum()));
         //本金和
