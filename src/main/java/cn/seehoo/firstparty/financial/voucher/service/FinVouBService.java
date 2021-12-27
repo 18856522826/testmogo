@@ -1507,7 +1507,7 @@ public class FinVouBService implements FinVouService {
         transDoc.setBuyoutPrice(message.getPurchasePrice());
         transDoc.setFee(message.getFee());
         transDoc.setInterest(message.getInterest());
-        //todo: flows 没有这个字段
+        transDoc.setFlows(BigDecimal.ZERO);
         transDoc.setFlowsMoney(message.getPurchasePrice());
 
         transDoc.setPayerBankName(config.getAccountConfigs().get(message.getBizUseType()).getPayeeBankName());
@@ -1565,7 +1565,9 @@ public class FinVouBService implements FinVouService {
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
         transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_EARLY_CONFIRM_FEE);
         transDoc.setTransType(ClientConstants.TRANS_TYPE_EARLY_CONFIRM_FEE);
-        transDoc.setAmount(BigDecimal.ZERO);
+        transDoc.setAmount(message.getPenalSum());
+        transDoc.setOutputAmountOfTax(getTaxAmount(message.getPenalSum(),message.getTaxRate()));
+        transDoc.setPenalSum(transDoc.getAmount().subtract(transDoc.getOutputAmountOfTax()));
         setProductNm(transDoc, message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setPlatformPartner(message.getMerchantName());
@@ -1575,14 +1577,9 @@ public class FinVouBService implements FinVouService {
         transDoc.setIsMovableProperty(ClientConstants.IS_MOVABLE_PROPERTY);
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
-        transDoc.setTerm(0);
         transDoc.setSumTerm(message.getLoanTerm());
         transDoc.setGenerateTime(message.getDate());
         transDoc.setGenerateDate(message.getDate());
-        //滞纳金(违约金）
-        transDoc.setPenalSum(message.getPenalSum());
-        //滞纳金税额
-        transDoc.setOutputAmountOfTax(getTaxAmount(message.getPenalSum(), message.getTaxRate().divide(new BigDecimal("100"), 2, BigDecimal.ROUND_HALF_UP)));
         //租户赋值
         setTenantValue(trans, transDoc);
         docList.add(transDoc);
