@@ -667,12 +667,6 @@ public class FinVouBService implements FinVouService {
         transDoc.setGenerateTime(message.getDate());
         transDoc.setGenerateDate(message.getDate());
         transDoc.setSpecialSupplierName(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
-        //3.0线下且扣款时间为月底最后一天进行特殊处理
-        final String offline = "2-4-2";
-        if (offline.equals(message.getBizUseType())) {
-            transDoc.setPayeeBankName("支付宝");
-            transDoc.setSpecialSupplierName("浙江大搜车融资租赁有限公司");
-        }
         //租户赋值
         setTenantValue(trans, transDoc);
         docList.add(transDoc);
@@ -701,6 +695,8 @@ public class FinVouBService implements FinVouService {
         trans.setTransName(ClientConstants.TRANS_NAME_CURRENT_RENT_BANK);
         trans.setContractId(message.getContractNo());
         trans.setIputFlowId(message.getBusinessNo());
+        trans.setGenerateTime(message.getDate());
+        trans.setGenerateDate(message.getDate());
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
@@ -724,6 +720,8 @@ public class FinVouBService implements FinVouService {
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
         transDoc.setIncludeTaxRent(message.getIncludeTaxRent());
         transDoc.setIncludeCapital(message.getIncludeCapital());
+        transDoc.setGenerateTime(message.getDate());
+        transDoc.setGenerateDate(message.getDate());
         transDoc.setSpecialSupplierName(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
         //租户赋值
         setTenantValue(trans, transDoc);
@@ -1070,6 +1068,8 @@ public class FinVouBService implements FinVouService {
         trans.setContractId(message.getContractNo());
         trans.setIputFlowId(message.getBusinessNo());
         trans.setCertificateLeaseType(message.getLeaseType());
+        trans.setGenerateTime(message.getDate());
+        trans.setGenerateDate(message.getDate());
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
@@ -1091,6 +1091,8 @@ public class FinVouBService implements FinVouService {
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setPlatformPartner(message.getMerchantName());
+        transDoc.setGenerateTime(message.getDate());
+        transDoc.setGenerateDate(message.getDate());
 
         //租户赋值
         setTenantValue(trans, transDoc);
