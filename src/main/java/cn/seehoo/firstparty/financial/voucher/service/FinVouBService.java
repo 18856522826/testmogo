@@ -1866,9 +1866,9 @@ public class FinVouBService implements FinVouService {
         transDoc.setSubTransName(ClientConstants.TRANS_NAME_USE_BUSINESS_MARGIN_B);
         transDoc.setTransType(ClientConstants.TRANS_TYPE_USE_BUSINESS_MARGIN_B);
         transDoc.setAmount(BigDecimal.ZERO);
-        transDoc.setIncludeTaxRent(message.getRent());
+        transDoc.setIncludeTaxRent(message.getIncludeTaxRent());
         transDoc.setInterest(message.getInterest());
-        transDoc.setIncludeCapital(message.getPrincipal());
+        transDoc.setIncludeCapital(message.getIncludeCapital());
         transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
         setProductNm(transDoc, message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
