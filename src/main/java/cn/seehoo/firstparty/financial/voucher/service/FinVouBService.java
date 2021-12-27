@@ -1617,8 +1617,11 @@ public class FinVouBService implements FinVouService {
         transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_EARLY_TIE);
         if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())) {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_EARLY_REPAYMENT_Z);
+            transDoc.setNoTaxFloatingDeposit(message.getNoTaxFloatingDeposit());
+            transDoc.setTaxInterest(message.getTaxInterest().subtract(message.getNoTaxFloatingDeposit()).abs());
         } else {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_EARLY_REPAYMENT_H);
+            transDoc.setTaxInterest(message.getTaxInterest());
         }
         transDoc.setAmount(message.getGyPrincipal());
         transDoc.setResidueUncollectedCapital(message.getNotChargePrincipal());
@@ -1627,8 +1630,6 @@ public class FinVouBService implements FinVouService {
         transDoc.setPresentUncollectedInterest(message.getCurrentNotChargeInterest());
         transDoc.setEarnings(message.getEarnings());
         transDoc.setIncludeTaxRent(message.getIncludeTaxRent());
-        transDoc.setNoTaxFloatingDeposit(message.getNoTaxFloatingDeposit());
-        transDoc.setTaxInterest(message.getTaxInterestB());
         setProductNm(transDoc, message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setPlatformPartner(message.getMerchantName());
