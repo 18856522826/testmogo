@@ -1678,18 +1678,22 @@ public class FinVouBService implements FinVouService {
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
-        transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_CURRENT_RENT_BANK);
-        transDoc.setTransType(ClientConstants.TRANS_TYPE_CURRENT_RENT_BANK);
+        if(isAutoDeduction(message.getBizUseType())){
+            transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_CURRENT_RENT_BANK_AUTO_B);
+            transDoc.setTransType(ClientConstants.TRANS_TYPE_CURRENT_RENT_BANK);
+        }else{
+            transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_CURRENT_RENT_BANK_MANUAL_B);
+            transDoc.setTransType(ClientConstants.TRANS_TYPE_CURRENT_RENT_BANK_MANUAL_B);
+        }
         transDoc.setAmount(BigDecimal.ZERO);
         transDoc.setInterest(message.getCurrentInterest());
 
         transDoc.setIncludeTaxRent(message.getIncludeTaxRent());
         transDoc.setIncludeCapital(message.getIncludeCapital());
-        transDoc.setCashFlow("0");
-        transDoc.setPayerBankName(config.getAccountConfigs().get(message.getBizUseType()).getPayeeBankName());
         transDoc.setPayeeBankName(config.getAccountConfigs().get(message.getBizUseType()).getPayeeBankName());
-        transDoc.setPayerAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
+        transDoc.setPayerBankName(message.getPayerBankName());
         transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
+        transDoc.setPayerAcctNo(message.getPayerAcctNo());
         transDoc.setSpecialSupplierName(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
         transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
         setProductNm(transDoc, message.getBusinessType());
