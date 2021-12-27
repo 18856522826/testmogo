@@ -327,6 +327,10 @@ public interface ClientConstants {
     /**
      * 子交易名称-未被认领-确实无法偿付的其他应付款项
      */
+    String SUB_TRANS_NAME_UN_CLAIM_NOT_REPAID_B="不明来款处置";
+    /**
+     * 子交易名称-未被认领-确实无法偿付的其他应付款项
+     */
     String SUB_TRANS_NAME_USE_BUSINESS_MARGIN="业务保证金代偿";
     /**
      * 子交易名称-未被认领-确实无法偿付的其他应付款项
