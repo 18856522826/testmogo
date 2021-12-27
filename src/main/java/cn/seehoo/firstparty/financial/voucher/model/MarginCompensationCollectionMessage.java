@@ -39,7 +39,7 @@ public class MarginCompensationCollectionMessage extends CommonMessage {
     /**
      * 还款计划表租金（含税）
      */
-    private BigDecimal rent;
+    private BigDecimal includeTaxRent;
 
     /**
      * 还款计划表利息
@@ -49,7 +49,7 @@ public class MarginCompensationCollectionMessage extends CommonMessage {
     /**
      * 还款计划表本金（含税）
      */
-    private BigDecimal principal;
+    private BigDecimal includeCapital;
 
     /**
      * 直租：13 回租6
