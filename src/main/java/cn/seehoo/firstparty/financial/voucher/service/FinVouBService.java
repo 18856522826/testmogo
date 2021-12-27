@@ -1938,7 +1938,8 @@ public class FinVouBService implements FinVouService {
      * @return 响应
      */
     private boolean isAutoDeduction(String message){
-        String settlementType=message.substring(2,3);
+        String[] strings=message.split("-");
+        String settlementType=strings[1];
         return  (!"4".equals(settlementType)&&!"13".equals(settlementType));
     }
 }
