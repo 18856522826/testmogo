@@ -768,6 +768,7 @@ public class FinVouBService implements FinVouService {
         transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
         transDoc.setIncludeTaxRent(message.getIncludeTaxRent().abs());
+        transDoc.setIncludeCapital(message.getIncludeCapital().abs());
         transDoc.setTaxRent(message.getTaxRent());
         transDoc.setSpecialSupplierName(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
         //租户赋值
