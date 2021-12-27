@@ -80,5 +80,5 @@ public class EarlyRepaymentCollectionMessage extends CommonMessage{
     /**
      * 不含税浮动保证金
      */
-    private BigDecimal NoTaxFloatingDeposit;
+    private BigDecimal noTaxFloatingDeposit;
 }

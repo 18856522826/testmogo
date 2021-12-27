@@ -58,6 +58,9 @@ public class AcctDocGenTransDoc {
      */
     @JSONField(name = "Interest")
     private BigDecimal interest = BigDecimal.ZERO;
+
+    @JSONField(name = "Flows")
+    private BigDecimal flows;
     /**
      * 总利息
      */
