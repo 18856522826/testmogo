@@ -177,4 +177,10 @@ public interface FinVouService {
      * @param message 入参
      */
      VoucherStandardMessage normalSettlementCarryForward(SettleCarryForwardCollectionMessage message) throws Exception;
+
+    /**
+     * 提前结清--保证金代偿
+     * @param message 入参
+     */
+    VoucherStandardMessage marginCompensation(MarginCompensationCollectionMessage message) throws Exception;
     }

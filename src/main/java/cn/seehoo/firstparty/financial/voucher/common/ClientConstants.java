@@ -125,6 +125,10 @@ public interface ClientConstants {
      */
     String BUSINESS_TYPE_021="021";
     /**
+     * 业务类型-提前结清-保证金代偿
+     */
+    String BUSINESS_TYPE_057="057";
+    /**
      * 制证交易名称 收取保证金场景
      */
     String TRANS_NAME_MARGIN = "收取保证金";
