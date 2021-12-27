@@ -751,8 +751,8 @@ public class FinVouBService implements FinVouService {
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
         transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_NEXT_RENT_RETURN_B);
         transDoc.setTransType(ClientConstants.TRANS_TYPE_NEXT_RENT_RETURN_B);
-        transDoc.setAmount(message.getCorrespondRefundAmount());
-        transDoc.setInterest(message.getCorrespondRefundInterest());
+        transDoc.setAmount(message.getCorrespondRefundAmount().abs());
+        transDoc.setInterest(message.getCorrespondRefundInterest().abs());
         setProductNm(transDoc, message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setCustNm(message.getCustName());
@@ -767,7 +767,7 @@ public class FinVouBService implements FinVouService {
         transDoc.setPayerBankName(message.getPayerBankName());
         transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
-        transDoc.setIncludeTaxRent(message.getIncludeTaxRent());
+        transDoc.setIncludeTaxRent(message.getIncludeTaxRent().abs());
         transDoc.setTaxRent(message.getTaxRent());
         transDoc.setSpecialSupplierName(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
         //租户赋值
@@ -1056,7 +1056,7 @@ public class FinVouBService implements FinVouService {
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
         trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
-        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_009);
+        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_057);
         trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_USE_BUSINESS_MARGIN_B);
         trans.setContractId(message.getContractNo());
