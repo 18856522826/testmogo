@@ -1627,8 +1627,8 @@ public class FinVouBService implements FinVouService {
         transDoc.setPresentUncollectedInterest(message.getCurrentNotChargeInterest());
         transDoc.setEarnings(message.getEarnings());
         transDoc.setIncludeTaxRent(message.getIncludeTaxRent());
-        transDoc.setTaxInterest(message.getTaxInterest());
-        transDoc.setNoTaxCustomerDeposit(message.getNoTaxFloatingDeposit());
+        transDoc.setNoTaxFloatingDeposit(message.getNoTaxFloatingDeposit());
+        transDoc.setTaxInterest(message.getTaxInterestB());
         setProductNm(transDoc, message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setPlatformPartner(message.getMerchantName());
