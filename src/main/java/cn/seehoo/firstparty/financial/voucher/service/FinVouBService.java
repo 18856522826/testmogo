@@ -1688,10 +1688,10 @@ public class FinVouBService implements FinVouService {
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
         if(isAutoDeduction(message.getBizUseType())){
-            transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_CURRENT_RENT_BANK_AUTO_B);
+            transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_USE_RETENTION_PRICE_AUTO_B);
             transDoc.setTransType(ClientConstants.TRANS_TYPE_CURRENT_RENT_BANK);
         }else{
-            transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_CURRENT_RENT_BANK_MANUAL_B);
+            transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_USE_RETENTION_PRICE_MANUAL_B);
             transDoc.setTransType(ClientConstants.TRANS_TYPE_CURRENT_RENT_BANK_MANUAL_B);
         }
         transDoc.setAmount(BigDecimal.ZERO);
