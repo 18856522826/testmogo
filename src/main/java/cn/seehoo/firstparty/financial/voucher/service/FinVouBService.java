@@ -131,8 +131,8 @@ public class FinVouBService implements FinVouService {
         transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_ASSET_RENT_B);
         if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())) {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_ASSET_DIRECT_RENT);
-            transDoc.setNoTaxContractPrice(message.getLoanAmount().subtract(getTaxAmount(message.getLoanAmount(),message.getTaxRate())));
-            transDoc.setGoodsTax(getTaxAmount(message.getLoanAmount(),message.getTaxRate()));
+            transDoc.setNoTaxContractPrice(message.getLoanAmount().subtract(getTaxAmount(message.getLoanAmount(),message.getTaxRate().divide(new BigDecimal("100"), 2, BigDecimal.ROUND_HALF_UP))));
+            transDoc.setGoodsTax(getTaxAmount(message.getLoanAmount(),message.getTaxRate().divide(new BigDecimal("100"), 2, BigDecimal.ROUND_HALF_UP)));
         } else {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_ASSET_LEASE_BACK);
         }
@@ -374,7 +374,7 @@ public class FinVouBService implements FinVouService {
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
         //利息税
-        BigDecimal interestTax=getTaxAmount(message.getInterest(),message.getTaxRate());
+        BigDecimal interestTax=getTaxAmount(message.getInterest(),message.getTaxRate().divide(new BigDecimal("100"), 2, BigDecimal.ROUND_HALF_UP));
         if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())) {
             transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_INTEREST_DIRECT_RENT);
             transDoc.setTransType(ClientConstants.TRANS_TYPE_INTEREST_DIRECT_RENT_B);
