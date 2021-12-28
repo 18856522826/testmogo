@@ -255,7 +255,15 @@ public interface ClientConstants {
     /**
      * 子交易名称-计提利息收入 场景
      */
+    String SUB_TRANS_NAME_INTEREST_DIRECT_RENT_B = "直租计提";
+    /**
+     * 子交易名称-计提利息收入 场景
+     */
     String SUB_TRANS_NAME_INTEREST_LEASE_BACK = "回租业务计提收";
+    /**
+     * 子交易名称-计提利息收入 场景
+     */
+    String SUB_TRANS_NAME_INTEREST_LEASE_BACK_B = "回租计提";
     /**
      * 子交易名称-计算销项税场景
      */

@@ -373,20 +373,19 @@ public class FinVouBService implements FinVouService {
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
-        //利息税
-        BigDecimal interestTax=getTaxAmount(message.getInterest(),message.getTaxRate().divide(new BigDecimal("100"), 2, BigDecimal.ROUND_HALF_UP));
         if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())) {
-            transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_INTEREST_DIRECT_RENT);
+            transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_INTEREST_DIRECT_RENT_B);
             transDoc.setTransType(ClientConstants.TRANS_TYPE_INTEREST_DIRECT_RENT_B);
             transDoc.setFee(message.getRentTax());
         } else {
-            transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_INTEREST_LEASE_BACK);
+            transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_INTEREST_LEASE_BACK_B);
             transDoc.setTransType(ClientConstants.TRANS_TYPE_INTEREST_LEASE_BACK_B);
-            transDoc.setFee(interestTax);
+            transDoc.setFee(message.getInterestTaxB());
         }
-        transDoc.setAmount(message.getRent());
-        transDoc.setInterest(message.getRent().add(interestTax));
-        transDoc.setTaxCapital(message.getRentTax().subtract(interestTax));
+        BigDecimal noTaxRent=message.getRent().subtract(message.getRentTax());
+        transDoc.setAmount(noTaxRent);
+        transDoc.setInterest(noTaxRent.add(message.getInterestTaxB()));
+        transDoc.setTaxCapital(message.getRentTax().subtract(message.getInterestTaxB()));
         transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
         setProductNm(transDoc, message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
