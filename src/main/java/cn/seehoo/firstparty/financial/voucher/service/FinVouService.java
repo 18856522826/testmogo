@@ -39,7 +39,7 @@ public interface FinVouService {
      */
      VoucherStandardMessage interestIncomeCollection(InterestIncomeCollectionMessage message) throws Exception;
     /**
-     * 计算销项税-   场景所需财务信息
+     * 计算销项税-场景所需财务信息
      * @param message 当前场景业务信息
      * @throws Exception 异常信息
      */

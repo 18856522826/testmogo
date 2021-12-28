@@ -395,7 +395,6 @@ public class FinVouMessageSceneClient {
         log.info("场景三十二 提前结清-实收租金,入参:{}", message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage=lookUp(config).earlyActuallyCurrentRent(message);
-
         //发送
         sender.send(standardMessage);
     }

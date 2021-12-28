@@ -217,6 +217,10 @@ public interface ClientConstants {
      */
     String SUB_TRANS_NAME_ASSET_LEASE_BACK = "回租取得资产";
     /**
+     * 子交易名称-取得资产场景
+     */
+    String SUB_TRANS_NAME_ASSET_RENT_B = "取得资产";
+    /**
      * 子交易名称-支付价款场景
      */
     String SUB_TRANS_NAME_PAYMENT_DIRECT_RENT = "直租支付价款";
@@ -224,6 +228,10 @@ public interface ClientConstants {
      * 子交易名称-支付价款场景
      */
     String SUB_TRANS_NAME_PAYMENT_LEASE_BACK = "回租支付价款";
+    /**
+     * 子交易名称-支付价款场景
+     */
+    String SUB_TRANS_NAME_PAYMENT_RENT_B = "支付价款";
     /**
      * 子交易名称-首付款场景
      */
@@ -236,6 +244,10 @@ public interface ClientConstants {
      * 子交易名称-起租 场景
      */
     String SUB_TRANS_NAME_RENT_LEASE_BACK = "回租起租";
+    /**
+     * 子交易名称-起租 场景
+     */
+    String SUB_TRANS_NAME_RENT_BACK_B = "起租";
     /**
      * 子交易名称-计提利息收入 场景
      */
@@ -321,9 +333,17 @@ public interface ClientConstants {
      */
     String SUB_TRANS_NAME_CLAIM_RETURN="被认领-选择退回";
     /**
+     * 子交易名称-被认领-选择退回
+     */
+    String SUB_TRANS_NAME_CLAIM_RETURN_B="不明来款退回";
+    /**
      * 子交易名称-未被认领-确实无法偿付的其他应付款项
      */
     String SUB_TRANS_NAME_UN_CLAIM_NOT_REPAID="未被认领-确实无法偿付的其他应付款项";
+    /**
+     * 子交易名称-未被认领-确实无法偿付的其他应付款项
+     */
+    String SUB_TRANS_NAME_UN_CLAIM_NOT_REPAID_B="不明来款处置";
     /**
      * 子交易名称-未被认领-确实无法偿付的其他应付款项
      */
