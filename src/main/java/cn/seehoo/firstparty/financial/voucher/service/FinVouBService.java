@@ -1571,7 +1571,7 @@ public class FinVouBService implements FinVouService {
         transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_EARLY_CONFIRM_FEE);
         transDoc.setTransType(ClientConstants.TRANS_TYPE_EARLY_CONFIRM_FEE);
         transDoc.setAmount(message.getPenalSum());
-        transDoc.setOutputAmountOfTax(getTaxAmount(message.getPenalSum(),message.getTaxRate()));
+        transDoc.setOutputAmountOfTax(getTaxAmount(message.getPenalSum(),message.getTaxRate().divide(new BigDecimal("100"))));
         transDoc.setPenalSum(transDoc.getAmount().subtract(transDoc.getOutputAmountOfTax()));
         setProductNm(transDoc, message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
@@ -1758,7 +1758,7 @@ public class FinVouBService implements FinVouService {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_USE_RETENTION_PRICE);
         }
         transDoc.setAmount(message.getAmount());
-        transDoc.setGoodsTax(getTaxAmount(message.getAmount(),message.getTaxRate()));
+        transDoc.setGoodsTax(getTaxAmount(message.getAmount(),message.getTaxRate().divide(new BigDecimal("100"))));
         transDoc.setIncludeCapital(message.getAmount().subtract(transDoc.getGoodsTax()));
         transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
         setProductNm(transDoc, message.getBusinessType());
