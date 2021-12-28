@@ -1178,6 +1178,8 @@ public class FinVouAService implements FinVouService {
         trans.setTransName(ClientConstants.TRANS_NAME_FUND_TRANSFER);
         trans.setContractId("0");
         trans.setIputFlowId(message.getCollectionDetailsId());
+        trans.setGenerateDate(message.getDate());
+        trans.setGenerateTime(message.getDate());
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
@@ -1210,6 +1212,8 @@ public class FinVouAService implements FinVouService {
         transDoc.setIncludeTaxRent(message.getRetentionPrice());
         //租金
         transDoc.setNoTaxRent(BigDecimal.ZERO);
+        transDoc.setGenerateTime(message.getDate());
+        transDoc.setGenerateDate(message.getDate());
         //租户赋值
         setTenantValue(trans, transDoc);
         docList.add(transDoc);
