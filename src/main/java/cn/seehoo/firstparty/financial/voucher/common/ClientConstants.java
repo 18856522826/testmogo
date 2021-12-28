@@ -377,6 +377,14 @@ public interface ClientConstants {
      */
     String SUB_TRANS_NAME_USE_RETENTION_PRICE="收取名义购买价";
     /**
+     * 子交易名称-收取名义购买价
+     */
+    String SUB_TRANS_NAME_USE_RETENTION_PRICE_AUTO_B="收取名义购买价（第三方支付平台）";
+    /**
+     * 子交易名称-收取名义购买价
+     */
+    String SUB_TRANS_NAME_USE_RETENTION_PRICE_MANUAL_B="收取名义购买价（网商银行）";
+    /**
      * 子交易名称-正常结清结转
      */
     String SUB_TRANS_NAME_SETTLE_CARRY_FORWARD="正常结清结转";
