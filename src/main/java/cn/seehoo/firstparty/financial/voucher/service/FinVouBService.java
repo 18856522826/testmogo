@@ -1943,6 +1943,10 @@ public class FinVouBService implements FinVouService {
     private boolean isAutoDeduction(String message){
         String[] strings=message.split("-");
         String settlementType=strings[1];
-        return  (!"4".equals(settlementType)&&!"13".equals(settlementType));
+        String incomeType=strings[2];
+        if ("13".equals(settlementType)){
+            return "2".equals(incomeType);
+        }
+        return  (!"4".equals(settlementType));
     }
 }
