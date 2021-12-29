@@ -131,8 +131,8 @@ public class FinVouBService implements FinVouService {
         transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_ASSET_RENT_B);
         if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())) {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_ASSET_DIRECT_RENT);
-            transDoc.setNoTaxContractPrice(message.getLoanAmount().subtract(getTaxAmount(message.getLoanAmount(),message.getTaxRate())));
-            transDoc.setGoodsTax(getTaxAmount(message.getLoanAmount(),message.getTaxRate()));
+            transDoc.setNoTaxContractPrice(message.getLoanAmount().subtract(getTaxAmount(message.getLoanAmount(),message.getTaxRate().divide(new BigDecimal("100"), 2, BigDecimal.ROUND_HALF_UP))));
+            transDoc.setGoodsTax(getTaxAmount(message.getLoanAmount(),message.getTaxRate().divide(new BigDecimal("100"), 2, BigDecimal.ROUND_HALF_UP)));
         } else {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_ASSET_LEASE_BACK);
         }
@@ -374,17 +374,18 @@ public class FinVouBService implements FinVouService {
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
         if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())) {
-            transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_INTEREST_DIRECT_RENT);
+            transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_INTEREST_DIRECT_RENT_B);
             transDoc.setTransType(ClientConstants.TRANS_TYPE_INTEREST_DIRECT_RENT_B);
             transDoc.setFee(message.getRentTax());
         } else {
-            transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_INTEREST_LEASE_BACK);
+            transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_INTEREST_LEASE_BACK_B);
             transDoc.setTransType(ClientConstants.TRANS_TYPE_INTEREST_LEASE_BACK_B);
-            transDoc.setFee(message.getInterestTax());
+            transDoc.setFee(message.getInterestTaxB());
         }
-        transDoc.setAmount(message.getRent());
-        transDoc.setInterest(message.getRent().add(message.getInterestTax()));
-        transDoc.setTaxCapital(message.getRentTax().subtract(message.getInterestTax()));
+        BigDecimal noTaxRent=message.getRent().subtract(message.getRentTax());
+        transDoc.setAmount(noTaxRent);
+        transDoc.setInterest(noTaxRent.add(message.getInterestTaxB()));
+        transDoc.setTaxCapital(message.getRentTax().subtract(message.getInterestTaxB()));
         transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
         setProductNm(transDoc, message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
