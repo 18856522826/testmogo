@@ -16,7 +16,7 @@ import java.math.BigDecimal;
  */
 @Getter
 @Setter
-@ToString
+@ToString(callSuper = true)
 public class ClaimReturnCollectionMessage extends CommonMessage {
     private static final long serialVersionUID = 1242045055236347953L;
     /**

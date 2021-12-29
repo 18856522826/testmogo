@@ -1,6 +1,7 @@
 package cn.seehoo.firstparty.financial.voucher.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
 
@@ -12,6 +13,7 @@ import java.math.BigDecimal;
  * @date 2021/5/12
  * @since 1.0
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 public class DownPaymentInAssetsCollectionMessage extends CommonMessage{
     private static final long serialVersionUID = -2736372259038504709L;

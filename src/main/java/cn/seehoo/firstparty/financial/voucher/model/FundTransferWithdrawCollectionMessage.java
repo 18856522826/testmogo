@@ -16,7 +16,7 @@ import java.math.BigDecimal;
  */
 @Getter
 @Setter
-@ToString
+@ToString(callSuper = true)
 public class FundTransferWithdrawCollectionMessage extends CommonMessage{
     private static final long serialVersionUID = 8459163915380127318L;
     /**

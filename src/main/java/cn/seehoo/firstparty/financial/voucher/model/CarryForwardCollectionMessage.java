@@ -16,7 +16,7 @@ import java.math.BigDecimal;
  */
 @Getter
 @Setter
-@ToString
+@ToString(callSuper = true)
 public class CarryForwardCollectionMessage extends CommonMessage{
     private static final long serialVersionUID = 6461032442288834155L;
     /**

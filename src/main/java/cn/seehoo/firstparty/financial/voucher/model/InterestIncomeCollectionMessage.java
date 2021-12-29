@@ -16,7 +16,7 @@ import java.math.BigDecimal;
  */
 @Getter
 @Setter
-@ToString
+@ToString(callSuper = true)
 public class InterestIncomeCollectionMessage extends CommonMessage {
     private static final long serialVersionUID = 7157758499900398962L;
     /**
