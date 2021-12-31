@@ -1134,7 +1134,6 @@ public class FinVouBService implements FinVouService {
         transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_FUND_TRANSFER_WITHDRAW);
         transDoc.setTransType(ClientConstants.TRANS_TYPE_FUND_TRANSFER_WITHDRAW);
         transDoc.setAmount(message.getCorrespondAmount());
-        transDoc.setInterest(message.getCorrespondInterest());
         transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
         transDoc.setCashFlow(String.valueOf(message.getCorrespondAmount()));
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
@@ -1158,8 +1157,8 @@ public class FinVouBService implements FinVouService {
         transDoc.setTaxFlowsMoney(BigDecimal.ZERO);
         //留购价
         transDoc.setIncludeTaxRent(message.getRetentionPrice());
-        //租金
-        transDoc.setNoTaxRent(BigDecimal.ZERO);
+        //核销本金
+        transDoc.setNoTaxRent(message.getCorrespondAmount().subtract(message.getCorrespondInterest()));
         transDoc.setGenerateTime(message.getDate());
         transDoc.setGenerateDate(message.getDate());
         //租户赋值
@@ -1951,6 +1950,10 @@ public class FinVouBService implements FinVouService {
     private boolean isAutoDeduction(String message){
         String[] strings=message.split("-");
         String settlementType=strings[1];
-        return  (!"4".equals(settlementType)&&!"13".equals(settlementType));
+        String incomeType=strings[2];
+        if ("13".equals(settlementType)){
+            return "2".equals(incomeType);
+        }
+        return  (!"4".equals(settlementType));
     }
 }
