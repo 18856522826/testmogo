@@ -316,12 +316,19 @@ public class FinVouBService implements FinVouService {
         transDoc.setNoTaxInterest(message.getGyInterestSum());
         //利息税额和
         transDoc.setTaxInterest(message.getGyInterestTaxSum());
-        //不含税本金和
-        transDoc.setContractPrice(message.getGyPrincipalExcludeTax());
         //利息和
         transDoc.setGoodsTax(message.getGyInterestSum().add(message.getGyInterestTaxSum()));
-        //本金和
-        transDoc.setNoTaxContractPrice(message.getGyPrincipalExcludeTax().add(message.getGyPrincipalTax()));
+        if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())) {
+            //不含税本金和
+            transDoc.setContractPrice(message.getGyPrincipalExcludeTax());
+            //本金和
+            transDoc.setNoTaxContractPrice(message.getGyPrincipalExcludeTax().add(message.getGyPrincipalTax()));
+        }else{
+            //回租  投资总额
+            transDoc.setContractPrice(message.getTotalInvestment());
+            //回租  投资总额
+            transDoc.setNoTaxContractPrice(message.getTotalInvestment());
+        }
         transDoc.setTaxRate(message.getTaxRate());
         transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
         setProductNm(transDoc, message.getBusinessType());
