@@ -16,7 +16,7 @@ import java.math.BigDecimal;
  */
 @Getter
 @Setter
-@ToString
+@ToString(callSuper = true)
 public class NextRentCollectionMessage extends CommonMessage{
     private static final long serialVersionUID = -951431458156064082L;
     /**

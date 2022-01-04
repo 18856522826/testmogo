@@ -73,4 +73,12 @@ public class EarlyRepaymentCollectionMessage extends CommonMessage{
      * 利息税额
      */
     private BigDecimal taxInterest;
+    /**
+     * 归属国银的不含税本金之和
+     */
+    private BigDecimal gyPrincipal;
+    /**
+     * 不含税浮动保证金
+     */
+    private BigDecimal noTaxFloatingDeposit;
 }

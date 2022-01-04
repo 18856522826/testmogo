@@ -16,7 +16,7 @@ import java.math.BigDecimal;
  */
 @Getter
 @Setter
-@ToString
+@ToString(callSuper = true)
 public class StartRentCollectionMessage extends CommonMessage {
     private static final long serialVersionUID = -4277553387835552886L;
     /**
@@ -120,5 +120,9 @@ public class StartRentCollectionMessage extends CommonMessage {
      * 归属状态为国银的利息税和
      */
     private BigDecimal gyInterestTaxSum;
+    /**
+     * 投资总额
+     */
+    private BigDecimal totalInvestment;
 
 }
