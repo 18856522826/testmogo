@@ -1135,7 +1135,6 @@ public class FinVouBService implements FinVouService {
         transDoc.setTransType(ClientConstants.TRANS_TYPE_FUND_TRANSFER_WITHDRAW);
         transDoc.setAmount(message.getCorrespondAmount());
         transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
-        transDoc.setCashFlow(String.valueOf(message.getCorrespondAmount()));
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setPayerBankName(message.getPayerBankName());
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
@@ -1158,7 +1157,7 @@ public class FinVouBService implements FinVouService {
         //留购价
         transDoc.setIncludeTaxRent(message.getRetentionPrice());
         //核销本金
-        transDoc.setNoTaxRent(message.getCorrespondAmount().subtract(message.getCorrespondInterest()));
+        transDoc.setNoTaxRent(message.getCorrespondPrincipal());
         transDoc.setGenerateTime(message.getDate());
         transDoc.setGenerateDate(message.getDate());
         //租户赋值

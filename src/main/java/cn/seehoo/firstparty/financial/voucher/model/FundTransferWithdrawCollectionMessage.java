@@ -36,6 +36,11 @@ public class FundTransferWithdrawCollectionMessage extends CommonMessage{
      */
     private BigDecimal correspondInterest;
     /**
+     * 对应本金
+     */
+    private BigDecimal correspondPrincipal;
+
+    /**
      *付款方开户行名称
      */
     private String payerBankName;
