@@ -822,6 +822,10 @@ public class FinVouBService implements FinVouService {
         transDoc.setCustNm(message.getCustName());
         transDoc.setCurrentAccounting("乘用车待核查客户");
         transDoc.setProductNm(ClientConstants.PRODUCT_NM_6);
+        trans.setGenerateTime(message.getDate());
+        trans.setGenerateDate(message.getDate());
+        transDoc.setGenerateTime(message.getDate());
+        transDoc.setGenerateDate(message.getDate());
         //租户赋值
         setTenantValue(trans, transDoc);
         docList.add(transDoc);
@@ -873,6 +877,10 @@ public class FinVouBService implements FinVouService {
         transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
         transDoc.setIncludeTaxRent(message.getIncludeTaxRent());
         transDoc.setIncludeCapital(message.getIncludeCapital());
+        trans.setGenerateTime(message.getDate());
+        trans.setGenerateDate(message.getDate());
+        transDoc.setGenerateTime(message.getDate());
+        transDoc.setGenerateDate(message.getDate());
         //租户赋值
         setTenantValue(trans, transDoc);
         docList.add(transDoc);
@@ -912,6 +920,10 @@ public class FinVouBService implements FinVouService {
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setProductNm(ClientConstants.PRODUCT_NM_6);
+        trans.setGenerateTime(message.getDate());
+        trans.setGenerateDate(message.getDate());
+        transDoc.setGenerateTime(message.getDate());
+        transDoc.setGenerateDate(message.getDate());
         //租户赋值
         setTenantValue(trans, transDoc);
         docList.add(transDoc);
@@ -961,6 +973,10 @@ public class FinVouBService implements FinVouService {
         transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
         transDoc.setOutputAmountOfTax(getTaxAmount(message.getCorrespondPaymentAmount(), message.getTaxRate().divide(new BigDecimal("100"), 2, BigDecimal.ROUND_HALF_UP)));
         transDoc.setPenalSum(message.getCorrespondPaymentAmount().subtract(transDoc.getOutputAmountOfTax()));
+        trans.setGenerateTime(message.getDate());
+        trans.setGenerateDate(message.getDate());
+        transDoc.setGenerateTime(message.getDate());
+        transDoc.setGenerateDate(message.getDate());
         //租户赋值
         setTenantValue(trans, transDoc);
         docList.add(transDoc);
@@ -1004,6 +1020,10 @@ public class FinVouBService implements FinVouService {
         transDoc.setCustNm(message.getCustName());
         transDoc.setCurrentAccounting("乘用车待核查客户");
         transDoc.setProductNm(ClientConstants.PRODUCT_NM_6);
+        trans.setGenerateTime(message.getDate());
+        trans.setGenerateDate(message.getDate());
+        transDoc.setGenerateTime(message.getDate());
+        transDoc.setGenerateDate(message.getDate());
         //租户赋值
         setTenantValue(trans, transDoc);
         docList.add(transDoc);
@@ -1045,6 +1065,10 @@ public class FinVouBService implements FinVouService {
         transDoc.setCustNm(message.getCustName());
         transDoc.setCurrentAccounting("乘用车待核查客户");
         transDoc.setProductNm(ClientConstants.PRODUCT_NM_6);
+        trans.setGenerateTime(message.getDate());
+        trans.setGenerateDate(message.getDate());
+        transDoc.setGenerateTime(message.getDate());
+        transDoc.setGenerateDate(message.getDate());
         //租户赋值
         setTenantValue(trans, transDoc);
         docList.add(transDoc);
