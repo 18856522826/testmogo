@@ -429,6 +429,10 @@ public interface ClientConstants {
      */
     String TRANS_TYPE_MARGIN = "0050301";
     /**
+     * 交易类型-收取保证金场景B
+     */
+    String TRANS_TYPE_MARGIN_B = "0050304";
+    /**
      * 交易类型-确认结清滞纳金/违约金收入
      */
     String TRANS_TYPE_EARLY_CONFIRM_FEE ="0190302";
