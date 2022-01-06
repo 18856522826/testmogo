@@ -422,6 +422,39 @@ public class FinVouMessageSceneClient {
         //发送
         sender.send(standardMessage);
     }
+    /**
+     * 调整买断价场景
+     * @param message 入参
+     */
+    public void adjustBuyout(AdjustBuyoutMessage message) throws Exception {
+        log.info("场景三十六 调整买断价场景,入参:{}",message.toString());
+        //标准财务凭证消息
+        VoucherStandardMessage standardMessage=lookUp(config).adjustBuyout(message);
+        //发送
+        sender.send(standardMessage);
+    }
+    /**
+     * 场景三十四 确认期初利息余额
+     * @param message 入参
+     */
+    public void beginInterest(BeginInterestMessage message) throws Exception {
+        log.info("场景三十四 确认期初利息余额,入参:{}",message.toString());
+        //标准财务凭证消息
+        VoucherStandardMessage standardMessage=lookUp(config).beginInterest(message);
+        //发送
+        sender.send(standardMessage);
+    }
+    /**
+     * 场景三十八 确认直租项目本金增值税场景
+     * @param message 入参
+     */
+    public void vatPrincipal(VatPrincipalMessage message) throws Exception {
+        log.info("场景三十八 确认直租项目本金增值税场景,入参:{}",message.toString());
+        //标准财务凭证消息
+        VoucherStandardMessage standardMessage=lookUp(config).vatPrincipal(message);
+        //发送
+        sender.send(standardMessage);
+    }
 
     /**
      * 查询AB口径service
