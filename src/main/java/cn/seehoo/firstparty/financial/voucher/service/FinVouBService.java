@@ -54,7 +54,7 @@ public class FinVouBService implements FinVouService {
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
         transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_MARGIN);
         transDoc.setTransType(ClientConstants.TRANS_TYPE_MARGIN);
-        transDoc.setAmount(message.getAdjustAmount());
+        transDoc.setAmount(BigDecimal.ZERO);
         transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
         transDoc.setPayerBankName(message.getPayerBankName());
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
@@ -63,7 +63,7 @@ public class FinVouBService implements FinVouService {
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setCustNm(message.getMerchantName());
         transDoc.setPlatformPartner(message.getMerchantName());
-        transDoc.setCashFlow(String.valueOf(message.getAdjustAmount()));
+        transDoc.setFixedMargin(message.getAdjustAmount());
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setDepositType(ClientConstants.DEPOSIT_TYPE);
