@@ -20,6 +20,10 @@ import java.math.BigDecimal;
 public class MarginClaimCollectionMessage extends CommonMessage {
     private static final long serialVersionUID = -1928335018395843762L;
     /**
+     * 保证金调整类型 金额增加为 0-正常，金额减少为 1-红冲
+     */
+    private String adjustType;
+    /**
      * 租赁类型
      */
     private String leaseType;
@@ -31,4 +35,37 @@ public class MarginClaimCollectionMessage extends CommonMessage {
      * 对应核销金额
      */
     private BigDecimal marginAmount;
+
+    /**
+     * 付款方开户行名称
+     */
+    private String payerBankName;
+    /**
+     * 付款方账号
+     */
+    private String payerAcctNo;
+    /**
+     *收款方开户行名称
+     */
+    private String payeeBankName;
+    /**
+     *收款方账号
+     */
+    private String payeeAcctNo;
+
+    /**
+     * 客户姓名
+     */
+    private String custName;
+
+    /**
+     * 产品名称
+     */
+    private String productName;
+
+    /**
+     * 直租：13 回租6
+     */
+    private BigDecimal taxRate;
+
 }

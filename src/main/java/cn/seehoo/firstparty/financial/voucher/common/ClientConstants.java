@@ -341,6 +341,10 @@ public interface ClientConstants {
      */
     String SUB_TRANS_NAME_MARGIN_CLAIM="保证金被认领";
     /**
+     * 子交易名称-平台方保证金被认领
+     */
+    String SUB_TRANS_NAME_PLATFORM_MARGIN_CLAIM="平台方保证金被认领";
+    /**
      * 子交易名称-罚息被认领
      */
     String SUB_TRANS_NAME_PENALTY_INTEREST_CLAIM="罚息被认领";

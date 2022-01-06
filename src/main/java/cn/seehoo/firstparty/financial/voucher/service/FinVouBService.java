@@ -900,27 +900,42 @@ public class FinVouBService implements FinVouService {
         log.info("场景十九 保证金被认领场景所需财务信息,入参:{}", message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
-        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
+        standardMessage.setIsChargeAgainst(message.getAdjustType());
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
         trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
+        trans.setCertificateLeaseType(message.getLeaseType());
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_007);
         trans.setInputId(message.getDepositId());
-        trans.setTransName(ClientConstants.TRANS_NAME_CURRENT_RENT_BANK);
-        trans.setContractId(message.getDepositId());
+        trans.setTransName(ClientConstants.TRANS_NAME_UNKNOWN_PAYMENT);
         trans.setIputFlowId(message.getDepositId());
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
-        transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_MARGIN_CLAIM);
+        transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_PLATFORM_MARGIN_CLAIM);
         transDoc.setTransType(ClientConstants.TRANS_TYPE_MARGIN_CLAIM);
+        //保证金充值金额
         transDoc.setAmount(message.getMarginAmount());
+        transDoc.setPayerBankName(message.getPayerBankName());
+        transDoc.setPayerAcctNo(message.getPayerAcctNo());
+        transDoc.setPayeeBankName(message.getPayeeBankName());
+        transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
+        if (ClientConstants.ASSET_TYPE.equals(message.getBusinessType())) {
+            trans.setContractId("9903");
+            transDoc.setProductNm(ClientConstants.PRODUCT_NM_5);
+        } else {
+            trans.setContractId("9904");
+            transDoc.setProductNm(ClientConstants.PRODUCT_NM_6);
+        }
         transDoc.setSuppierNm(message.getMerchantName());
+        transDoc.setCustNm(message.getCustName());
         transDoc.setPlatformPartner(message.getMerchantName());
-        transDoc.setCashFlow(String.valueOf(message.getMarginAmount()));
+        transDoc.setFinancialProduct(message.getProductName());
+        transDoc.setTaxRate(message.getTaxRate());
+        transDoc.setIsMovableProperty(ClientConstants.IS_MOVABLE_PROPERTY);
         transDoc.setCurrentAccounting(message.getMerchantName());
+        transDoc.setTerm(0);
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
-        transDoc.setProductNm(ClientConstants.PRODUCT_NM_6);
         trans.setGenerateTime(message.getDate());
         trans.setGenerateDate(message.getDate());
         transDoc.setGenerateTime(message.getDate());
