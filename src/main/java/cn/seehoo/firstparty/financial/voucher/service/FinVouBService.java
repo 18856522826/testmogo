@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -1932,7 +1933,166 @@ public class FinVouBService implements FinVouService {
 
         return standardMessage;
     }
+    /**
+     * 调整买断价场景所需财务信息
+     *
+     * @param message 当前场景业务信息
+     */
+    public VoucherStandardMessage adjustBuyout(AdjustBuyoutMessage message) throws Exception {
+        log.info("场景二十六 调整买断价场景所需财务信息,入参:{}", message.toString());
+        //标准财务凭证消息
+        VoucherStandardMessage standardMessage = new VoucherStandardMessage();
+        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
+        //制证交易流水
+        AcctDocGenTrans trans = new AcctDocGenTrans();
+        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_059);
+        trans.setInputId(message.getBusinessNo());
+        trans.setTransName(ClientConstants.TRANS_NAME_ADJUST_BUYOUT);
+        trans.setContractId(message.getContractNo());
+        trans.setIputFlowId(message.getBusinessNo());
+        trans.setGenerateTime(new Date("2022-01-01"));
+        trans.setGenerateDate(new Date("2022-01-01"));
+        trans.setContractName(ClientConstants.CONTRACT_NAME);
+        //制证子交易流水
+        List<AcctDocGenTransDoc> docList = new ArrayList<>();
+        AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
+        if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())) {
+            transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_ADJUST_BUYOUT_DIRECT_RENT);
+            trans.setLeaseType(ClientConstants.LEASE_TYPE_DIRECT_RENT);
+            transDoc.setTransType(ClientConstants.TRANS_TYPE_ADJUST_DIRECT_RENT);
+        }else {
+            transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_ADJUST_BUYOUT_BACK_RENT);
+            trans.setLeaseType(ClientConstants.LEASE_TYPE_DIRECT_RENT);
+            transDoc.setTransType(ClientConstants.TRANS_TYPE_ADJUST_BACK_RENT);
+        }
+        transDoc.setFee(getTaxAmount(message.getAmount(),message.getTaxRate().divide(new BigDecimal("100"), 2, BigDecimal.ROUND_HALF_UP)));
+        transDoc.setInterest(message.getAmount());
+        transDoc.setAmount(message.getAmount().subtract(transDoc.getFee()));
+        setProductNm(transDoc,message.getBusinessType());
+        transDoc.setSuppierNm(message.getMerchantName());
+        transDoc.setPlatformPartner(message.getMerchantName());
+        transDoc.setCustNm(message.getCustName());
+        transDoc.setFinancialProduct(message.getProductName());
+        transDoc.setTaxRate(message.getTaxRate());
+        transDoc.setCurrentAccounting(message.getMerchantName());
+        transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setTerm(0);
+        transDoc.setSumTerm(message.getSumTerm());
+        transDoc.setGenerateTime(new Date("2022-01-01"));
+        transDoc.setGenerateDate(new Date("2022-01-01"));
 
+        //租户赋值
+        setTenantValue(trans, transDoc);
+        docList.add(transDoc);
+        standardMessage.setAcctDocGenTrans(trans);
+        standardMessage.setAcctDocGenSubTransList(docList);
+
+        return standardMessage;
+    }
+    /**
+     * 确认期初利息余额场景所需财务信息
+     *
+     * @param message 当前场景业务信息
+     */
+    public VoucherStandardMessage beginInterest(BeginInterestMessage message) throws Exception {
+        log.info("场景二十六 确认期初利息余额场景所需财务信息,入参:{}", message.toString());
+        //标准财务凭证消息
+        VoucherStandardMessage standardMessage = new VoucherStandardMessage();
+        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
+        //制证交易流水
+        AcctDocGenTrans trans = new AcctDocGenTrans();
+        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_059);
+        trans.setInputId(message.getBusinessNo());
+        trans.setTransName(ClientConstants.TRANS_NAME_ADJUST_BUYOUT);
+        trans.setContractId(message.getContractNo());
+        trans.setIputFlowId(message.getBusinessNo());
+        trans.setGenerateTime(new Date("2022-01-01"));
+        trans.setGenerateDate(new Date("2022-01-01"));
+        trans.setContractName(ClientConstants.CONTRACT_NAME);
+        //制证子交易流水
+        List<AcctDocGenTransDoc> docList = new ArrayList<>();
+        AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
+        if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())) {
+            transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_BEGIN_INTEREST_DIRECT_RENT);
+            trans.setLeaseType(ClientConstants.LEASE_TYPE_DIRECT_RENT);
+            transDoc.setTransType(ClientConstants.TRANS_TYPE_BEGIN_INTEREST_DIRECT_RENT);
+        }else {
+            transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_BEGIN_INTEREST_BACK_RENT);
+            trans.setLeaseType(ClientConstants.LEASE_TYPE_DIRECT_RENT);
+            transDoc.setTransType(ClientConstants.TRANS_TYPE_BEGIN_INTEREST_BACK_RENT);
+        }
+        transDoc.setFee(message.getFee());
+        transDoc.setInterest((message.getAmount().subtract(message.getFee())).abs());
+        transDoc.setAmount(message.getAmount());
+        setProductNm(transDoc,message.getBusinessType());
+        transDoc.setSuppierNm(message.getMerchantName());
+        transDoc.setPlatformPartner(message.getMerchantName());
+        transDoc.setCustNm(message.getCustName());
+        transDoc.setFinancialProduct(message.getProductName());
+        transDoc.setTaxRate(message.getTaxRate());
+        transDoc.setCurrentAccounting(message.getMerchantName());
+        transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setTerm(0);
+        transDoc.setSumTerm(message.getSumTerm());
+        transDoc.setGenerateTime(new Date("2022-01-01"));
+        transDoc.setGenerateDate(new Date("2022-01-01"));
+
+        //租户赋值
+        setTenantValue(trans, transDoc);
+        docList.add(transDoc);
+        standardMessage.setAcctDocGenTrans(trans);
+        standardMessage.setAcctDocGenSubTransList(docList);
+
+        return standardMessage;
+    }
+    /**
+     * 确认直租项目本金增值税
+     *
+     * @param message 当前场景业务信息
+     */
+    public VoucherStandardMessage vatPrincipal(VatPrincipalMessage message) throws Exception {
+        log.info("场景二十六 确认直租项目本金增值税场景所需财务信息,入参:{}", message.toString());
+        //标准财务凭证消息
+        VoucherStandardMessage standardMessage = new VoucherStandardMessage();
+        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
+        //制证交易流水
+        AcctDocGenTrans trans = new AcctDocGenTrans();
+        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_059);
+        trans.setInputId(message.getBusinessNo());
+        trans.setTransName(ClientConstants.TRANS_NAME_ADJUST_BUYOUT);
+        trans.setContractId(message.getContractNo());
+        trans.setIputFlowId(message.getBusinessNo());
+        trans.setGenerateTime(new Date("2022-01-01"));
+        trans.setGenerateDate(new Date("2022-01-01"));
+        trans.setContractName(ClientConstants.CONTRACT_NAME);
+        //制证子交易流水
+        List<AcctDocGenTransDoc> docList = new ArrayList<>();
+        AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
+        transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_VAT_PRINCIPAL_DIRECT_RENT);
+        trans.setLeaseType(ClientConstants.LEASE_TYPE_DIRECT_RENT);
+        transDoc.setTransType(ClientConstants.TRANS_TYPE_BEGIN_INTEREST_DIRECT_RENT);
+        transDoc.setAmount(message.getAmount());
+        setProductNm(transDoc,message.getBusinessType());
+        transDoc.setSuppierNm(message.getMerchantName());
+        transDoc.setPlatformPartner(message.getMerchantName());
+        transDoc.setCustNm(message.getCustName());
+        transDoc.setFinancialProduct(message.getProductName());
+        transDoc.setTaxRate(message.getTaxRate());
+        transDoc.setCurrentAccounting(message.getMerchantName());
+        transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setTerm(0);
+        transDoc.setSumTerm(message.getSumTerm());
+        transDoc.setGenerateTime(new Date("2022-01-01"));
+        transDoc.setGenerateDate(new Date("2022-01-01"));
+
+        //租户赋值
+        setTenantValue(trans, transDoc);
+        docList.add(transDoc);
+        standardMessage.setAcctDocGenTrans(trans);
+        standardMessage.setAcctDocGenSubTransList(docList);
+
+        return standardMessage;
+    }
     /**
      * 租户赋值
      *
