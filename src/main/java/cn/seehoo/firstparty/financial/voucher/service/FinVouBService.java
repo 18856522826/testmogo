@@ -1949,8 +1949,9 @@ public class FinVouBService implements FinVouService {
      *
      * @param message 当前场景业务信息
      */
+    @Override
     public VoucherStandardMessage adjustBuyout(AdjustBuyoutMessage message) throws Exception {
-        log.info("场景二十六 调整买断价场景所需财务信息,入参:{}", message.toString());
+        log.info("场景三十六 调整买断价场景所需财务信息,入参:{}", message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
@@ -2005,8 +2006,9 @@ public class FinVouBService implements FinVouService {
      *
      * @param message 当前场景业务信息
      */
+    @Override
     public VoucherStandardMessage beginInterest(BeginInterestMessage message) throws Exception {
-        log.info("场景二十六 确认期初利息余额场景所需财务信息,入参:{}", message.toString());
+        log.info("场景三十七 确认期初利息余额场景所需财务信息,入参:{}", message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
@@ -2061,8 +2063,9 @@ public class FinVouBService implements FinVouService {
      *
      * @param message 当前场景业务信息
      */
+    @Override
     public VoucherStandardMessage vatPrincipal(VatPrincipalMessage message) throws Exception {
-        log.info("场景二十六 确认直租项目本金增值税场景所需财务信息,入参:{}", message.toString());
+        log.info("场景三十八 确认直租项目本金增值税场景所需财务信息,入参:{}", message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);

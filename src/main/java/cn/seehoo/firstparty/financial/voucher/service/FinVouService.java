@@ -183,4 +183,20 @@ public interface FinVouService {
      * @param message 入参
      */
     VoucherStandardMessage marginCompensation(MarginCompensationCollectionMessage message) throws Exception;
-    }
+
+    /**
+     * 场景三十六 调整买断价场景
+     * @param message 入参
+     */
+    VoucherStandardMessage adjustBuyout(AdjustBuyoutMessage message) throws Exception;
+    /**
+     * 场景三十七 确认期初利息余额场景
+     * @param message 入参
+     */
+    VoucherStandardMessage beginInterest(BeginInterestMessage message) throws Exception;
+    /**
+     * 场景三十八 确认直租项目本金增值税场景
+     * @param message 入参
+     */
+    VoucherStandardMessage vatPrincipal(VatPrincipalMessage message) throws Exception;
+}
