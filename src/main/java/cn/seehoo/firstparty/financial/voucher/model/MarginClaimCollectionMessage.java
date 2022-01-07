@@ -24,10 +24,6 @@ public class MarginClaimCollectionMessage extends CommonMessage {
      */
     private String adjustType;
     /**
-     * 租赁类型
-     */
-    private String leaseType;
-    /**
      * 预付保证金Id
      */
     private String depositId;
@@ -52,20 +48,5 @@ public class MarginClaimCollectionMessage extends CommonMessage {
      *收款方账号
      */
     private String payeeAcctNo;
-
-    /**
-     * 客户姓名
-     */
-    private String custName;
-
-    /**
-     * 产品名称
-     */
-    private String productName;
-
-    /**
-     * 直租：13 回租6
-     */
-    private BigDecimal taxRate;
 
 }
