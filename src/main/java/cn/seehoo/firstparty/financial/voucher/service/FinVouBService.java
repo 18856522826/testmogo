@@ -10,6 +10,8 @@ import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -1963,8 +1965,11 @@ public class FinVouBService implements FinVouService {
         trans.setTransName(ClientConstants.TRANS_NAME_ADJUST_BUYOUT);
         trans.setContractId(message.getContractNo());
         trans.setIputFlowId(message.getBusinessNo());
-        trans.setGenerateTime(new Date(2022, Calendar.FEBRUARY,1));
-        trans.setGenerateDate(new Date(2022, Calendar.FEBRUARY,1));
+
+
+
+        trans.setGenerateTime(getSpecifyDate("2022-01-01","YYYY-MM-DD"));
+        trans.setGenerateDate(getSpecifyDate("2022-01-01","YYYY-MM-DD"));
         trans.setContractName(ClientConstants.CONTRACT_NAME);
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
@@ -1991,8 +1996,8 @@ public class FinVouBService implements FinVouService {
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setTerm(0);
         transDoc.setSumTerm(message.getSumTerm());
-        transDoc.setGenerateTime(new Date(2022, Calendar.FEBRUARY,1));
-        transDoc.setGenerateDate(new Date(2022, Calendar.FEBRUARY,1));
+        transDoc.setGenerateTime(getSpecifyDate("2022-01-01","YYYY-MM-DD"));
+        transDoc.setGenerateDate(getSpecifyDate("2022-01-01","YYYY-MM-DD"));
 
         //租户赋值
         setTenantValue(trans, transDoc);
@@ -2020,8 +2025,8 @@ public class FinVouBService implements FinVouService {
         trans.setTransName(ClientConstants.TRANS_NAME_ADJUST_BUYOUT);
         trans.setContractId(message.getContractNo());
         trans.setIputFlowId(message.getBusinessNo());
-        trans.setGenerateTime(new Date(2022, Calendar.FEBRUARY,1));
-        trans.setGenerateDate(new Date(2022, Calendar.FEBRUARY,1));
+        trans.setGenerateTime(getSpecifyDate("2022-01-01","YYYY-MM-DD"));
+        trans.setGenerateDate(getSpecifyDate("2022-01-01","YYYY-MM-DD"));
         trans.setContractName(ClientConstants.CONTRACT_NAME);
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
@@ -2048,8 +2053,8 @@ public class FinVouBService implements FinVouService {
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setTerm(0);
         transDoc.setSumTerm(message.getSumTerm());
-        transDoc.setGenerateTime(new Date(2022, Calendar.FEBRUARY,1));
-        transDoc.setGenerateDate(new Date(2022, Calendar.FEBRUARY,1));
+        transDoc.setGenerateTime(getSpecifyDate("2022-01-01","YYYY-MM-DD"));
+        transDoc.setGenerateDate(getSpecifyDate("2022-01-01","YYYY-MM-DD"));
 
         //租户赋值
         setTenantValue(trans, transDoc);
@@ -2077,8 +2082,8 @@ public class FinVouBService implements FinVouService {
         trans.setTransName(ClientConstants.TRANS_NAME_ADJUST_BUYOUT);
         trans.setContractId(message.getContractNo());
         trans.setIputFlowId(message.getBusinessNo());
-        trans.setGenerateTime(new Date(2022, Calendar.FEBRUARY,1));
-        trans.setGenerateDate(new Date(2022, Calendar.FEBRUARY,1));
+        trans.setGenerateTime(getSpecifyDate("2022-01-01","YYYY-MM-DD"));
+        trans.setGenerateDate(getSpecifyDate("2022-01-01","YYYY-MM-DD"));
         trans.setContractName(ClientConstants.CONTRACT_NAME);
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
@@ -2097,8 +2102,8 @@ public class FinVouBService implements FinVouService {
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setTerm(0);
         transDoc.setSumTerm(message.getSumTerm());
-        transDoc.setGenerateTime(new Date(2022, Calendar.FEBRUARY,1));
-        transDoc.setGenerateDate(new Date(2022, Calendar.FEBRUARY,1));
+        transDoc.setGenerateTime(getSpecifyDate("2022-01-01","YYYY-MM-DD"));
+        transDoc.setGenerateDate(getSpecifyDate("2022-01-01","YYYY-MM-DD"));
 
         //租户赋值
         setTenantValue(trans, transDoc);
@@ -2153,5 +2158,17 @@ public class FinVouBService implements FinVouService {
             return "2".equals(incomeType);
         }
         return  (!"4".equals(settlementType));
+    }
+
+    /**
+     * 获取指定时间
+     * @param date 字符串日期
+     * @param format 格式
+     * @return 日期响应
+     * @throws ParseException 异常
+     */
+    private Date getSpecifyDate(String date,String format) throws ParseException {
+        SimpleDateFormat dateFormat=new SimpleDateFormat(format);
+        return  dateFormat.parse(date);
     }
 }
