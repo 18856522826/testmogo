@@ -1954,6 +1954,36 @@ public class FinVouAService implements FinVouService {
     }
 
     /**
+     * 场景三十六 调整买断价场景
+     *
+     * @param message 入参
+     */
+    @Override
+    public VoucherStandardMessage adjustBuyout(AdjustBuyoutMessage message) throws Exception {
+        return null;
+    }
+
+    /**
+     * 场景三十七 确认期初利息余额场景
+     *
+     * @param message 入参
+     */
+    @Override
+    public VoucherStandardMessage beginInterest(BeginInterestMessage message) throws Exception {
+        return null;
+    }
+
+    /**
+     * 场景三十八 确认直租项目本金增值税场景
+     *
+     * @param message 入参
+     */
+    @Override
+    public VoucherStandardMessage vatPrincipal(VatPrincipalMessage message) throws Exception {
+        return null;
+    }
+
+    /**
      * 租户赋值
      *
      * @param trans    财务子交易
