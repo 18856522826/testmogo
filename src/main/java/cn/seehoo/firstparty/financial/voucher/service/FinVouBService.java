@@ -904,7 +904,6 @@ public class FinVouBService implements FinVouService {
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
         trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
-        trans.setCertificateLeaseType(message.getLeaseType());
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_007);
         trans.setInputId(message.getDepositId());
         trans.setTransName(ClientConstants.TRANS_NAME_UNKNOWN_PAYMENT);
@@ -928,14 +927,11 @@ public class FinVouBService implements FinVouService {
             transDoc.setProductNm(ClientConstants.PRODUCT_NM_6);
         }
         transDoc.setSuppierNm(message.getMerchantName());
-        transDoc.setCustNm(message.getCustName());
         transDoc.setPlatformPartner(message.getMerchantName());
-        transDoc.setFinancialProduct(message.getProductName());
-        transDoc.setTaxRate(message.getTaxRate());
         transDoc.setIsMovableProperty(ClientConstants.IS_MOVABLE_PROPERTY);
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setTerm(0);
-        transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setChargeAgainstFlag(Integer.parseInt(message.getAdjustType()));
         trans.setGenerateTime(message.getDate());
         trans.setGenerateDate(message.getDate());
         transDoc.setGenerateTime(message.getDate());
