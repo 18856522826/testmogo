@@ -57,7 +57,7 @@ public class FinVouBService implements FinVouService {
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
         transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_MARGIN);
-        transDoc.setTransType(ClientConstants.TRANS_TYPE_MARGIN_B);
+        transDoc.setTransType(ClientConstants.TRANS_TYPE_MARGIN);
         transDoc.setAmount(BigDecimal.ZERO);
         transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
         transDoc.setPayerBankName(message.getPayerBankName());
