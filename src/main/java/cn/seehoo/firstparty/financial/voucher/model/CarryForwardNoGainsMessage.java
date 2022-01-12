@@ -40,6 +40,10 @@ public class CarryForwardNoGainsMessage extends CommonMessage {
      * 主表融资期限
      */
     private int sumTerm;
+    /**
+     * 当前期数
+     */
+    private int currentTerm;
 
     /**
      * 直租：13 回租6

@@ -460,7 +460,7 @@ public class FinVouMessageSceneClient {
      * @param message 入参
      */
     public void carryForwardNoGains(CarryForwardNoGainsMessage message) throws Exception {
-        log.info("场景三十九 结转未实现融资收益场景场景所需财务信息,入参:{}",message.toString());
+        log.info("场景三十九 结转未实现融资收益场景所需财务信息,入参:{}",message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage=lookUp(config).carryForwardNoGains(message);
         //发送
