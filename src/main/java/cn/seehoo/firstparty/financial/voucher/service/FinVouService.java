@@ -199,4 +199,9 @@ public interface FinVouService {
      * @param message 入参
      */
     VoucherStandardMessage vatPrincipal(VatPrincipalMessage message) throws Exception;
+    /**
+     * 场景三十九 结转未实现融资收益场景
+     * @param message 入参
+     */
+    VoucherStandardMessage carryForwardNoGains(CarryForwardNoGainsMessage message) throws Exception;
 }

@@ -1979,7 +1979,7 @@ public class FinVouBService implements FinVouService {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_ADJUST_DIRECT_RENT);
         }else {
             transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_ADJUST_BUYOUT_BACK_RENT);
-            trans.setLeaseType(ClientConstants.LEASE_TYPE_DIRECT_RENT);
+            trans.setLeaseType(ClientConstants.LEASE_TYPE_LEASE_BACK);
             transDoc.setTransType(ClientConstants.TRANS_TYPE_ADJUST_BACK_RENT);
         }
         transDoc.setFee(getTaxAmount(message.getAmount(),message.getTaxRate().divide(new BigDecimal("100"), 2, BigDecimal.ROUND_HALF_UP)));
@@ -2036,7 +2036,7 @@ public class FinVouBService implements FinVouService {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_BEGIN_INTEREST_DIRECT_RENT);
         }else {
             transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_BEGIN_INTEREST_BACK_RENT);
-            trans.setLeaseType(ClientConstants.LEASE_TYPE_DIRECT_RENT);
+            trans.setLeaseType(ClientConstants.LEASE_TYPE_LEASE_BACK);
             transDoc.setTransType(ClientConstants.TRANS_TYPE_BEGIN_INTEREST_BACK_RENT);
         }
         transDoc.setFee(message.getFee());
@@ -2089,7 +2089,7 @@ public class FinVouBService implements FinVouService {
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
         transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_VAT_PRINCIPAL_DIRECT_RENT);
         trans.setLeaseType(ClientConstants.LEASE_TYPE_DIRECT_RENT);
-        transDoc.setTransType(ClientConstants.TRANS_TYPE_BEGIN_INTEREST_DIRECT_RENT);
+        transDoc.setTransType(ClientConstants.TRANS_TYPE_VAT_PRINCIPAL_DIRECT_RENT);
         transDoc.setAmount(message.getAmount());
         setProductNm(transDoc,message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
@@ -2112,6 +2112,69 @@ public class FinVouBService implements FinVouService {
 
         return standardMessage;
     }
+
+    /**
+     * 场景三十九 结转未实现融资收益场景
+     *
+     * @param message 入参
+     */
+    @Override
+    public VoucherStandardMessage carryForwardNoGains(CarryForwardNoGainsMessage message) throws Exception {
+        log.info("场景三十八 结转未实现融资收益场景场景所需财务信息,入参:{}", message.toString());
+        //标准财务凭证消息
+        VoucherStandardMessage standardMessage = new VoucherStandardMessage();
+        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
+        //制证交易流水
+        AcctDocGenTrans trans = new AcctDocGenTrans();
+        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_009);
+        trans.setInputId(message.getBusinessNo());
+        trans.setTransName(ClientConstants.TRANS_NAME_CURRENT_RENT_BANK);
+        trans.setContractId(message.getContractNo());
+        trans.setIputFlowId(message.getBusinessNo());
+        trans.setGenerateTime(message.getDate());
+        trans.setGenerateDate(message.getDate());
+        trans.setContractName(ClientConstants.CONTRACT_NAME);
+        //制证子交易流水
+        List<AcctDocGenTransDoc> docList = new ArrayList<>();
+        AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
+        if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())) {
+            transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_CARRY_NO_GAINS_DIRECT_RENT);
+            trans.setLeaseType(ClientConstants.LEASE_TYPE_DIRECT_RENT);
+            transDoc.setTransType(ClientConstants.TRANS_TYPE_CARRY_NO_GAINS_DIRECT_RENT);
+        }else {
+            transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_CARRY_NO_GAINS_BACK_RENT);
+            trans.setLeaseType(ClientConstants.LEASE_TYPE_LEASE_BACK);
+            transDoc.setTransType(ClientConstants.TRANS_TYPE_CARRY_NO_GAINS_BACK_RENT);
+        }
+        transDoc.setAmount(message.getAmount());
+        transDoc.setGoodsTax(getTaxAmount(message.getAmount(),message.getTaxRate().divide(new BigDecimal("100"), 2, BigDecimal.ROUND_HALF_UP)));
+        transDoc.setNoTaxInterest(message.getAmount().subtract(transDoc.getGoodsTax()));
+        setProductNm(transDoc,message.getBusinessType());
+        transDoc.setSuppierNm(message.getMerchantName());
+        transDoc.setPlatformPartner(message.getMerchantName());
+        transDoc.setCustNm(message.getCustName());
+        transDoc.setFinancialProduct(message.getProductName());
+        transDoc.setTaxRate(message.getTaxRate());
+        transDoc.setCurrentAccounting(message.getMerchantName());
+        transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setTerm(0);
+        transDoc.setSumTerm(message.getSumTerm());
+        transDoc.setGenerateTime(message.getDate());
+        transDoc.setGenerateDate(message.getDate());
+        transDoc.setPayeeBankName(config.getAccountConfigs().get(message.getBizUseType()).getPayeeBankName());
+        transDoc.setPayerBankName(message.getPayerBankName());
+        transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
+        transDoc.setPayerAcctNo(message.getPayerAcctNo());
+
+        //租户赋值
+        setTenantValue(trans, transDoc);
+        docList.add(transDoc);
+        standardMessage.setAcctDocGenTrans(trans);
+        standardMessage.setAcctDocGenSubTransList(docList);
+
+        return standardMessage;
+    }
+
     /**
      * 租户赋值
      *

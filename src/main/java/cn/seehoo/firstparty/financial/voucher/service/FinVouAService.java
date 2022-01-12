@@ -1984,6 +1984,16 @@ public class FinVouAService implements FinVouService {
     }
 
     /**
+     * 场景三十九 结转未实现融资收益场景
+     *
+     * @param message 入参
+     */
+    @Override
+    public VoucherStandardMessage carryForwardNoGains(CarryForwardNoGainsMessage message) throws Exception {
+        return null;
+    }
+
+    /**
      * 租户赋值
      *
      * @param trans    财务子交易

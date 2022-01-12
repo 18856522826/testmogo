@@ -401,17 +401,25 @@ public interface ClientConstants {
      */
     String SUB_TRANS_NAME_ADJUST_BUYOUT_BACK_RENT ="回租B口径期初调整-调整买断价";
     /**
-     * 子交易名称-调整买断价直租
+     * 子交易名称-确认期初应收利息余额直租
      */
     String SUB_TRANS_NAME_BEGIN_INTEREST_DIRECT_RENT ="直租B口径期初调整-确认期初应收利息余额";
     /**
-     * 子交易名称-调整买断价回租
+     * 子交易名称-确认期初应收利息余额回租
      */
     String SUB_TRANS_NAME_BEGIN_INTEREST_BACK_RENT ="回租B口径期初调整-确认期初应收利息余额";
     /**
-     * 子交易名称-调整买断价回租
+     * 子交易名称-调整直租项目本金增值税
      */
     String SUB_TRANS_NAME_VAT_PRINCIPAL_DIRECT_RENT ="直租B口径期初调整-调整直租项目本金增值税";
+    /**
+     * 子交易名称-调整买断价直租
+     */
+    String SUB_TRANS_NAME_CARRY_NO_GAINS_DIRECT_RENT ="直租结转未实现融资收益";
+    /**
+     * 子交易名称-调整买断价回租
+     */
+    String SUB_TRANS_NAME_CARRY_NO_GAINS_BACK_RENT ="回租结转未实现融资收益";
     /**
      * 子交易名称-发票认证
      */
@@ -636,6 +644,14 @@ public interface ClientConstants {
      * 交易类型-回租调整买断价
      */
     String TRANS_TYPE_BEGIN_INTEREST_BACK_RENT="0590202";
+    /**
+     * 交易类型-直租调整买断价
+     */
+    String TRANS_TYPE_CARRY_NO_GAINS_DIRECT_RENT="0060101";
+    /**
+     * 交易类型-回租调整买断价
+     */
+    String TRANS_TYPE_CARRY_NO_GAINS_BACK_RENT="0060201";
     /**
      * 交易类型-直租调整买断价
      */
