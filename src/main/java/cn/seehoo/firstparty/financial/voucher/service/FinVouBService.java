@@ -2040,7 +2040,7 @@ public class FinVouBService implements FinVouService {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_BEGIN_INTEREST_BACK_RENT);
         }
         transDoc.setFee(message.getFee());
-        transDoc.setInterest((message.getAmount().subtract(message.getFee())).abs());
+        transDoc.setInterest((message.getAmount().add(message.getFee())).abs());
         transDoc.setAmount(message.getAmount());
         setProductNm(transDoc,message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
