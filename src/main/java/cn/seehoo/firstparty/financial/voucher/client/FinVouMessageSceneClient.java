@@ -455,6 +455,17 @@ public class FinVouMessageSceneClient {
         //发送
         sender.send(standardMessage);
     }
+    /**
+     * 场景三十九 结转未实现融资收益场景
+     * @param message 入参
+     */
+    public void carryForwardNoGains(CarryForwardNoGainsMessage message) throws Exception {
+        log.info("场景三十九 结转未实现融资收益场景所需财务信息,入参:{}",message.toString());
+        //标准财务凭证消息
+        VoucherStandardMessage standardMessage=lookUp(config).carryForwardNoGains(message);
+        //发送
+        sender.send(standardMessage);
+    }
 
     /**
      * 查询AB口径service
