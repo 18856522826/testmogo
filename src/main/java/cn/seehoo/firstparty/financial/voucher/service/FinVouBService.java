@@ -2157,7 +2157,7 @@ public class FinVouBService implements FinVouService {
         transDoc.setTaxRate(message.getTaxRate());
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
-        transDoc.setTerm(0);
+        transDoc.setTerm(message.getCurrentTerm());
         transDoc.setSumTerm(message.getSumTerm());
         transDoc.setGenerateTime(message.getDate());
         transDoc.setGenerateDate(message.getDate());
@@ -2165,7 +2165,12 @@ public class FinVouBService implements FinVouService {
         transDoc.setPayerBankName(message.getPayerBankName());
         transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
-
+        if (ClientConstants.ASSET_TYPE.equals(message.getBusinessType())) {
+            transDoc.setSpecialSupplierName("浙江大搜车融资租赁有限公司");
+        } else {
+            //三方机构全称
+            transDoc.setSpecialSupplierName(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
+        }
         //租户赋值
         setTenantValue(trans, transDoc);
         docList.add(transDoc);
