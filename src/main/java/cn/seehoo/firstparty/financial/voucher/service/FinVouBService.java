@@ -2039,9 +2039,9 @@ public class FinVouBService implements FinVouService {
             trans.setLeaseType(ClientConstants.LEASE_TYPE_LEASE_BACK);
             transDoc.setTransType(ClientConstants.TRANS_TYPE_BEGIN_INTEREST_BACK_RENT);
         }
-        transDoc.setFee(message.getFee().abs());
-        transDoc.setInterest((message.getAmount().add(message.getFee())).abs());
-        transDoc.setAmount(message.getAmount());
+        transDoc.setFee(message.getFee());
+        transDoc.setInterest(message.getAmount());
+        transDoc.setAmount((message.getAmount().add(message.getFee())).abs());
         setProductNm(transDoc,message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setPlatformPartner(message.getMerchantName());
