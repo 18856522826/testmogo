@@ -135,8 +135,8 @@ public class FinVouBService implements FinVouService {
         transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_ASSET_RENT_B);
         if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())) {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_ASSET_DIRECT_RENT);
-            transDoc.setNoTaxContractPrice(message.getLoanAmount().subtract(getTaxAmount(message.getLoanAmount(),message.getTaxRate().divide(new BigDecimal("100"), 2, BigDecimal.ROUND_HALF_UP))));
-            transDoc.setGoodsTax(getTaxAmount(message.getLoanAmount(),message.getTaxRate().divide(new BigDecimal("100"), 2, BigDecimal.ROUND_HALF_UP)));
+            transDoc.setNoTaxContractPrice(message.getPrincipalExcludeTax());
+            transDoc.setGoodsTax(message.getPrincipalTax());
         } else {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_ASSET_LEASE_BACK);
         }
