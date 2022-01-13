@@ -1673,11 +1673,10 @@ public class FinVouBService implements FinVouService {
         if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())) {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_EARLY_REPAYMENT_Z);
             transDoc.setNoTaxFloatingDeposit(message.getNoTaxFloatingDeposit());
-            transDoc.setTaxInterest(message.getTaxInterest().subtract(message.getNoTaxFloatingDeposit()).abs());
         } else {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_EARLY_REPAYMENT_H);
-            transDoc.setTaxInterest(message.getTaxInterest());
         }
+        transDoc.setTaxInterest(message.getNoTaxFloatingDeposit().multiply(new BigDecimal("-1")));
         transDoc.setAmount(message.getGyPrincipal());
         transDoc.setResidueUncollectedCapital(message.getNotChargePrincipal());
         transDoc.setResidueUncollectedInterest(message.getNotChargeInterest());
