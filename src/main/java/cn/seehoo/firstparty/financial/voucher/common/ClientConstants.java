@@ -693,4 +693,6 @@ public interface ClientConstants {
      * 资产买断模式
      */
     String ASSET_TYPE="2";
+
+    String PRODUCT_NAME="新增客户";
 }

@@ -931,6 +931,7 @@ public class FinVouBService implements FinVouService {
             transDoc.setProductNm(ClientConstants.PRODUCT_NM_6);
         }
         transDoc.setSuppierNm(message.getMerchantName());
+        transDoc.setCustNm(ClientConstants.PRODUCT_NAME);
         transDoc.setPlatformPartner(message.getMerchantName());
         transDoc.setIsMovableProperty(ClientConstants.IS_MOVABLE_PROPERTY);
         transDoc.setCurrentAccounting(message.getMerchantName());
