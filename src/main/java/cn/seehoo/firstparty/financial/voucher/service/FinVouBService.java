@@ -2120,13 +2120,13 @@ public class FinVouBService implements FinVouService {
      */
     @Override
     public VoucherStandardMessage carryForwardNoGains(CarryForwardNoGainsMessage message) throws Exception {
-        log.info("场景三十八 结转未实现融资收益场景场景所需财务信息,入参:{}", message.toString());
+        log.info("场景三十九 结转未实现融资收益场景场景所需财务信息,入参:{}", message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
-        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_009);
+        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_006);
         trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_CURRENT_RENT_BANK);
         trans.setContractId(message.getContractNo());
