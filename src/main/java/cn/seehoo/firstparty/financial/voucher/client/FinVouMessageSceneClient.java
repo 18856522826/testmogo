@@ -466,6 +466,17 @@ public class FinVouMessageSceneClient {
         //发送
         sender.send(standardMessage);
     }
+    /**
+     * 场景三十五 提前结清-保证金代偿
+     * @param message 入参
+     */
+    public void marginCompensation(MarginCompensationCollectionMessage message) throws Exception {
+        log.info("场景三十五 提前结清-保证金代偿,入参:{}",message.toString());
+        //标准财务凭证消息
+        VoucherStandardMessage standardMessage=lookUp(config).marginCompensation(message);
+        //发送
+        sender.send(standardMessage);
+    }
 
     /**
      * 查询AB口径service

@@ -1902,55 +1902,7 @@ public class FinVouAService implements FinVouService {
      */
     @Override
     public VoucherStandardMessage marginCompensation(MarginCompensationCollectionMessage message) throws Exception {
-        log.info("场景三十五 提前结清-保证金代偿,入参:{}", message.toString());
-        //标准财务凭证消息
-        VoucherStandardMessage standardMessage = new VoucherStandardMessage();
-        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
-
-        //制证交易流水
-        AcctDocGenTrans trans = new AcctDocGenTrans();
-        trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
-        trans.setCertificateLeaseType(message.getLeaseType());
-        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_057);
-        trans.setInputId(message.getBusinessNo());
-        trans.setTransName(ClientConstants.TRANS_NAME_USE_BUSINESS_MARGIN_B);
-        trans.setContractId(message.getContractNo());
-        trans.setIputFlowId(message.getBusinessNo());
-        trans.setGenerateTime(message.getDate());
-        trans.setGenerateDate(message.getDate());
-        trans.setContractName(ClientConstants.CONTRACT_NAME);
-
-        //制证子交易流水
-        List<AcctDocGenTransDoc> docList = new ArrayList<>();
-        AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
-        transDoc.setSubTransName(ClientConstants.TRANS_NAME_USE_BUSINESS_MARGIN_B);
-        transDoc.setTransType(ClientConstants.TRANS_TYPE_USE_BUSINESS_MARGIN_B);
-        transDoc.setAmount(BigDecimal.ZERO);
-        transDoc.setIncludeTaxRent(message.getIncludeTaxRent());
-        transDoc.setInterest(message.getInterest());
-        transDoc.setIncludeCapital(message.getIncludeCapital());
-        transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
-        setProductNm(transDoc, message.getBusinessType());
-        transDoc.setSuppierNm(message.getMerchantName());
-        transDoc.setCustNm(message.getCustName());
-        transDoc.setPlatformPartner(message.getMerchantName());
-        transDoc.setFinancialProduct(message.getProductName());
-        transDoc.setTaxRate(message.getTaxRate());
-        transDoc.setIsMovableProperty(ClientConstants.IS_MOVABLE_PROPERTY);
-        transDoc.setCurrentAccounting(message.getMerchantName());
-        transDoc.setTerm(message.getCurrentPeriods());
-        transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
-        transDoc.setSumTerm(message.getLoanTerm());
-        transDoc.setGenerateTime(message.getDate());
-        transDoc.setGenerateDate(message.getDate());
-
-        //租户赋值
-        setTenantValue(trans, transDoc);
-        docList.add(transDoc);
-        standardMessage.setAcctDocGenTrans(trans);
-        standardMessage.setAcctDocGenSubTransList(docList);
-
-        return standardMessage;
+        return null;
     }
 
     /**
