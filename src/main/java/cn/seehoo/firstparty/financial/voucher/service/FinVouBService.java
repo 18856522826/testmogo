@@ -2041,7 +2041,7 @@ public class FinVouBService implements FinVouService {
         }
         transDoc.setFee(message.getFee());
         transDoc.setInterest(message.getAmount());
-        transDoc.setAmount((message.getAmount().add(message.getFee())).abs());
+        transDoc.setAmount((message.getAmount().add(message.getFee())));
         setProductNm(transDoc,message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setPlatformPartner(message.getMerchantName());
