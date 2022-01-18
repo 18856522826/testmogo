@@ -116,7 +116,7 @@ public class FinVouBService implements FinVouService {
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
 
-        transDoc.setAmount(message.getLoanAmount());
+        transDoc.setAmount(BigDecimal.ZERO);
         transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
         transDoc.setPayerBankName(message.getPayerBankName());
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
@@ -1673,11 +1673,10 @@ public class FinVouBService implements FinVouService {
         if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())) {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_EARLY_REPAYMENT_Z);
             transDoc.setNoTaxFloatingDeposit(message.getNoTaxFloatingDeposit());
-            transDoc.setTaxInterest(message.getTaxInterest().subtract(message.getNoTaxFloatingDeposit()).abs());
         } else {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_EARLY_REPAYMENT_H);
-            transDoc.setTaxInterest(message.getTaxInterest());
         }
+        transDoc.setTaxInterest(message.getNoTaxFloatingDeposit().multiply(new BigDecimal("-1")));
         transDoc.setAmount(message.getGyPrincipal());
         transDoc.setResidueUncollectedCapital(message.getNotChargePrincipal());
         transDoc.setResidueUncollectedInterest(message.getNotChargeInterest());
@@ -1968,8 +1967,8 @@ public class FinVouBService implements FinVouService {
 
 
 
-        trans.setGenerateTime(getSpecifyDate("2022-01-01","yyyy-MM-dd"));
-        trans.setGenerateDate(getSpecifyDate("2022-01-01","yyyy-MM-dd"));
+        trans.setGenerateTime(getSpecifyDate("2022-01-02","yyyy-MM-dd"));
+        trans.setGenerateDate(getSpecifyDate("2022-01-02","yyyy-MM-dd"));
         trans.setContractName(ClientConstants.CONTRACT_NAME);
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
@@ -1996,8 +1995,8 @@ public class FinVouBService implements FinVouService {
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setTerm(0);
         transDoc.setSumTerm(message.getSumTerm());
-        transDoc.setGenerateTime(getSpecifyDate("2022-01-01","yyyy-MM-dd"));
-        transDoc.setGenerateDate(getSpecifyDate("2022-01-01","yyyy-MM-dd"));
+        transDoc.setGenerateTime(getSpecifyDate("2022-01-02","yyyy-MM-dd"));
+        transDoc.setGenerateDate(getSpecifyDate("2022-01-02","yyyy-MM-dd"));
 
         //租户赋值
         setTenantValue(trans, transDoc);
@@ -2025,8 +2024,8 @@ public class FinVouBService implements FinVouService {
         trans.setTransName(ClientConstants.TRANS_NAME_ADJUST_BUYOUT);
         trans.setContractId(message.getContractNo());
         trans.setIputFlowId(message.getBusinessNo());
-        trans.setGenerateTime(getSpecifyDate("2022-01-01","yyyy-MM-dd"));
-        trans.setGenerateDate(getSpecifyDate("2022-01-01","yyyy-MM-dd"));
+        trans.setGenerateTime(getSpecifyDate("2022-01-02","yyyy-MM-dd"));
+        trans.setGenerateDate(getSpecifyDate("2022-01-02","yyyy-MM-dd"));
         trans.setContractName(ClientConstants.CONTRACT_NAME);
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
@@ -2042,7 +2041,7 @@ public class FinVouBService implements FinVouService {
         }
         transDoc.setFee(message.getFee());
         transDoc.setInterest(message.getAmount());
-        transDoc.setAmount((message.getAmount().add(message.getFee())).abs());
+        transDoc.setAmount((message.getAmount().add(message.getFee())));
         setProductNm(transDoc,message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setPlatformPartner(message.getMerchantName());
@@ -2053,8 +2052,8 @@ public class FinVouBService implements FinVouService {
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setTerm(0);
         transDoc.setSumTerm(message.getSumTerm());
-        transDoc.setGenerateTime(getSpecifyDate("2022-01-01","yyyy-MM-dd"));
-        transDoc.setGenerateDate(getSpecifyDate("2022-01-01","yyyy-MM-dd"));
+        transDoc.setGenerateTime(getSpecifyDate("2022-01-02","yyyy-MM-dd"));
+        transDoc.setGenerateDate(getSpecifyDate("2022-01-02","yyyy-MM-dd"));
 
         //租户赋值
         setTenantValue(trans, transDoc);
@@ -2082,8 +2081,8 @@ public class FinVouBService implements FinVouService {
         trans.setTransName(ClientConstants.TRANS_NAME_ADJUST_BUYOUT);
         trans.setContractId(message.getContractNo());
         trans.setIputFlowId(message.getBusinessNo());
-        trans.setGenerateTime(getSpecifyDate("2022-01-01","yyyy-MM-dd"));
-        trans.setGenerateDate(getSpecifyDate("2022-01-01","yyyy-MM-dd"));
+        trans.setGenerateTime(getSpecifyDate("2022-01-02","yyyy-MM-dd"));
+        trans.setGenerateDate(getSpecifyDate("2022-01-02","yyyy-MM-dd"));
         trans.setContractName(ClientConstants.CONTRACT_NAME);
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
@@ -2102,8 +2101,8 @@ public class FinVouBService implements FinVouService {
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setTerm(0);
         transDoc.setSumTerm(message.getSumTerm());
-        transDoc.setGenerateTime(getSpecifyDate("2022-01-01","yyyy-MM-dd"));
-        transDoc.setGenerateDate(getSpecifyDate("2022-01-01","yyyy-MM-dd"));
+        transDoc.setGenerateTime(getSpecifyDate("2022-01-02","yyyy-MM-dd"));
+        transDoc.setGenerateDate(getSpecifyDate("2022-01-02","yyyy-MM-dd"));
 
         //租户赋值
         setTenantValue(trans, transDoc);
@@ -2121,13 +2120,13 @@ public class FinVouBService implements FinVouService {
      */
     @Override
     public VoucherStandardMessage carryForwardNoGains(CarryForwardNoGainsMessage message) throws Exception {
-        log.info("场景三十八 结转未实现融资收益场景场景所需财务信息,入参:{}", message.toString());
+        log.info("场景三十九 结转未实现融资收益场景场景所需财务信息,入参:{}", message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
-        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_009);
+        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_006);
         trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_CURRENT_RENT_BANK);
         trans.setContractId(message.getContractNo());
@@ -2158,7 +2157,7 @@ public class FinVouBService implements FinVouService {
         transDoc.setTaxRate(message.getTaxRate());
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
-        transDoc.setTerm(0);
+        transDoc.setTerm(message.getCurrentTerm());
         transDoc.setSumTerm(message.getSumTerm());
         transDoc.setGenerateTime(message.getDate());
         transDoc.setGenerateDate(message.getDate());
@@ -2166,7 +2165,12 @@ public class FinVouBService implements FinVouService {
         transDoc.setPayerBankName(message.getPayerBankName());
         transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
-
+        if (ClientConstants.ASSET_TYPE.equals(message.getBusinessType())) {
+            transDoc.setSpecialSupplierName("浙江大搜车融资租赁有限公司");
+        } else {
+            //三方机构全称
+            transDoc.setSpecialSupplierName(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
+        }
         //租户赋值
         setTenantValue(trans, transDoc);
         docList.add(transDoc);
@@ -2205,7 +2209,7 @@ public class FinVouBService implements FinVouService {
     }
 
     private BigDecimal getTaxAmount(BigDecimal amount, BigDecimal rate) {
-        return amount.divide(BigDecimal.ONE.add(rate), 2, BigDecimal.ROUND_HALF_UP).multiply(rate).setScale(2, BigDecimal.ROUND_HALF_UP);
+        return amount.multiply(rate).divide(BigDecimal.ONE.add(rate), 2, BigDecimal.ROUND_HALF_UP);
     }
 
     /**
