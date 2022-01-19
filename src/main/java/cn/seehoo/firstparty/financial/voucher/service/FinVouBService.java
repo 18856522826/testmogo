@@ -131,7 +131,7 @@ public class FinVouBService implements FinVouService {
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
         //取投资总额
-        transDoc.setContractPrice(message.getLoanAmount());
+        transDoc.setContractPrice(message.getInvestTotalAmount());
         transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_ASSET_RENT_B);
         if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())) {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_ASSET_DIRECT_RENT);
@@ -387,13 +387,13 @@ public class FinVouBService implements FinVouService {
         if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())) {
             transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_INTEREST_DIRECT_RENT_B);
             transDoc.setTransType(ClientConstants.TRANS_TYPE_INTEREST_DIRECT_RENT_B);
-            transDoc.setFee(message.getRentTax());
         } else {
             transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_INTEREST_LEASE_BACK_B);
             transDoc.setTransType(ClientConstants.TRANS_TYPE_INTEREST_LEASE_BACK_B);
-            transDoc.setFee(message.getInterestTaxB());
         }
-        BigDecimal noTaxRent=message.getRent().subtract(message.getRentTax());
+        transDoc.setFee(message.getRentTax());
+        //当月利息减利息税
+        BigDecimal noTaxRent=message.getInterest().subtract(message.getInterestTaxB());
         transDoc.setAmount(noTaxRent);
         transDoc.setInterest(noTaxRent.add(message.getInterestTaxB()));
         transDoc.setTaxCapital(message.getRentTax().subtract(message.getInterestTaxB()));
