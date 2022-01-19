@@ -392,10 +392,10 @@ public class FinVouBService implements FinVouService {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_INTEREST_LEASE_BACK_B);
         }
         transDoc.setFee(message.getRentTax());
-        //当月利息减利息税
-        BigDecimal noTaxRent=message.getInterest().subtract(message.getInterestTaxB());
-        transDoc.setAmount(noTaxRent);
-        transDoc.setInterest(noTaxRent.add(message.getInterestTaxB()));
+        //不含税利息
+        transDoc.setAmount(message.getInterest());
+        //不含税利息+利息税
+        transDoc.setInterest(message.getInterest().add(message.getInterestTaxB()));
         transDoc.setTaxCapital(message.getRentTax().subtract(message.getInterestTaxB()));
         transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
         setProductNm(transDoc, message.getBusinessType());
