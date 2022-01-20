@@ -62,4 +62,13 @@ public class CarryForwardNoGainsMessage extends CommonMessage {
      * 账户key
      */
     private String bizUseType;
+    /**
+     * 收款方开户行名称（即收款银行）
+     */
+    private String payeeBankName;
+
+    /**
+     * 收款方账号（即收款账号）
+     */
+    private String payeeAcctNo;
 }

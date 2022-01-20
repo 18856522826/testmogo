@@ -1584,11 +1584,14 @@ public class FinVouBService implements FinVouService {
         transDoc.setGenerateDate(message.getDate());
 
         //如果是4.0则修改以下取值
-        if(ClientConstants.BUSINESS_TYPE4.equals(message.getBusinessType())){
+        if(ClientConstants.PRODUCT_TYPE.equals(message.getBusinessType())){
             transDoc.setPenalSum(message.getPenalty().subtract(message.getPurchasePrice()).add(message.getUncollectedInterest()));
             transDoc.setPresentUncollectedInterest(BigDecimal.ZERO);
             transDoc.setFee(message.getUncollectedInterest());
             transDoc.setInterest(message.getUncollectedInterest());
+            transDoc.setPayeeBankName(message.getPayeeBankName());
+            transDoc.setPayerAcctNo(message.getPayerAcctNo());
+            transDoc.setSpecialSupplierName(message.getPayeeBankName());
         }
 
         //租户赋值
@@ -1645,7 +1648,7 @@ public class FinVouBService implements FinVouService {
         transDoc.setGenerateDate(message.getDate());
 
         //如果是4.0则修改以下取值
-        if(ClientConstants.BUSINESS_TYPE4.equals(message.getBusinessType())){
+        if(ClientConstants.PRODUCT_TYPE.equals(message.getBusinessType())){
             //todo 剩余应还利息在mogo没有进行取值
             transDoc.setAmount(message.getPenalSum().add(message.getRepaymentInterest()));
             transDoc.setOutputAmountOfTax(getTaxAmount(transDoc.getAmount(),message.getTaxRate().divide(new BigDecimal("100"))));
@@ -1715,7 +1718,7 @@ public class FinVouBService implements FinVouService {
         transDoc.setGenerateDate(message.getDate());
 
         //如果是4.0则修改以下取值
-        if(ClientConstants.BUSINESS_TYPE4.equals(message.getBusinessType())){
+        if(ClientConstants.PRODUCT_TYPE.equals(message.getBusinessType())){
             transDoc.setResidueUncollectedInterest(message.getNotChargeInterest().add(message.getCurrentNotChargeInterest()));
             transDoc.setPresentUncollectedInterest(BigDecimal.ZERO);
             transDoc.setIncludeTaxRent(message.getIncludeTaxRent());
@@ -1852,6 +1855,13 @@ public class FinVouBService implements FinVouService {
         transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
         transDoc.setSpecialSupplierName(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
+
+        //如果是4.0则修改以下取值
+        if(ClientConstants.PRODUCT_TYPE.equals(message.getBusinessType())){
+            transDoc.setPayeeBankName(message.getPayeeBankName());
+            transDoc.setPayerAcctNo(message.getPayerAcctNo());
+            transDoc.setSpecialSupplierName(message.getPayeeBankName());
+        }
 
         //租户赋值
         setTenantValue(trans, transDoc);
@@ -2194,6 +2204,12 @@ public class FinVouBService implements FinVouService {
         } else {
             //三方机构全称
             transDoc.setSpecialSupplierName(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
+        }
+        //如果是4.0则修改以下取值
+        if(ClientConstants.PRODUCT_TYPE.equals(message.getBusinessType())){
+            transDoc.setPayeeBankName(message.getPayeeBankName());
+            transDoc.setPayerAcctNo(message.getPayerAcctNo());
+            transDoc.setSpecialSupplierName(message.getPayeeBankName());
         }
         //租户赋值
         setTenantValue(trans, transDoc);

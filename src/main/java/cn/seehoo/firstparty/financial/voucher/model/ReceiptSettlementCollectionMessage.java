@@ -93,6 +93,16 @@ public class ReceiptSettlementCollectionMessage extends CommonMessage {
     private String payerAcctNo;
 
     /**
+     * 收款方开户行名称（即收款银行）
+     */
+    private String payeeBankName;
+
+    /**
+     * 收款方账号（即收款账号）
+     */
+    private String payeeAcctNo;
+
+    /**
      * 账户key
      */
     private String bizUseType;
