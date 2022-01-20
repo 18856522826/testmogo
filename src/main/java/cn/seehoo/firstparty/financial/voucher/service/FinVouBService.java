@@ -1590,7 +1590,7 @@ public class FinVouBService implements FinVouService {
             transDoc.setFee(message.getUncollectedInterest());
             transDoc.setInterest(message.getUncollectedInterest());
             transDoc.setPayeeBankName(message.getPayeeBankName());
-            transDoc.setPayerAcctNo(message.getPayerAcctNo());
+            transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
             transDoc.setSpecialSupplierName(message.getPayeeBankName());
         }
 
@@ -1859,7 +1859,7 @@ public class FinVouBService implements FinVouService {
         //如果是4.0则修改以下取值
         if(ClientConstants.PRODUCT_TYPE.equals(message.getBusinessType())){
             transDoc.setPayeeBankName(message.getPayeeBankName());
-            transDoc.setPayerAcctNo(message.getPayerAcctNo());
+            transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
             transDoc.setSpecialSupplierName(message.getPayeeBankName());
         }
 
@@ -2208,7 +2208,7 @@ public class FinVouBService implements FinVouService {
         //如果是4.0则修改以下取值
         if(ClientConstants.PRODUCT_TYPE.equals(message.getBusinessType())){
             transDoc.setPayeeBankName(message.getPayeeBankName());
-            transDoc.setPayerAcctNo(message.getPayerAcctNo());
+            transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
             transDoc.setSpecialSupplierName(message.getPayeeBankName());
         }
         //租户赋值
