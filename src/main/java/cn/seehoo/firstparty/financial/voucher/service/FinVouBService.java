@@ -1649,7 +1649,6 @@ public class FinVouBService implements FinVouService {
 
         //如果是4.0则修改以下取值
         if(ClientConstants.PRODUCT_TYPE.equals(message.getBusinessType())){
-            //todo 剩余应还利息在mogo没有进行取值
             transDoc.setAmount(message.getPenalSum().add(message.getRepaymentInterest()));
             transDoc.setOutputAmountOfTax(getTaxAmount(transDoc.getAmount(),message.getTaxRate().divide(new BigDecimal("100"))));
             transDoc.setPenalSum(transDoc.getAmount().subtract(transDoc.getOutputAmountOfTax()));
@@ -1722,7 +1721,6 @@ public class FinVouBService implements FinVouService {
             transDoc.setResidueUncollectedInterest(message.getNotChargeInterest().add(message.getCurrentNotChargeInterest()));
             transDoc.setPresentUncollectedInterest(BigDecimal.ZERO);
             transDoc.setIncludeTaxRent(message.getIncludeTaxRent());
-            //todo 投资总额在mogo没有进行取值
             transDoc.setAmount(message.getTotalInvestment());
         }
 
