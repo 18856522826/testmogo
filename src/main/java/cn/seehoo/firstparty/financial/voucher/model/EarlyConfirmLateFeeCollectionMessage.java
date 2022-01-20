@@ -58,4 +58,9 @@ public class EarlyConfirmLateFeeCollectionMessage extends CommonMessage{
      * 提前结清滞纳金金额(税额)
      */
     private BigDecimal TaxLateFee;
+
+    /**
+     * 剩余应还利息
+     */
+    private BigDecimal repaymentInterest;
 }

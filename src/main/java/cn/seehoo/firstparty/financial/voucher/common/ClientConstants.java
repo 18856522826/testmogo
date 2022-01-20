@@ -711,4 +711,9 @@ public interface ClientConstants {
     String ASSET_TYPE="2";
 
     String PRODUCT_NAME="新增客户";
+
+    /**
+     *4.0业务模式
+     */
+    String BUSINESS_TYPE4="1";
 }

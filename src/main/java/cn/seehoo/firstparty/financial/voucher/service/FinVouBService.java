@@ -1583,6 +1583,14 @@ public class FinVouBService implements FinVouService {
         transDoc.setGenerateTime(message.getDate());
         transDoc.setGenerateDate(message.getDate());
 
+        //如果是4.0则修改以下取值
+        if(ClientConstants.BUSINESS_TYPE4.equals(message.getBusinessType())){
+            transDoc.setPenalSum(message.getPenalty().subtract(message.getPurchasePrice()).add(message.getUncollectedInterest()));
+            transDoc.setPresentUncollectedInterest(BigDecimal.ZERO);
+            transDoc.setFee(message.getUncollectedInterest());
+            transDoc.setInterest(message.getUncollectedInterest());
+        }
+
         //租户赋值
         setTenantValue(trans, transDoc);
         docList.add(transDoc);
@@ -1635,6 +1643,14 @@ public class FinVouBService implements FinVouService {
         transDoc.setSumTerm(message.getLoanTerm());
         transDoc.setGenerateTime(message.getDate());
         transDoc.setGenerateDate(message.getDate());
+
+        //如果是4.0则修改以下取值
+        if(ClientConstants.BUSINESS_TYPE4.equals(message.getBusinessType())){
+            //todo 剩余应还利息在mogo没有进行取值
+            transDoc.setAmount(message.getPenalSum().add(message.getRepaymentInterest()));
+            transDoc.setOutputAmountOfTax(getTaxAmount(transDoc.getAmount(),message.getTaxRate().divide(new BigDecimal("100"))));
+            transDoc.setPenalSum(transDoc.getAmount().subtract(transDoc.getOutputAmountOfTax()));
+        }
         //租户赋值
         setTenantValue(trans, transDoc);
         docList.add(transDoc);
@@ -1698,6 +1714,14 @@ public class FinVouBService implements FinVouService {
         transDoc.setGenerateTime(message.getDate());
         transDoc.setGenerateDate(message.getDate());
 
+        //如果是4.0则修改以下取值
+        if(ClientConstants.BUSINESS_TYPE4.equals(message.getBusinessType())){
+            transDoc.setResidueUncollectedInterest(message.getNotChargeInterest().add(message.getCurrentNotChargeInterest()));
+            transDoc.setPresentUncollectedInterest(BigDecimal.ZERO);
+            transDoc.setIncludeTaxRent(message.getIncludeTaxRent());
+            //todo 投资总额在mogo没有进行取值
+            transDoc.setAmount(message.getTotalInvestment());
+        }
 
         //租户赋值
         setTenantValue(trans, transDoc);
