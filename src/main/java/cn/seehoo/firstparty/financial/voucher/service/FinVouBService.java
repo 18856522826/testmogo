@@ -2187,11 +2187,16 @@ public class FinVouBService implements FinVouService {
      * @param transDoc 制证子交易流水
      */
     private void setTenantValue(AcctDocGenTrans trans, AcctDocGenTransDoc transDoc) {
+        String tenantName=config.getTenantName();
+        if(ClientConstants.PRODUCT_NM_5.equals(transDoc.getProductNm())){
+            tenantName=tenantName+"3.0";
+        }
         trans.setTntInstId(config.getTntInstId());
-        trans.setTenantName(config.getTenantName());
+        trans.setTenantName(tenantName);
 
         transDoc.setTntInstId(config.getTntInstId());
-        transDoc.setTenantName(config.getTenantName());
+        transDoc.setTenantName(tenantName);
+
     }
 
     /**
