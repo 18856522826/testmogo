@@ -1197,7 +1197,7 @@ public class FinVouBService implements FinVouService {
         //留购价
         transDoc.setIncludeTaxRent(message.getRetentionPrice());
         //核销本金
-        transDoc.setNoTaxRent(message.getCorrespondPrincipal());
+        transDoc.setNoTaxRent(BigDecimal.ZERO);
         transDoc.setGenerateTime(message.getDate());
         transDoc.setGenerateDate(message.getDate());
         //租户赋值
