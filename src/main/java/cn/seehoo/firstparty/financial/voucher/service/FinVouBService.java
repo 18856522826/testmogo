@@ -2179,7 +2179,7 @@ public class FinVouBService implements FinVouService {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_CARRY_NO_GAINS_BACK_RENT);
         }
         transDoc.setAmount(message.getAmount());
-        transDoc.setGoodsTax(getTaxAmount(message.getAmount(),message.getTaxRate().divide(new BigDecimal("100"), 2, BigDecimal.ROUND_HALF_UP)));
+        transDoc.setGoodsTax(message.getAmountTax());
         transDoc.setNoTaxInterest(message.getAmount().subtract(transDoc.getGoodsTax()));
         setProductNm(transDoc,message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
