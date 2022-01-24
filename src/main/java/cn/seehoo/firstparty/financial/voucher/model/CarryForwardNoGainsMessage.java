@@ -33,6 +33,10 @@ public class CarryForwardNoGainsMessage extends CommonMessage {
      */
     private BigDecimal amount;
     /**
+     * 当期利息税额
+     */
+    private BigDecimal amountTax;
+    /**
      * 产品名称
      */
     private String productName;

@@ -2179,7 +2179,7 @@ public class FinVouBService implements FinVouService {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_CARRY_NO_GAINS_BACK_RENT);
         }
         transDoc.setAmount(message.getAmount());
-        transDoc.setGoodsTax(getTaxAmount(message.getAmount(),message.getTaxRate().divide(new BigDecimal("100"), 2, BigDecimal.ROUND_HALF_UP)));
+        transDoc.setGoodsTax(message.getAmountTax());
         transDoc.setNoTaxInterest(message.getAmount().subtract(transDoc.getGoodsTax()));
         setProductNm(transDoc,message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
@@ -2225,11 +2225,16 @@ public class FinVouBService implements FinVouService {
      * @param transDoc 制证子交易流水
      */
     private void setTenantValue(AcctDocGenTrans trans, AcctDocGenTransDoc transDoc) {
+        String tenantName=config.getTenantName();
+        if(ClientConstants.PRODUCT_NM_5.equals(transDoc.getProductNm())){
+            tenantName=tenantName+"3.0";
+        }
         trans.setTntInstId(config.getTntInstId());
-        trans.setTenantName(config.getTenantName());
+        trans.setTenantName(tenantName);
 
         transDoc.setTntInstId(config.getTntInstId());
-        transDoc.setTenantName(config.getTenantName());
+        transDoc.setTenantName(tenantName);
+
     }
 
     /**
