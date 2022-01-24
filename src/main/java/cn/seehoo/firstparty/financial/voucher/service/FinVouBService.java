@@ -2193,22 +2193,6 @@ public class FinVouBService implements FinVouService {
         transDoc.setSumTerm(message.getSumTerm());
         transDoc.setGenerateTime(message.getDate());
         transDoc.setGenerateDate(message.getDate());
-        transDoc.setPayeeBankName(config.getAccountConfigs().get(message.getBizUseType()).getPayeeBankName());
-        transDoc.setPayerBankName(message.getPayerBankName());
-        transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
-        transDoc.setPayerAcctNo(message.getPayerAcctNo());
-        if (ClientConstants.ASSET_TYPE.equals(message.getBusinessType())) {
-            transDoc.setSpecialSupplierName("浙江大搜车融资租赁有限公司");
-        } else {
-            //三方机构全称
-            transDoc.setSpecialSupplierName(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
-        }
-        //如果是4.0则修改以下取值
-        if(ClientConstants.PRODUCT_TYPE.equals(message.getBusinessType())){
-            transDoc.setPayeeBankName(message.getPayeeBankName());
-            transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
-            transDoc.setSpecialSupplierName(message.getPayeeBankName());
-        }
         //租户赋值
         setTenantValue(trans, transDoc);
         docList.add(transDoc);
