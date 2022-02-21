@@ -1696,10 +1696,8 @@ public class FinVouBService implements FinVouService {
         transDoc.setNoTaxFloatingDeposit(message.getNoTaxFloatingDeposit());
         transDoc.setTaxInterest(message.getNoTaxFloatingDeposit().multiply(new BigDecimal("-1")));
         transDoc.setAmount(message.getGyPrincipal());
-        transDoc.setResidueUncollectedCapital(message.getNotChargePrincipal());
+        transDoc.setResidueUncollectedCapital(BigDecimal.ZERO);
         transDoc.setResidueUncollectedInterest(message.getNotChargeInterest());
-        transDoc.setPresentUncollectedCapital(message.getCurrentNotChargePrincipal());
-        transDoc.setPresentUncollectedInterest(message.getCurrentNotChargeInterest());
         transDoc.setEarnings(message.getEarnings());
         transDoc.setIncludeTaxRent(message.getIncludeTaxRent());
         setProductNm(transDoc, message.getBusinessType());
