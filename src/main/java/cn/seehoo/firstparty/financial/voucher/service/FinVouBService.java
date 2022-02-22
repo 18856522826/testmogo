@@ -1713,7 +1713,6 @@ public class FinVouBService implements FinVouService {
         //如果是4.0则修改以下取值
         if(ClientConstants.PRODUCT_TYPE.equals(message.getBusinessType())){
             transDoc.setResidueUncollectedInterest(message.getNotChargeInterest().add(message.getCurrentNotChargeInterest()));
-            transDoc.setPresentUncollectedInterest(BigDecimal.ZERO);
             transDoc.setIncludeTaxRent(message.getIncludeTaxRent());
             transDoc.setAmount(message.getTotalInvestment());
         }
