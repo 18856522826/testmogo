@@ -1116,8 +1116,7 @@ public class FinVouBService implements FinVouService {
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
         transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_USE_BUSINESS_MARGIN_B);
         transDoc.setTransType(ClientConstants.TRANS_TYPE_USE_BUSINESS_MARGIN_B);
-        transDoc.setAmount(BigDecimal.ZERO);
-        transDoc.setIncludeTaxRent(message.getBusinessMarginAmount());
+        transDoc.setAmount(message.getBusinessMarginAmount());
         transDoc.setIncludeCapital(message.getCorrespondCapital());
         transDoc.setInterest(message.getCorrespondInterest());
         setProductNm(transDoc, message.getBusinessType());
@@ -1583,8 +1582,8 @@ public class FinVouBService implements FinVouService {
         if(ClientConstants.PRODUCT_TYPE.equals(message.getBusinessType())){
             transDoc.setPenalSum(message.getPenalty().subtract(message.getPurchasePrice()).add(message.getUncollectedInterest()));
             transDoc.setPresentUncollectedInterest(BigDecimal.ZERO);
-            transDoc.setFee(message.getUncollectedInterest());
-            transDoc.setInterest(message.getUncollectedInterest());
+            transDoc.setFee(message.getUncollectedInterest().add(message.getFee()));
+            transDoc.setInterest(message.getUncollectedInterest().add(message.getInterest()));
             transDoc.setPayeeBankName(message.getPayeeBankName());
             transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
             transDoc.setSpecialSupplierName(message.getPayeeBankName());
@@ -1943,8 +1942,7 @@ public class FinVouBService implements FinVouService {
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
         transDoc.setSubTransName(ClientConstants.TRANS_NAME_USE_BUSINESS_MARGIN_B);
         transDoc.setTransType(ClientConstants.TRANS_TYPE_USE_BUSINESS_MARGIN_B);
-        transDoc.setAmount(BigDecimal.ZERO);
-        transDoc.setIncludeTaxRent(message.getIncludeTaxRent());
+        transDoc.setAmount(message.getIncludeTaxRent());
         transDoc.setInterest(message.getInterest());
         transDoc.setIncludeCapital(message.getIncludeCapital());
         setProductNm(transDoc, message.getBusinessType());
