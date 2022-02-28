@@ -1559,10 +1559,6 @@ public class FinVouBService implements FinVouService {
         transDoc.setFee(message.getFee());
         transDoc.setInterest(message.getInterest());
         transDoc.setFlowsMoney(BigDecimal.ZERO);
-        transDoc.setPayeeBankName(config.getAccountConfigs().get(message.getBizUseType()).getPayeeBankName());
-        transDoc.setPayerBankName(message.getPayerBankName());
-        transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
-        transDoc.setPayerAcctNo(message.getPayerAcctNo());
         transDoc.setSpecialSupplierName(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
         setProductNm(transDoc, message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
@@ -1584,10 +1580,14 @@ public class FinVouBService implements FinVouService {
             transDoc.setPresentUncollectedInterest(BigDecimal.ZERO);
             transDoc.setFee(message.getUncollectedInterest().add(message.getFee()));
             transDoc.setInterest(message.getUncollectedInterest().add(message.getInterest()));
-            transDoc.setPayeeBankName(message.getPayeeBankName());
-            transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
             transDoc.setSpecialSupplierName(message.getPayeeBankName());
+        }else {
+            transDoc.setSpecialSupplierName("浙江大搜车融资租赁有限公司");
         }
+        transDoc.setPayeeBankName(message.getPayeeBankName());
+        transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
+        transDoc.setPayerBankName(message.getPayerBankName());
+        transDoc.setPayerAcctNo(message.getPayerAcctNo());
 
         //租户赋值
         setTenantValue(trans, transDoc);
@@ -1838,18 +1838,18 @@ public class FinVouBService implements FinVouService {
         transDoc.setSumTerm(message.getLoanTerm());
         transDoc.setGenerateTime(message.getDate());
         transDoc.setGenerateDate(message.getDate());
-        transDoc.setPayeeBankName(config.getAccountConfigs().get(message.getBizUseType()).getPayeeBankName());
-        transDoc.setPayerBankName(message.getPayerBankName());
-        transDoc.setPayeeAcctNo(config.getAccountConfigs().get(message.getBizUseType()).getPayeeAcctNo());
-        transDoc.setPayerAcctNo(message.getPayerAcctNo());
         transDoc.setSpecialSupplierName(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
 
         //如果是4.0则修改以下取值
         if(ClientConstants.PRODUCT_TYPE.equals(message.getBusinessType())){
-            transDoc.setPayeeBankName(message.getPayeeBankName());
-            transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
             transDoc.setSpecialSupplierName(message.getPayeeBankName());
+        }else {
+            transDoc.setSpecialSupplierName("浙江大搜车融资租赁有限公司");
         }
+        transDoc.setPayeeBankName(message.getPayeeBankName());
+        transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
+        transDoc.setPayerBankName(message.getPayerBankName());
+        transDoc.setPayerAcctNo(message.getPayerAcctNo());
 
         //租户赋值
         setTenantValue(trans, transDoc);
