@@ -1837,8 +1837,6 @@ public class FinVouBService implements FinVouService {
         transDoc.setSumTerm(message.getLoanTerm());
         transDoc.setGenerateTime(message.getDate());
         transDoc.setGenerateDate(message.getDate());
-        transDoc.setSpecialSupplierName(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
-
         //如果是4.0则修改以下取值
         if(ClientConstants.PRODUCT_TYPE.equals(message.getBusinessType())){
             transDoc.setSpecialSupplierName(message.getPayeeBankName());
