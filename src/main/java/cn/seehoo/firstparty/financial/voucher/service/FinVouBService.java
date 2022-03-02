@@ -1282,7 +1282,7 @@ public class FinVouBService implements FinVouService {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_FUND_LATE_FEES);
         }
         transDoc.setAmount(message.getCorrespondPaymentAmount());
-        transDoc.setProductNm(ClientConstants.PRODUCT_NM_6);
+        setProductNm(transDoc,message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setCustNm(message.getCustName());
         transDoc.setPlatformPartner(message.getMerchantName());
