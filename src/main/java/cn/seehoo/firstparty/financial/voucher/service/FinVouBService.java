@@ -2141,7 +2141,7 @@ public class FinVouBService implements FinVouService {
         log.info("场景三十九 结转未实现融资收益场景场景所需财务信息,入参:{}", message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
-        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
+        standardMessage.setIsChargeAgainst(message.getExchanged());
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_006);
@@ -2174,7 +2174,7 @@ public class FinVouBService implements FinVouService {
         transDoc.setFinancialProduct(message.getProductName());
         transDoc.setTaxRate(message.getTaxRate());
         transDoc.setCurrentAccounting(message.getMerchantName());
-        transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setChargeAgainstFlag(Integer.parseInt(message.getExchanged()));
         transDoc.setTerm(message.getCurrentTerm());
         transDoc.setSumTerm(message.getSumTerm());
         transDoc.setGenerateTime(message.getDate());
