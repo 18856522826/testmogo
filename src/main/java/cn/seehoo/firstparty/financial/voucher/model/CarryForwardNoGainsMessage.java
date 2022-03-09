@@ -75,4 +75,8 @@ public class CarryForwardNoGainsMessage extends CommonMessage {
      * 收款方账号（即收款账号）
      */
     private String payeeAcctNo;
+    /**
+     * 是否冲销
+     */
+    private String exchanged;
 }
