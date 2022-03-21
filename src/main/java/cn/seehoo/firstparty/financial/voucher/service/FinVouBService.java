@@ -545,6 +545,8 @@ public class FinVouBService implements FinVouService {
         trans.setTransName(ClientConstants.TRANS_NAME_PAY_DOWN_PAYMENT);
         trans.setContractId(message.getContractNo());
         trans.setIputFlowId(message.getBusinessNo());
+        trans.setGenerateTime(message.getDate());
+        trans.setGenerateDate(message.getDate());
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
@@ -561,6 +563,8 @@ public class FinVouBService implements FinVouService {
         transDoc.setTerm(0);
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         transDoc.setSumTerm(message.getLoanTerm());
+        transDoc.setGenerateTime(message.getDate());
+        transDoc.setGenerateDate(message.getDate());
         //租户赋值
         setTenantValue(trans, transDoc);
         docList.add(transDoc);
@@ -1271,6 +1275,8 @@ public class FinVouBService implements FinVouService {
         trans.setTransName(ClientConstants.TRANS_NAME_FUND_LATE_FEES);
         trans.setContractId(message.getContractNo());
         trans.setIputFlowId(message.getBusinessNo());
+        trans.setGenerateTime(message.getDate());
+        trans.setGenerateDate(message.getDate());
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
@@ -1298,6 +1304,8 @@ public class FinVouBService implements FinVouService {
         transDoc.setTaxLateFee(getTaxAmount(message.getCorrespondPaymentAmount(), message.getTaxRate().divide(new BigDecimal("100"), 2, BigDecimal.ROUND_HALF_UP)));
         transDoc.setPenalSum(message.getCorrespondPaymentAmount().subtract(transDoc.getTaxLateFee()));
         transDoc.setSpecialSupplierName(config.getAccountConfigs().get(message.getBizUseType()).getSpecialSupplierName());
+        transDoc.setGenerateTime(message.getDate());
+        transDoc.setGenerateDate(message.getDate());
         //租户赋值
         setTenantValue(trans, transDoc);
         docList.add(transDoc);
