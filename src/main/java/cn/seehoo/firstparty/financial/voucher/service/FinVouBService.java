@@ -631,7 +631,7 @@ public class FinVouBService implements FinVouService {
         log.info("场景十一&十二 实收当期租金场景所需财务信息,入参:{}", message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
-        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
+        standardMessage.setIsChargeAgainst(message.getExchanged());
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
         trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
@@ -664,7 +664,7 @@ public class FinVouBService implements FinVouService {
         transDoc.setTaxRate(message.getTaxRate());
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setTerm(message.getCurrentTerm());
-        transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setChargeAgainstFlag(Integer.parseInt(message.getExchanged()));
         transDoc.setSumTerm(message.getLoanTerm());
         transDoc.setPayeeBankName(config.getAccountConfigs().get(message.getBizUseType()).getPayeeBankName());
         transDoc.setPayerBankName(message.getPayerBankName());

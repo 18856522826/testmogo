@@ -91,4 +91,8 @@ public class ActuallyCurrentRentCollectionMessage extends CommonMessage{
      * 利息税额
      */
     private BigDecimal taxInterest;
+    /**
+     * 是否冲销
+     */
+    private String exchanged;
 }
