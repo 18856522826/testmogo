@@ -849,7 +849,7 @@ public class FinVouBService implements FinVouService {
         log.info("场景十八 租金被认领场景所需财务信息,入参:{}", message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
-        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
+        standardMessage.setIsChargeAgainst(message.getExchanged());
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
         trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
@@ -874,7 +874,7 @@ public class FinVouBService implements FinVouService {
         transDoc.setTaxRate(message.getTaxRate());
         transDoc.setCurrentAccounting(message.getMerchantName());
         transDoc.setTerm(message.getCurrentTerm());
-        transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setChargeAgainstFlag(Integer.parseInt(message.getExchanged()));
         transDoc.setSumTerm(message.getLoanTerm());
         transDoc.setPayerBankName(message.getPayerBankName());
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
@@ -958,7 +958,7 @@ public class FinVouBService implements FinVouService {
         log.info("场景二十 罚息被认领场景所需财务信息,入参:{}", message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
-        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
+        standardMessage.setIsChargeAgainst(message.getExchanged());
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
         trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
@@ -981,7 +981,7 @@ public class FinVouBService implements FinVouService {
         transDoc.setFinancialProduct(message.getProductName());
         transDoc.setTaxRate(message.getTaxRate());
         transDoc.setCurrentAccounting(message.getMerchantName());
-        transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setChargeAgainstFlag(Integer.parseInt(message.getExchanged()));
         transDoc.setSumTerm(message.getLoanTerm());
         transDoc.setPayerBankName(message.getPayerBankName());
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
@@ -1265,7 +1265,7 @@ public class FinVouBService implements FinVouService {
         log.info("场景二十六 实收滞纳金、违约金场景所需财务信息,入参:{}", message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
-        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
+        standardMessage.setIsChargeAgainst(message.getExchanged());
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
         trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
@@ -1295,7 +1295,7 @@ public class FinVouBService implements FinVouService {
         transDoc.setFinancialProduct(message.getProductName());
         transDoc.setTaxRate(message.getTaxRate());
         transDoc.setCurrentAccounting(message.getMerchantName());
-        transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setChargeAgainstFlag(Integer.parseInt(message.getExchanged()));
         transDoc.setSumTerm(message.getLoanTerm());
         transDoc.setPayerBankName(message.getPayerBankName());
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
@@ -1804,7 +1804,7 @@ public class FinVouBService implements FinVouService {
         log.info("场景三十三 行驶购买权-收取名义购买价,入参:{}", message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
-        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
+        standardMessage.setIsChargeAgainst(message.getExchanged());
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
         trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
@@ -1840,7 +1840,7 @@ public class FinVouBService implements FinVouService {
         transDoc.setTaxRate(message.getTaxRate());
         transDoc.setIsMovableProperty(ClientConstants.IS_MOVABLE_PROPERTY);
         transDoc.setCurrentAccounting(message.getMerchantName());
-        transDoc.setChargeAgainstFlag(Integer.parseInt(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setChargeAgainstFlag(Integer.parseInt(message.getExchanged()));
         transDoc.setTerm(0);
         transDoc.setSumTerm(message.getLoanTerm());
         transDoc.setGenerateTime(message.getDate());

@@ -63,4 +63,8 @@ public class PenaltyInterestClaimCollectionMessage  extends CommonMessage{
      *收款方账号
      */
     private String payeeAcctNo;
+    /**
+     * 是否冲销
+     */
+    private String exchanged;
 }
