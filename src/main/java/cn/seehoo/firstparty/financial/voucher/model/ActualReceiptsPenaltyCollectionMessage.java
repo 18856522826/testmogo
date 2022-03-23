@@ -66,4 +66,8 @@ public class ActualReceiptsPenaltyCollectionMessage extends CommonMessage{
      * 账户key
      */
     private String bizUseType;
+    /**
+     * 是否冲销
+     */
+    private String exchanged;
 }
