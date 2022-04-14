@@ -205,6 +205,10 @@ public interface ClientConstants {
      */
     String TRANS_NAME_USE_BUSINESS_MARGIN_B ="平台方保证金代偿";
     /**
+     * 制证交易名称-动用业务保证金-代偿
+     */
+    String TRANS_NAME_USE_DEDUCT_MARGIN_B ="平台方保证金代偿滞纳金/违约金";
+    /**
      * 制证交易名称-内部资金调拨
      */
     String TRANS_NAME_FUND_TRANSFER="内部资金调拨";
@@ -372,6 +376,10 @@ public interface ClientConstants {
      * 子交易名称-未被认领-确实无法偿付的其他应付款项
      */
     String SUB_TRANS_NAME_USE_BUSINESS_MARGIN_B="平台方保证金代偿";
+    /**
+     * 子交易名称-未被认领-确实无法偿付的其他应付款项
+     */
+    String SUB_TRANS_NAME_USE_DEDUCT_MARGIN_B="平台方保证金代偿滞纳金/违约金";
     /**
      * 子交易名称-资金调拨_提现
      */
@@ -608,6 +616,10 @@ public interface ClientConstants {
      * 交易类型-未被认领-确实无法偿付的其他应付款项
      */
     String TRANS_TYPE_USE_BUSINESS_MARGIN_B="0570301";
+    /**
+     * 交易类型-未被认领-确实无法偿付的其他应付款项
+     */
+    String TRANS_TYPE_USE_DEDUCT_MARGIN_B="0570302";
     /**
      * 交易类型-资金调拨-提现
      */

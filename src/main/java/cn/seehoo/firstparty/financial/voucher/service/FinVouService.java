@@ -204,4 +204,11 @@ public interface FinVouService {
      * @param message 入参
      */
     VoucherStandardMessage carryForwardNoGains(CarryForwardNoGainsMessage message) throws Exception;
+
+
+    /**
+     * 场景三十九 平台方代偿滞纳金
+     * @param message 入参
+     */
+    VoucherStandardMessage platformPenalty (UseMarginDeductCollectMessage message) throws Exception;
 }

@@ -479,6 +479,18 @@ public class FinVouMessageSceneClient {
     }
 
     /**
+     * 场景三十五 平台方抵扣保证金
+     * @param message 入参
+     */
+    public void useMarginDeduct(UseMarginDeductCollectMessage message) throws Exception {
+        log.info("场景三十五 平台方抵扣保证金,入参:{}",message.toString());
+        //标准财务凭证消息
+        VoucherStandardMessage standardMessage=lookUp(config).platformPenalty(message);
+        //发送
+        sender.send(standardMessage);
+    }
+
+    /**
      * 查询AB口径service
      * @param config 配置信息
      * @return 响应

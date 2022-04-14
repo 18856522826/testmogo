@@ -2197,6 +2197,59 @@ public class FinVouBService implements FinVouService {
     }
 
     /**
+     * 场景三十九 平台方代偿滞纳金
+     *
+     * @param message 入参
+     */
+    @Override
+    public VoucherStandardMessage platformPenalty(UseMarginDeductCollectMessage message) throws Exception {
+        log.info("场景二十三 平台方代偿滞纳金场景所需财务信息,入参:{}", message.toString());
+        //标准财务凭证消息
+        VoucherStandardMessage standardMessage = new VoucherStandardMessage();
+        standardMessage.setIsChargeAgainst(message.getExchanged());
+        //制证交易流水
+        AcctDocGenTrans trans = new AcctDocGenTrans();
+        trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
+        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_057);
+        trans.setInputId(message.getBusinessNo());
+        trans.setTransName(ClientConstants.TRANS_NAME_USE_DEDUCT_MARGIN_B);
+        trans.setContractId(message.getContractNo());
+        trans.setIputFlowId(message.getBusinessNo());
+        trans.setCertificateLeaseType(message.getLeaseType());
+        trans.setGenerateTime(message.getDate());
+        trans.setGenerateDate(message.getDate());
+        //制证子交易流水
+        List<AcctDocGenTransDoc> docList = new ArrayList<>();
+        AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
+        transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_USE_DEDUCT_MARGIN_B);
+        transDoc.setTransType(ClientConstants.TRANS_TYPE_USE_DEDUCT_MARGIN_B);
+        transDoc.setAmount(message.getBusinessMarginAmount());
+        transDoc.setContractPrice(getTaxAmount(message.getBusinessMarginAmount(),message.getTaxRate()));
+        transDoc.setNoTaxContractPrice(transDoc.getAmount().subtract(transDoc.getContractPrice()));
+        setProductNm(transDoc, message.getBusinessType());
+        transDoc.setSuppierNm(message.getMerchantName());
+        transDoc.setCustNm(message.getCustName());
+        transDoc.setPlatformPartner(message.getMerchantName());
+        transDoc.setFinancialProduct(message.getProductName());
+        transDoc.setTaxRate(message.getTaxRate());
+        transDoc.setChargeAgainstFlag(Integer.parseInt(message.getExchanged()));
+        transDoc.setTerm(message.getCurrentTerm());
+        transDoc.setSumTerm(message.getLoanTerm());
+        transDoc.setIsMovableProperty(ClientConstants.IS_MOVABLE_PROPERTY);
+        transDoc.setCurrentAccounting(message.getMerchantName());
+        transDoc.setGenerateTime(message.getDate());
+        transDoc.setGenerateDate(message.getDate());
+
+        //租户赋值
+        setTenantValue(trans, transDoc);
+        docList.add(transDoc);
+        standardMessage.setAcctDocGenTrans(trans);
+        standardMessage.setAcctDocGenSubTransList(docList);
+
+        return standardMessage;
+    }
+
+    /**
      * 租户赋值
      *
      * @param trans    财务子交易
