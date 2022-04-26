@@ -479,7 +479,11 @@ public interface ClientConstants {
     /**
      * 子交易名称-结平
      */
-    String SUB_TRANS_NAME_EARLY_TIE_B="直租结平/回租结平";
+    String SUB_TRANS_NAME_EARLY_TIE_DIRECT_B="直租结平";
+    /**
+     * 子交易名称-结平
+     */
+    String SUB_TRANS_NAME_EARLY_TIE_BACK_B="回租结平";
     /**
      * 交易类型-收取保证金场景
      */
