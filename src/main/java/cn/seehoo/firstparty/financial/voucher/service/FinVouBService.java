@@ -1500,7 +1500,7 @@ public class FinVouBService implements FinVouService {
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
-        transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_ACCRUED_INCOME);
+        transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_ACCRUED_INCOME_B);
         if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())) {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_DIRECT_RENT2);
         } else {
@@ -1689,7 +1689,7 @@ public class FinVouBService implements FinVouService {
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
-        transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_EARLY_TIE);
+        transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_EARLY_TIE_B);
         if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())) {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_EARLY_REPAYMENT_Z);
         } else {
@@ -2224,8 +2224,8 @@ public class FinVouBService implements FinVouService {
         transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_USE_DEDUCT_MARGIN_B);
         transDoc.setTransType(ClientConstants.TRANS_TYPE_USE_DEDUCT_MARGIN_B);
         transDoc.setAmount(message.getBusinessMarginAmount());
-        transDoc.setContractPrice(getTaxAmount(message.getBusinessMarginAmount(),message.getTaxRate()));
-        transDoc.setNoTaxContractPrice(transDoc.getAmount().subtract(transDoc.getContractPrice()));
+        transDoc.setInterest(getTaxAmount(message.getBusinessMarginAmount(),message.getTaxRate()));
+        transDoc.setIncludeCapital(transDoc.getAmount().subtract(transDoc.getContractPrice()));
         setProductNm(transDoc, message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
         transDoc.setCustNm(message.getCustName());

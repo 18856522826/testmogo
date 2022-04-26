@@ -437,6 +437,10 @@ public interface ClientConstants {
      */
     String SUB_TRANS_NAME_ACCRUED_INCOME="补计提收入";
     /**
+     * 子交易名称-补计提收入
+     */
+    String SUB_TRANS_NAME_ACCRUED_INCOME_B="补计提销项税额";
+    /**
      * 子交易名称-收到结清款
      */
     String SUB_TRANS_NAME_RECEIPT_SETTLEMENT="收到结清款";
@@ -472,6 +476,10 @@ public interface ClientConstants {
      * 子交易名称-结平
      */
     String SUB_TRANS_NAME_EARLY_TIE="结平";
+    /**
+     * 子交易名称-结平
+     */
+    String SUB_TRANS_NAME_EARLY_TIE_B="直租结平/回租结平";
     /**
      * 交易类型-收取保证金场景
      */
