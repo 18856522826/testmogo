@@ -51,4 +51,8 @@ public class UnClaimNotRepaidCollectionMessage extends CommonMessage{
      * 客户姓名
      */
     private String custName;
+    /**
+     * 是否冲销
+     */
+    private String exchanged;
 }
