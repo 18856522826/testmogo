@@ -2225,7 +2225,7 @@ public class FinVouBService implements FinVouService {
         transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_USE_DEDUCT_MARGIN_B);
         transDoc.setTransType(ClientConstants.TRANS_TYPE_USE_DEDUCT_MARGIN_B);
         transDoc.setAmount(message.getBusinessMarginAmount());
-        transDoc.setInterest(getTaxAmount(message.getBusinessMarginAmount(),message.getTaxRate()));
+        transDoc.setInterest(getTaxAmount(message.getBusinessMarginAmount(),message.getTaxRate().divide(new BigDecimal("100"), 2, BigDecimal.ROUND_HALF_UP)));
         transDoc.setIncludeCapital(transDoc.getAmount().subtract(transDoc.getInterest()));
         setProductNm(transDoc, message.getBusinessType());
         transDoc.setSuppierNm(message.getMerchantName());
