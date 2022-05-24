@@ -1956,6 +1956,16 @@ public class FinVouAService implements FinVouService {
     }
 
     /**
+     * 场景三十九 平台方代偿买断价
+     *
+     * @param message 入参
+     */
+    @Override
+    public VoucherStandardMessage platformBuyoutPrice(BuyoutPriceCollectMessage message) throws Exception {
+        return null;
+    }
+
+    /**
      * 租户赋值
      *
      * @param trans    财务子交易

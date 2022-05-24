@@ -211,4 +211,9 @@ public interface FinVouService {
      * @param message 入参
      */
     VoucherStandardMessage platformPenalty (UseMarginDeductCollectMessage message) throws Exception;
+    /**
+     * 场景三十九 平台方代偿买断价
+     * @param message 入参
+     */
+    VoucherStandardMessage platformBuyoutPrice (BuyoutPriceCollectMessage message) throws Exception;
 }
