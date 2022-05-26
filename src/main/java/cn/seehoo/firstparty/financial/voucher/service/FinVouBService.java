@@ -1893,7 +1893,7 @@ public class FinVouBService implements FinVouService {
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
         transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_SETTLE_CARRY_FORWARD);
-        transDoc.setTransType(ClientConstants.TRANS_TYPE_SETTLE_CARRY_FORWARD);
+        transDoc.setTransType(ClientConstants.TRANS_TYPE_SETTLE_CARRY_FORWARD_B);
         transDoc.setAmount(message.getAmount());
         transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
         setProductNm(transDoc, message.getBusinessType());

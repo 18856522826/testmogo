@@ -513,6 +513,10 @@ public interface ClientConstants {
      */
     String TRANS_TYPE_SETTLE_CARRY_FORWARD="0210302";
     /**
+     * 交易类型-正常结清结转修复后
+     */
+    String TRANS_TYPE_SETTLE_CARRY_FORWARD_B="0210303";
+    /**
      *直租结平
      */
     String TRANS_TYPE_EARLY_REPAYMENT_Z="0190103";
