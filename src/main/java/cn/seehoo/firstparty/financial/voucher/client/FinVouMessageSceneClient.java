@@ -489,6 +489,17 @@ public class FinVouMessageSceneClient {
         //发送
         sender.send(standardMessage);
     }
+    /**
+     * 场景三十五 平台方保证金代偿买断价
+     * @param message 入参
+     */
+    public void platformBuyoutPrice(BuyoutPriceCollectMessage message) throws Exception {
+        log.info("场景三十五 平台方保证金代偿买断价,入参:{}",message.toString());
+        //标准财务凭证消息
+        VoucherStandardMessage standardMessage=lookUp(config).platformBuyoutPrice(message);
+        //发送
+        sender.send(standardMessage);
+    }
 
     /**
      * 查询AB口径service
