@@ -1697,7 +1697,7 @@ public class FinVouBService implements FinVouService {
             transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_EARLY_TIE_BACK_B);
         }
         transDoc.setNoTaxFloatingDeposit(message.getNoTaxFloatingDeposit());
-        transDoc.setTaxInterest(message.getNoTaxFloatingDeposit().multiply(new BigDecimal("-1")));
+        transDoc.setTaxInterest(message.getNoTaxFloatingDeposit());
         transDoc.setAmount(message.getGyPrincipal());
         transDoc.setResidueUncollectedCapital(BigDecimal.ZERO);
         transDoc.setResidueUncollectedInterest(message.getNotChargeInterest());
