@@ -519,11 +519,11 @@ public interface ClientConstants {
     /**
      *直租结平
      */
-    String TRANS_TYPE_EARLY_REPAYMENT_Z="0190103";
+    String TRANS_TYPE_EARLY_REPAYMENT_Z="0190105";
     /**
      *回租结平
      */
-    String TRANS_TYPE_EARLY_REPAYMENT_H="0190203";
+    String TRANS_TYPE_EARLY_REPAYMENT_H="0190205";
     /**
      * 交易类型-取得资产 场景
      */
