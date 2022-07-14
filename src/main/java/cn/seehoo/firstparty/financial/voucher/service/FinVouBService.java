@@ -140,9 +140,6 @@ public class FinVouBService implements FinVouService {
         } else {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_ASSET_LEASE_BACK);
         }
-        //国银收款账号信息
-        transDoc.setPayeeAcctNo(config.getBankAccountNo());
-        transDoc.setPayeeBankName(config.getBankAccountName());
         transDoc.setGenerateDate(message.getDate());
         transDoc.setGenerateTime(message.getDate());
         //租户赋值
