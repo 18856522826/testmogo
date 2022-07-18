@@ -190,7 +190,6 @@ public class FinVouBService implements FinVouService {
         } else {
             transDoc.setPayeeBankName("建设银行");
         }
-        transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
         //国银付款账号信息
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
         transDoc.setPayerBankName(message.getPayerBankName());
