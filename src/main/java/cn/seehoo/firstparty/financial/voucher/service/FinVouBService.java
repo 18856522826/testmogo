@@ -191,6 +191,7 @@ public class FinVouBService implements FinVouService {
             transDoc.setPayeeBankName("建设银行");
         }
         //国银付款账号信息
+        transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
         transDoc.setPayerAcctNo(message.getPayerAcctNo());
         transDoc.setPayerBankName(message.getPayerBankName());
         transDoc.setSuppierNm(message.getMerchantName());
