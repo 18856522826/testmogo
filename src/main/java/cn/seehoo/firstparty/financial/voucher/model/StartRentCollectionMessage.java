@@ -124,5 +124,9 @@ public class StartRentCollectionMessage extends CommonMessage {
      * 投资总额
      */
     private BigDecimal totalInvestment;
+    /**
+     * 补偿利息金额
+     */
+    private BigDecimal discountAmount;
 
 }

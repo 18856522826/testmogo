@@ -500,7 +500,39 @@ public class FinVouMessageSceneClient {
         //发送
         sender.send(standardMessage);
     }
-
+    /**
+     * 场景四十一 支付价款GPS
+     * @param message 入参
+     */
+    public void makeGpsPaymentCollection(MakeGpsPaymentCollectionMessage message) throws Exception {
+        log.info("场景四十一 支付价款GPS,入参:{}",message.toString());
+        //标准财务凭证消息
+        VoucherStandardMessage standardMessage=lookUp(config).makeGpsPaymentCollection(message);
+        //发送
+        sender.send(standardMessage);
+    }
+    /**
+     * 场景四十二 支付价款补偿利息
+     * @param message 入参
+     */
+    public void makeDiscountPaymentCollection(MakeDiscountPaymentCollectionMessage message) throws Exception {
+        log.info("场景四十二 支付价款补偿利息,入参:{}",message.toString());
+        //标准财务凭证消息
+        VoucherStandardMessage standardMessage=lookUp(config).makeDiscountPaymentCollection(message);
+        //发送
+        sender.send(standardMessage);
+    }
+    /**
+     * 场景四十三 计提补偿利息
+     * @param message 入参
+     */
+    public void accrualDiscountCollection(AccrualDiscountCollectionMessage message) throws Exception {
+        log.info("场景四十三 计提补偿利息,入参:{}",message.toString());
+        //标准财务凭证消息
+        VoucherStandardMessage standardMessage=lookUp(config).accrualDiscountCollection(message);
+        //发送
+        sender.send(standardMessage);
+    }
     /**
      * 查询AB口径service
      * @param config 配置信息

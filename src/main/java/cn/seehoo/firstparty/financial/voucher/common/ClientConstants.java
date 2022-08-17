@@ -177,6 +177,10 @@ public interface ClientConstants {
      */
     String TRANS_NAME_OUTPUT_TAX ="计提销项税额";
     /**
+     * 制证交易名称-计提销项税
+     */
+    String TRANS_NAME_DISCOUNT_TAX ="计提销项税";
+    /**
      * 制证交易名称-首付款计入融资租赁资产
      */
     String TRANS_NAME_DOWN_PAYMENT_IN_ASSETS ="首付款计入融资租赁资产";
@@ -249,6 +253,14 @@ public interface ClientConstants {
      */
     String SUB_TRANS_NAME_PAYMENT_RENT_B = "支付价款";
     /**
+     * 子交易名称-支付价款（GPS）
+     */
+    String SUB_TRANS_NAME_PAYMENT_RENT_B_GPS = "支付价款（GPS）";
+    /**
+     * 子交易名称-支付价款（补偿利息产品）
+     */
+    String SUB_TRANS_NAME_PAYMENT_RENT_B_DISCOUNT = "支付价款（补偿利息产品）";
+    /**
      * 子交易名称-首付款场景
      */
     String SUB_TRANS_NAME_DOWN_PAYMENT = "购入租赁资产 ";
@@ -296,6 +308,10 @@ public interface ClientConstants {
      * 子交易名称-计算销项税场景
      */
     String SUB_TRANS_NAME_OUTPUT_TAX_BACK_RENT_B="回租租业务计提销项税额";
+    /**
+     * 子交易名称-计算销项税补偿利息场景
+     */
+    String SUB_TRANS_NAME_DISCOUNT_TAX_BACK_RENT_B="计提补偿利息销项税额";
     /**
      * 子交易名称-首付款计入融资租赁资产
      */
@@ -533,13 +549,21 @@ public interface ClientConstants {
      */
     String TRANS_TYPE_ASSET_LEASE_BACK = "0010201";
     /**
-     * 交易类型-取得资产 场景
+     * 交易类型-支付价款 场景
      */
     String TRANS_TYPE_PAYMENT_DIRECT_RENT = "0010102";
     /**
-     * 交易类型-取得资产 场景
+     * 交易类型-支付价款 场景
      */
     String TRANS_TYPE_PAYMENT_LEASE_BACK = "0010202";
+    /**
+     * 交易类型-支付价款 场景
+     */
+    String TRANS_TYPE_PAYMENT_LEASE_BACK_GPS = "0010204";
+    /**
+     * 交易类型-支付价款 场景
+     */
+    String TRANS_TYPE_PAYMENT_LEASE_BACK_DISCOUNT = "0010203";
     /**
      * 交易类型-首付款 场景
      */
@@ -576,6 +600,10 @@ public interface ClientConstants {
      * 交易类型-计算销项税（回租）
      */
     String TRANS_TYPE_OUTPUT_TAX_BACK_RENT="0130201";
+    /**
+     * 交易类型-计算销项税补偿利息
+     */
+    String TRANS_TYPE_DISCOUNT_TAX_BACK_RENT="0130303";
     /**
      * 交易类型-首付款计入融资租赁资产
      */

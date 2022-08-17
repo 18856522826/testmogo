@@ -216,4 +216,27 @@ public interface FinVouService {
      * @param message 入参
      */
     VoucherStandardMessage platformBuyoutPrice (BuyoutPriceCollectMessage message) throws Exception;
+
+    /**
+     * 场景四十 支付价款GPS
+     * @param message 消息
+     * @return 财务信息
+     * @throws Exception 异常
+     */
+    VoucherStandardMessage makeGpsPaymentCollection(MakeGpsPaymentCollectionMessage message) throws Exception;
+    /**
+     * 场景四十 支付价款补偿利息
+     * @param message 消息
+     * @return 财务信息
+     * @throws Exception 异常
+     */
+    VoucherStandardMessage makeDiscountPaymentCollection(MakeDiscountPaymentCollectionMessage message) throws Exception;
+
+    /**
+     * 场景四十 计提补偿利息
+     * @param message 消息
+     * @return 财务信息
+     * @throws Exception 异常
+     */
+    VoucherStandardMessage accrualDiscountCollection(AccrualDiscountCollectionMessage message) throws Exception;
 }

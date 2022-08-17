@@ -313,12 +313,16 @@ public class FinVouBService implements FinVouService {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_RENT_LEASE_BACK);
         }
         transDoc.setAmount(BigDecimal.ZERO);
+        //计算补偿利息税额
+        BigDecimal discountTax= getTaxAmount(convertBigDecimal(message.getDiscountAmount()),message.getTaxRate());
+
         //不含税利息和
-        transDoc.setNoTaxInterest(message.getGyInterestSum());
+        transDoc.setNoTaxInterest(message.getGyInterestSum()
+                .add(convertBigDecimal(message.getDiscountAmount()).subtract(discountTax)));
         //利息税额和
-        transDoc.setTaxInterest(message.getGyInterestTaxSum());
+        transDoc.setTaxInterest(message.getGyInterestTaxSum().add(discountTax));
         //利息和
-        transDoc.setGoodsTax(message.getGyInterestSum().add(message.getGyInterestTaxSum()));
+        transDoc.setGoodsTax(message.getGyInterestSum().add(message.getGyInterestTaxSum()).add(message.getDiscountAmount()));
         if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())) {
             //不含税本金和
             transDoc.setContractPrice(message.getGyPrincipalExcludeTax());
@@ -2301,6 +2305,147 @@ public class FinVouBService implements FinVouService {
     }
 
     /**
+     * 支付价款GPS
+     * @param message 消息
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public VoucherStandardMessage makeGpsPaymentCollection(MakeGpsPaymentCollectionMessage message) throws Exception {
+        log.info("场景四十 支付价款GPS,入参:{}", message.toString());
+        //标准财务凭证消息
+        VoucherStandardMessage standardMessage = new VoucherStandardMessage();
+        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
+        //制证交易流水
+        AcctDocGenTrans trans = new AcctDocGenTrans();
+        trans.setLeaseType(message.getLeaseType());
+        trans.setCertificateLeaseType(message.getLeaseType());
+        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_001);
+        trans.setInputId(message.getBusinessNo());
+        trans.setTransName(ClientConstants.TRANS_NAME_ASSET);
+        trans.setContractId(message.getContractNo());
+        trans.setIputFlowId(message.getBusinessNo());
+        trans.setGenerateDate(message.getDate());
+        trans.setGenerateTime(message.getDate());
+        //制证子交易流水
+        List<AcctDocGenTransDoc> docList = new ArrayList<>();
+        AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
+        transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_PAYMENT_RENT_B_GPS);
+        transDoc.setTransType(ClientConstants.TRANS_TYPE_PAYMENT_LEASE_BACK_GPS);
+        transDoc.setAmount(message.getLoanAmount());
+        transDoc.setPaymentId(message.getBusinessNo());
+        transDoc.setPayeeBankName("网商银行");
+        //国银付款账号信息
+        transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
+        transDoc.setPayerAcctNo(message.getPayerAcctNo());
+        transDoc.setPayerBankName(message.getPayerBankName());
+        transDoc.setSuppierNm(message.getMerchantName());
+        transDoc.setPlatformPartner(message.getMerchantName());
+        transDoc.setCurrentAccounting(message.getMerchantName());
+        transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setGenerateTime(message.getDate());
+        transDoc.setGenerateDate(message.getDate());
+        setProductNm(transDoc, message.getBusinessType());
+        //租户赋值
+        setTenantValue(trans, transDoc);
+        docList.add(transDoc);
+
+        standardMessage.setAcctDocGenTrans(trans);
+        standardMessage.setAcctDocGenSubTransList(docList);
+
+        return standardMessage;
+    }
+
+    @Override
+    public VoucherStandardMessage makeDiscountPaymentCollection(MakeDiscountPaymentCollectionMessage message) throws Exception {
+        log.info("场景四十 支付价款补偿利息,入参:{}", message.toString());
+        //标准财务凭证消息
+        VoucherStandardMessage standardMessage = new VoucherStandardMessage();
+        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
+        //制证交易流水
+        AcctDocGenTrans trans = new AcctDocGenTrans();
+        trans.setLeaseType(message.getLeaseType());
+        trans.setCertificateLeaseType(message.getLeaseType());
+        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_001);
+        trans.setInputId(message.getBusinessNo());
+        trans.setTransName(ClientConstants.TRANS_NAME_ASSET);
+        trans.setContractId(message.getContractNo());
+        trans.setIputFlowId(message.getBusinessNo());
+        trans.setGenerateDate(message.getDate());
+        trans.setGenerateTime(message.getDate());
+        //制证子交易流水
+        List<AcctDocGenTransDoc> docList = new ArrayList<>();
+        AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
+        transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_PAYMENT_RENT_B_DISCOUNT);
+        transDoc.setTransType(ClientConstants.TRANS_TYPE_PAYMENT_LEASE_BACK_DISCOUNT);
+        transDoc.setContractPrice(message.getLoanAmount().add(message.getDiscountAmount()));
+        transDoc.setAmount(message.getLoanAmount());
+        transDoc.setIncludeCapital(message.getDiscountAmount());
+        transDoc.setPaymentId(message.getBusinessNo());
+        transDoc.setPayeeBankName("网商银行");
+        //国银付款账号信息
+        transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
+        transDoc.setPayerAcctNo(message.getPayerAcctNo());
+        transDoc.setPayerBankName(message.getPayerBankName());
+        transDoc.setSuppierNm(message.getMerchantName());
+        transDoc.setPlatformPartner(message.getMerchantName());
+        transDoc.setCurrentAccounting(message.getMerchantName());
+        transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setGenerateTime(message.getDate());
+        transDoc.setGenerateDate(message.getDate());
+        setProductNm(transDoc, message.getBusinessType());
+        //租户赋值
+        setTenantValue(trans, transDoc);
+        docList.add(transDoc);
+
+        standardMessage.setAcctDocGenTrans(trans);
+        standardMessage.setAcctDocGenSubTransList(docList);
+
+        return standardMessage;
+    }
+
+    @Override
+    public VoucherStandardMessage accrualDiscountCollection(AccrualDiscountCollectionMessage message) throws Exception {
+        log.info("场景四十一 计提补偿利息,入参:{}", message.toString());
+        //标准财务凭证消息
+        VoucherStandardMessage standardMessage = new VoucherStandardMessage();
+        standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
+        //制证交易流水
+        AcctDocGenTrans trans = new AcctDocGenTrans();
+        trans.setLeaseType(message.getLeaseType());
+        trans.setCertificateLeaseType(message.getLeaseType());
+        trans.setBussinessType(ClientConstants.BUSINESS_TYPE_013);
+        trans.setInputId(message.getBusinessNo());
+        trans.setTransName(ClientConstants.TRANS_NAME_DISCOUNT_TAX);
+        trans.setContractId(message.getContractNo());
+        trans.setIputFlowId(message.getBusinessNo());
+        trans.setGenerateDate(message.getDate());
+        trans.setGenerateTime(message.getDate());
+        //制证子交易流水
+        List<AcctDocGenTransDoc> docList = new ArrayList<>();
+        AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
+        transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_DISCOUNT_TAX_BACK_RENT_B);
+        transDoc.setTransType(ClientConstants.TRANS_TYPE_DISCOUNT_TAX_BACK_RENT);
+        transDoc.setAmount(message.getDiscountTaxAmount());
+        transDoc.setPaymentId(message.getBusinessNo());
+        transDoc.setSuppierNm(message.getMerchantName());
+        transDoc.setPlatformPartner(message.getMerchantName());
+        transDoc.setCurrentAccounting(message.getMerchantName());
+        transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
+        transDoc.setGenerateTime(message.getDate());
+        transDoc.setGenerateDate(message.getDate());
+        setProductNm(transDoc, message.getBusinessType());
+        //租户赋值
+        setTenantValue(trans, transDoc);
+        docList.add(transDoc);
+
+        standardMessage.setAcctDocGenTrans(trans);
+        standardMessage.setAcctDocGenSubTransList(docList);
+
+        return standardMessage;
+    }
+
+    /**
      * 租户赋值
      *
      * @param trans    财务子交易
@@ -2362,5 +2507,15 @@ public class FinVouBService implements FinVouService {
     private Date getSpecifyDate(String date,String format) throws ParseException {
         SimpleDateFormat dateFormat=new SimpleDateFormat(format);
         return  dateFormat.parse(date);
+    }
+
+    /**
+     * BigDecimal 转换成非空
+     */
+    private BigDecimal convertBigDecimal(BigDecimal value) {
+        if (value == null) {
+            return BigDecimal.ZERO;
+        }
+        return value;
     }
 }

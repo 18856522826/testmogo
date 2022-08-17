@@ -1965,6 +1965,21 @@ public class FinVouAService implements FinVouService {
         return null;
     }
 
+    @Override
+    public VoucherStandardMessage makeGpsPaymentCollection(MakeGpsPaymentCollectionMessage message) throws Exception {
+        return null;
+    }
+
+    @Override
+    public VoucherStandardMessage makeDiscountPaymentCollection(MakeDiscountPaymentCollectionMessage message) throws Exception {
+        return null;
+    }
+
+    @Override
+    public VoucherStandardMessage accrualDiscountCollection(AccrualDiscountCollectionMessage message) throws Exception {
+        return null;
+    }
+
     /**
      * 租户赋值
      *
