@@ -1,5 +1,6 @@
 package cn.seehoo.firstparty.financial.voucher.model;
 
+import cn.seehoo.firstparty.financial.voucher.model.basic.CommonFinBasicAccountAttr;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -17,36 +18,12 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class MakeDiscountPaymentCollectionMessage extends CommonMessage{
+public class MakeDiscountPaymentCollectionMessage extends CommonFinBasicAccountAttr {
     private static final long serialVersionUID = -2073796043447418208L;
-    /**
-     * 租赁属性
-     */
-    private String leaseType;
-    /**
-     * 合同号码
-     */
-    private String contractNo;
     /**
      * 放款金额
      */
     private BigDecimal loanAmount;
-    /**
-     * 付款方开户行名称
-     */
-    private String payerBankName;
-    /**
-     * 付款方账号
-     */
-    private String payerAcctNo;
-    /**
-     * 收款方开户行名称
-     */
-    private String payeeBankName;
-    /**
-     * 收款方账号
-     */
-    private String payeeAcctNo;
     /**
      * 补偿利息金额
      */

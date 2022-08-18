@@ -5,6 +5,8 @@ import cn.seehoo.firstparty.financial.voucher.config.FinVouMessageConfig;
 import cn.seehoo.firstparty.financial.voucher.model.*;
 import cn.seehoo.firstparty.financial.voucher.model.basic.AcctDocGenTrans;
 import cn.seehoo.firstparty.financial.voucher.model.basic.AcctDocGenTransDoc;
+import cn.seehoo.firstparty.financial.voucher.model.basic.CommonFinBasicAccountAttr;
+import cn.seehoo.firstparty.financial.voucher.model.basic.CommonFinBasicAttr;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -2318,34 +2320,16 @@ public class FinVouBService implements FinVouService {
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
-        trans.setLeaseType(message.getLeaseType());
-        trans.setCertificateLeaseType(message.getLeaseType());
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_001);
-        trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_ASSET);
-        trans.setContractId(message.getContractNo());
-        trans.setIputFlowId(message.getBusinessNo());
-        trans.setGenerateDate(message.getDate());
-        trans.setGenerateTime(message.getDate());
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
         transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_PAYMENT_RENT_B_GPS);
         transDoc.setTransType(ClientConstants.TRANS_TYPE_PAYMENT_LEASE_BACK_GPS);
         transDoc.setAmount(message.getLoanAmount());
-        transDoc.setPaymentId(message.getBusinessNo());
-        transDoc.setPayeeBankName("网商银行");
-        //国银付款账号信息
-        transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
-        transDoc.setPayerAcctNo(message.getPayerAcctNo());
-        transDoc.setPayerBankName(message.getPayerBankName());
-        transDoc.setSuppierNm(message.getMerchantName());
-        transDoc.setPlatformPartner(message.getMerchantName());
-        transDoc.setCurrentAccounting(message.getMerchantName());
+        setBasicAccountAttr(message,transDoc,trans);
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
-        transDoc.setGenerateTime(message.getDate());
-        transDoc.setGenerateDate(message.getDate());
-        setProductNm(transDoc, message.getBusinessType());
         //租户赋值
         setTenantValue(trans, transDoc);
         docList.add(transDoc);
@@ -2364,15 +2348,8 @@ public class FinVouBService implements FinVouService {
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
-        trans.setLeaseType(message.getLeaseType());
-        trans.setCertificateLeaseType(message.getLeaseType());
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_001);
-        trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_ASSET);
-        trans.setContractId(message.getContractNo());
-        trans.setIputFlowId(message.getBusinessNo());
-        trans.setGenerateDate(message.getDate());
-        trans.setGenerateTime(message.getDate());
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
@@ -2381,19 +2358,9 @@ public class FinVouBService implements FinVouService {
         transDoc.setContractPrice(message.getLoanAmount().add(message.getDiscountAmount()));
         transDoc.setAmount(message.getLoanAmount());
         transDoc.setIncludeCapital(message.getDiscountAmount());
-        transDoc.setPaymentId(message.getBusinessNo());
-        transDoc.setPayeeBankName("网商银行");
-        //国银付款账号信息
-        transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
-        transDoc.setPayerAcctNo(message.getPayerAcctNo());
-        transDoc.setPayerBankName(message.getPayerBankName());
-        transDoc.setSuppierNm(message.getMerchantName());
-        transDoc.setPlatformPartner(message.getMerchantName());
-        transDoc.setCurrentAccounting(message.getMerchantName());
+        //设置基础数据
+        setBasicAccountAttr(message,transDoc,trans);
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
-        transDoc.setGenerateTime(message.getDate());
-        transDoc.setGenerateDate(message.getDate());
-        setProductNm(transDoc, message.getBusinessType());
         //租户赋值
         setTenantValue(trans, transDoc);
         docList.add(transDoc);
@@ -2412,29 +2379,18 @@ public class FinVouBService implements FinVouService {
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
         //制证交易流水
         AcctDocGenTrans trans = new AcctDocGenTrans();
-        trans.setLeaseType(message.getLeaseType());
-        trans.setCertificateLeaseType(message.getLeaseType());
         trans.setBussinessType(ClientConstants.BUSINESS_TYPE_013);
-        trans.setInputId(message.getBusinessNo());
         trans.setTransName(ClientConstants.TRANS_NAME_DISCOUNT_TAX);
-        trans.setContractId(message.getContractNo());
-        trans.setIputFlowId(message.getBusinessNo());
-        trans.setGenerateDate(message.getDate());
-        trans.setGenerateTime(message.getDate());
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
         transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_DISCOUNT_TAX_BACK_RENT_B);
         transDoc.setTransType(ClientConstants.TRANS_TYPE_DISCOUNT_TAX_BACK_RENT);
+        //设置金额字段
         transDoc.setAmount(message.getDiscountTaxAmount());
-        transDoc.setPaymentId(message.getBusinessNo());
-        transDoc.setSuppierNm(message.getMerchantName());
-        transDoc.setPlatformPartner(message.getMerchantName());
-        transDoc.setCurrentAccounting(message.getMerchantName());
+        //设置基础数据
+        setBasicAttr(message,transDoc,trans);
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
-        transDoc.setGenerateTime(message.getDate());
-        transDoc.setGenerateDate(message.getDate());
-        setProductNm(transDoc, message.getBusinessType());
         //租户赋值
         setTenantValue(trans, transDoc);
         docList.add(transDoc);
@@ -2517,5 +2473,41 @@ public class FinVouBService implements FinVouService {
             return BigDecimal.ZERO;
         }
         return value;
+    }
+
+    private void setBasicAttr(CommonFinBasicAttr message, AcctDocGenTransDoc transDoc,AcctDocGenTrans trans){
+        //trans
+        trans.setLeaseType(message.getLeaseType());
+        trans.setCertificateLeaseType(message.getLeaseType());
+        trans.setInputId(message.getBusinessNo());
+        trans.setContractId(message.getContractNo());
+        trans.setIputFlowId(message.getBusinessNo());
+        trans.setGenerateDate(message.getDate());
+        trans.setGenerateTime(message.getDate());
+        //doc
+        transDoc.setPaymentId(ClientConstants.PAYMENT_ID_ZERO);
+        setProductNm(transDoc, message.getBusinessType());
+        transDoc.setSuppierNm(message.getMerchantName());
+        transDoc.setCustNm(message.getCustName());
+        transDoc.setPlatformPartner(message.getMerchantName());
+        transDoc.setFinancialProduct(message.getProductName());
+        transDoc.setTaxRate(message.getTaxRate());
+        transDoc.setCurrentAccounting(message.getMerchantName());
+        transDoc.setTerm(message.getCurrentTerm());
+        transDoc.setSumTerm(message.getLoanTerm());
+        transDoc.setGenerateTime(message.getDate());
+        transDoc.setGenerateDate(message.getDate());
+    }
+
+    /**
+     * 生成财务凭证基本信息（包括账户）
+     */
+    private void setBasicAccountAttr(CommonFinBasicAccountAttr message, AcctDocGenTransDoc transDoc,AcctDocGenTrans trans){
+        setBasicAttr(message, transDoc,trans);
+        transDoc.setPayeeBankName(message.getPayeeBankName());
+        //国银付款账号信息
+        transDoc.setPayeeAcctNo(message.getPayeeAcctNo());
+        transDoc.setPayerAcctNo(message.getPayerAcctNo());
+        transDoc.setPayerBankName(message.getPayerBankName());
     }
 }
