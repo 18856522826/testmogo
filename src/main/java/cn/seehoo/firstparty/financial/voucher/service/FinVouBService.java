@@ -316,7 +316,8 @@ public class FinVouBService implements FinVouService {
         }
         transDoc.setAmount(BigDecimal.ZERO);
         //计算补偿利息税额
-        BigDecimal discountTax= getTaxAmount(convertBigDecimal(message.getDiscountAmount()),message.getTaxRate());
+        BigDecimal discountTax= getTaxAmount(convertBigDecimal(message.getDiscountAmount()),
+                message.getTaxRate().divide(new BigDecimal("100"),2,BigDecimal.ROUND_HALF_UP));
 
         //不含税利息和
         transDoc.setNoTaxInterest(message.getGyInterestSum()
