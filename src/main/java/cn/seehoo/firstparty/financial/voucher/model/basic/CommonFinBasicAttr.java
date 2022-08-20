@@ -29,7 +29,7 @@ public class CommonFinBasicAttr extends CommonMessage {
     /*
      * 当前期数
      */
-    private Integer currentTerm;
+    private int currentTerm;
     /*
      * 贷款期数(月)
      */

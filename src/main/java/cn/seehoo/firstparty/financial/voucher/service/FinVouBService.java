@@ -2374,7 +2374,7 @@ public class FinVouBService implements FinVouService {
 
     @Override
     public VoucherStandardMessage accrualDiscountCollection(AccrualDiscountCollectionMessage message) throws Exception {
-        log.info("场景四十一 计提补偿利息,入参:{}", message.toString());
+        log.info("场景四十一 计提补偿利息税额,入参:{}", message.toString());
         //标准财务凭证消息
         VoucherStandardMessage standardMessage = new VoucherStandardMessage();
         standardMessage.setIsChargeAgainst(ClientConstants.IS_CHARGE_AGAINST_NORMAL);
