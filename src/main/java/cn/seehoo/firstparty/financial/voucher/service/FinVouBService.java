@@ -2391,6 +2391,7 @@ public class FinVouBService implements FinVouService {
         transDoc.setAmount(message.getDiscountTaxAmount());
         //设置基础数据
         setBasicAttr(message,transDoc,trans);
+        trans.setLeaseType(ClientConstants.LEASE_TYPE_ALL);
         transDoc.setChargeAgainstFlag(Integer.valueOf(ClientConstants.IS_CHARGE_AGAINST_NORMAL));
         //租户赋值
         setTenantValue(trans, transDoc);
