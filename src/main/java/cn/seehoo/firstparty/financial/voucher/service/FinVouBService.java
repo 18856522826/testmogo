@@ -306,7 +306,8 @@ public class FinVouBService implements FinVouService {
         //制证子交易流水
         List<AcctDocGenTransDoc> docList = new ArrayList<>();
         AcctDocGenTransDoc transDoc = new AcctDocGenTransDoc();
-        transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_RENT_BACK_B);
+        //3.0订单已经没有了因此默认位回租起租
+        transDoc.setSubTransName(ClientConstants.SUB_TRANS_NAME_RENT_LEASE_BACK);
         if (ClientConstants.LEASE_TYPE_DIRECT_RENT.equals(message.getLeaseType())) {
             transDoc.setTransType(ClientConstants.TRANS_TYPE_RENT_DIRECT_RENT);
             //本金税额和
